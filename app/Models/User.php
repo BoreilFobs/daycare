@@ -4,8 +4,10 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -21,6 +23,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'avatar',
+        'is_active',
     ];
 
     /**
@@ -43,6 +48,42 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_active' => 'boolean',
         ];
+    }
+
+    /**
+     * Relationship: User has many blog posts
+     */
+    public function blogPosts(): HasMany
+    {
+        return $this->hasMany(BlogPost::class, 'author_id');
+    }
+
+    /**
+     * Check if user is admin
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    /**
+     * Check if user is regular user
+     */
+    public function isUser(): bool
+    {
+        return $this->role === 'user';
+    }
+
+    /**
+     * Get avatar URL
+     */
+    public function getAvatarUrlAttribute(): string
+    {
+        if ($this->avatar && Storage::disk('public')->exists($this->avatar)) {
+            return Storage::url($this->avatar);
+        }
+        return asset('img/user-default.jpg');
     }
 }
