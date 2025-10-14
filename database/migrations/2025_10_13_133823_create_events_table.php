@@ -23,9 +23,10 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->integer('max_attendees')->nullable();
             $table->decimal('price', 8, 2)->default(0);
-            $table->boolean('is_published')->default(true);
-            $table->boolean('is_featured')->default(false);
+            $table->string('location_link')->nullable(); // Google Maps link
             $table->integer('order')->default(0);
+            $table->boolean('is_active')->default(true);
+            $table->boolean('is_featured')->default(false);
             $table->timestamps();
         });
     }
