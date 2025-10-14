@@ -23,7 +23,7 @@ class PageSectionController extends Controller
         $sections = PageSection::orderBy('page')->orderBy('section_name')->orderBy('order')->get();
         $grouped = $sections->groupBy('page');
         
-        return view('admin.pages.index', compact('grouped'));
+        return view('admin.page-sections.index', compact('grouped'));
     }
 
     public function edit(string $page): View
@@ -81,9 +81,10 @@ class PageSectionController extends Controller
             'page' => 'required|string|max:255',
             'section_name' => 'required|string|max:255',
             'key' => 'required|string|max:255',
-            'value' => 'nullable|string',
+            'value' => 'nullable',
             'type' => 'required|in:text,textarea,image,video,color,wysiwyg',
             'order' => 'nullable|integer',
+            'is_active' => 'boolean',
         ]);
 
         // Handle image upload
@@ -94,9 +95,53 @@ class PageSectionController extends Controller
             );
         }
 
+        // Set defaults
+        $validated['order'] = $validated['order'] ?? 0;
+        $validated['is_active'] = $validated['is_active'] ?? true;
+
         PageSection::create($validated);
 
-        return redirect()->back()->with('success', 'Section field created successfully.');
+        return redirect()
+            ->route('admin.page-sections.index')
+            ->with('success', 'Section field created successfully.');
+    }
+
+    public function updateSection(Request $request, PageSection $pageSection): RedirectResponse
+    {
+        $validated = $request->validate([
+            'page' => 'required|string|max:255',
+            'section_name' => 'required|string|max:255',
+            'key' => 'required|string|max:255',
+            'value' => 'nullable',
+            'type' => 'required|in:text,textarea,image,video,color,wysiwyg',
+            'order' => 'nullable|integer',
+            'is_active' => 'boolean',
+        ]);
+
+        // Handle image upload
+        if ($request->input('type') === 'image' && $request->hasFile('value')) {
+            // Delete old image
+            if ($pageSection->type === 'image' && $pageSection->value) {
+                $this->imageUploadService->delete($pageSection->value);
+            }
+            
+            $validated['value'] = $this->imageUploadService->upload(
+                $request->file('value'),
+                'pages'
+            );
+        } elseif ($request->input('type') !== 'image') {
+            // For non-image fields, use the text value
+            $validated['value'] = $request->input('value');
+        } else {
+            // Keep existing image if no new one uploaded
+            unset($validated['value']);
+        }
+
+        $pageSection->update($validated);
+
+        return redirect()
+            ->route('admin.page-sections.index')
+            ->with('success', 'Section field updated successfully.');
     }
 
     public function destroy(PageSection $pageSection): RedirectResponse

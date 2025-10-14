@@ -14,6 +14,7 @@ use App\Models\Service;
 use App\Models\TeamMember;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
@@ -27,14 +28,15 @@ class DashboardController extends Controller
         $stats = [
             'services' => Service::count(),
             'programs' => Program::count(),
-            'active_programs' => Program::active()->count(),
+            'featured_programs' => Program::featured()->count(),
             'events' => Event::count(),
             'upcoming_events' => Event::upcoming()->count(),
             'blog_posts' => BlogPost::count(),
             'published_posts' => BlogPost::published()->count(),
             'team_members' => TeamMember::count(),
-            'testimonials' => Testimonial::count(),
+            'testimonials' => Testimonial::approved()->count(),
             'gallery_images' => Gallery::count(),
+            'total_views' => BlogPost::sum('views'),
         ];
 
         // Pending approvals
@@ -42,36 +44,96 @@ class DashboardController extends Controller
             'comments' => BlogComment::pending()->count(),
             'testimonials' => Testimonial::pending()->count(),
             'registrations' => EventRegistration::pending()->count(),
+            'messages' => ContactMessage::unread()->count(),
         ];
+        $pending['total'] = $pending['comments'] + $pending['testimonials'] + $pending['registrations'];
 
-        // Recent activity
-        $recent = [
-            'comments' => BlogComment::pending()->latest()->take(5)->get(),
-            'messages' => ContactMessage::unread()->latest()->take(5)->get(),
-            'testimonials' => Testimonial::pending()->latest()->take(5)->get(),
-            'registrations' => EventRegistration::pending()->latest()->take(5)->get(),
-        ];
+        // Recent activity - combine different types
+        $recentActivity = $this->getRecentActivity();
 
-        // Blog post views
+        // Popular blog posts
         $popularPosts = BlogPost::published()
+            ->withCount('comments')
             ->orderBy('views', 'desc')
             ->take(5)
             ->get();
 
         // Upcoming events
-        $upcomingEvents = Event::active()
-            ->upcoming()
-            ->ordered()
+        $upcomingEvents = Event::upcoming()
+            ->withCount('registrations')
+            ->orderBy('event_date', 'asc')
             ->take(5)
             ->get();
 
         return view('admin.dashboard', compact(
             'stats',
             'pending',
-            'recent',
+            'recentActivity',
             'popularPosts',
             'upcomingEvents'
         ));
+    }
+
+    /**
+     * Get recent activity from various sources
+     */
+    private function getRecentActivity(): array
+    {
+        $activity = [];
+
+        // Recent comments
+        $recentComments = BlogComment::with('blogPost')
+            ->latest()
+            ->take(3)
+            ->get();
+        
+        foreach ($recentComments as $comment) {
+            $activity[] = [
+                'title' => 'New Comment',
+                'description' => 'On "' . Str::limit($comment->blogPost->title ?? 'Unknown Post', 40) . '"',
+                'time' => $comment->created_at->diffForHumans(),
+                'icon' => 'fas fa-comment',
+                'color' => '#3B82F6',
+            ];
+        }
+
+        // Recent messages
+        $recentMessages = ContactMessage::latest()
+            ->take(2)
+            ->get();
+        
+        foreach ($recentMessages as $message) {
+            $activity[] = [
+                'title' => 'New Message',
+                'description' => 'From ' . $message->name,
+                'time' => $message->created_at->diffForHumans(),
+                'icon' => 'fas fa-envelope',
+                'color' => '#EF4444',
+            ];
+        }
+
+        // Recent registrations
+        $recentRegistrations = EventRegistration::with('event')
+            ->latest()
+            ->take(2)
+            ->get();
+        
+        foreach ($recentRegistrations as $registration) {
+            $activity[] = [
+                'title' => 'New Registration',
+                'description' => $registration->name . ' - ' . ($registration->event->title ?? 'Unknown Event'),
+                'time' => $registration->created_at->diffForHumans(),
+                'icon' => 'fas fa-user-check',
+                'color' => '#10B981',
+            ];
+        }
+
+        // Sort by time (most recent first)
+        usort($activity, function($a, $b) {
+            return strcmp($b['time'], $a['time']);
+        });
+
+        return array_slice($activity, 0, 7);
     }
 
     /**

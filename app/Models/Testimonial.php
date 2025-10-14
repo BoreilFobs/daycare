@@ -53,14 +53,6 @@ class Testimonial extends Model
     }
 
     /**
-     * Scope to get featured testimonials
-     */
-    public function scopeFeatured(Builder $query): Builder
-    {
-        return $query->where('is_featured', true);
-    }
-
-    /**
      * Scope to get approved testimonials
      */
     public function scopeApproved(Builder $query): Builder
@@ -74,6 +66,22 @@ class Testimonial extends Model
     public function scopePending(Builder $query): Builder
     {
         return $query->where('status', 'pending');
+    }
+
+    /**
+     * Scope to get rejected testimonials
+     */
+    public function scopeRejected(Builder $query): Builder
+    {
+        return $query->where('status', 'rejected');
+    }
+
+    /**
+     * Scope to get featured testimonials
+     */
+    public function scopeFeatured(Builder $query): Builder
+    {
+        return $query->where('is_featured', true);
     }
 
     /**

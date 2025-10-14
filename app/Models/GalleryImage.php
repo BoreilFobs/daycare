@@ -6,21 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Storage;
 
-class TeamMember extends Model
+class GalleryImage extends Model
 {
+    protected $table = 'galleries';
+    
     protected $fillable = [
-        'name',
-        'position',
-        'bio',
+        'title',
+        'description',
         'image',
-        'email',
-        'phone',
-        'facebook',
-        'twitter',
-        'instagram',
-        'linkedin',
-        'is_active',
+        'category',
         'order',
+        'is_active',
     ];
 
     protected $casts = [
@@ -29,7 +25,15 @@ class TeamMember extends Model
     ];
 
     /**
-     * Scope to get only active team members
+     * Scope to get active/published images
+     */
+    public function scopePublished(Builder $query): Builder
+    {
+        return $query->where('is_active', true);
+    }
+
+    /**
+     * Scope to get active images (alias)
      */
     public function scopeActive(Builder $query): Builder
     {
@@ -37,11 +41,19 @@ class TeamMember extends Model
     }
 
     /**
+     * Scope to filter by category
+     */
+    public function scopeCategory(Builder $query, string $category): Builder
+    {
+        return $query->where('category', $category);
+    }
+
+    /**
      * Scope to order by custom order
      */
     public function scopeOrdered(Builder $query): Builder
     {
-        return $query->orderBy('order')->orderBy('created_at');
+        return $query->orderBy('order')->orderBy('created_at', 'desc');
     }
 
     /**
@@ -52,17 +64,6 @@ class TeamMember extends Model
         if ($this->image && Storage::disk('public')->exists($this->image)) {
             return Storage::url($this->image);
         }
-        return asset('img/team-default.jpg');
-    }
-
-    /**
-     * Check if member has social links
-     */
-    public function getHasSocialLinksAttribute(): bool
-    {
-        return !empty($this->facebook) || 
-               !empty($this->twitter) || 
-               !empty($this->instagram) || 
-               !empty($this->linkedin);
+        return asset('img/gallery-default.jpg');
     }
 }

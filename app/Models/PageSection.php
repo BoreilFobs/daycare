@@ -18,8 +18,8 @@ class PageSection extends Model
     ];
 
     protected $casts = [
-        'order' => 'integer',
         'is_active' => 'boolean',
+        'order' => 'integer',
     ];
 
     /**

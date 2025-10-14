@@ -19,18 +19,19 @@ class Event extends Model
         'start_time',
         'end_time',
         'location',
-        'location_link',
-        'order',
-        'is_active',
+        'max_attendees',
+        'price',
+        'is_published',
         'is_featured',
+        'order',
     ];
 
     protected $casts = [
         'event_date' => 'date',
-        'start_time' => 'datetime:H:i',
-        'end_time' => 'datetime:H:i',
+        'price' => 'decimal:2',
+        'max_attendees' => 'integer',
         'order' => 'integer',
-        'is_active' => 'boolean',
+        'is_published' => 'boolean',
         'is_featured' => 'boolean',
     ];
 
@@ -39,7 +40,7 @@ class Event extends Model
      */
     public function registrations(): HasMany
     {
-        return $this->hasMany(EventRegistration::class);
+        return $this->hasMany(Registration::class);
     }
 
     /**

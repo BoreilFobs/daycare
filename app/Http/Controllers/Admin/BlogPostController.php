@@ -24,7 +24,7 @@ class BlogPostController extends Controller
 
     public function index(): View
     {
-        $posts = BlogPost::with('author')->latest()->paginate(15);
+        $posts = BlogPost::with('author')->latest()->get();
         return view('admin.blog.index', compact('posts'));
     }
 

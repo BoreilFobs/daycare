@@ -22,8 +22,8 @@ class TeamMemberController extends Controller
 
     public function index(): View
     {
-        $members = TeamMember::ordered()->paginate(15);
-        return view('admin.team.index', compact('members'));
+        $teamMembers = TeamMember::ordered()->get();
+        return view('admin.team.index', compact('teamMembers'));
     }
 
     public function create(): View

@@ -18,25 +18,19 @@ class BlogPost extends Model
         'excerpt',
         'content',
         'featured_image',
-        'author_id',
+        'user_id',
         'author_name',
-        'author_title',
-        'author_image',
-        'views',
-        'comments_count',
         'category',
         'tags',
-        'published_at',
         'is_published',
-        'is_featured',
+        'published_at',
+        'views',
     ];
 
     protected $casts = [
         'published_at' => 'datetime',
         'views' => 'integer',
-        'comments_count' => 'integer',
         'is_published' => 'boolean',
-        'is_featured' => 'boolean',
     ];
 
     /**
@@ -44,7 +38,7 @@ class BlogPost extends Model
      */
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'author_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
@@ -52,7 +46,7 @@ class BlogPost extends Model
      */
     public function comments(): HasMany
     {
-        return $this->hasMany(BlogComment::class);
+        return $this->hasMany(Comment::class);
     }
 
     /**
