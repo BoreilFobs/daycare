@@ -18,11 +18,14 @@ class BlogPost extends Model
         'excerpt',
         'content',
         'featured_image',
-        'user_id',
+        'author_id',
         'author_name',
+        'author_title',
+        'author_image',
         'category',
         'tags',
         'is_published',
+        'is_featured',
         'published_at',
         'views',
     ];
@@ -38,7 +41,7 @@ class BlogPost extends Model
      */
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'author_id');
     }
 
     /**

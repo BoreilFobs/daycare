@@ -58,9 +58,9 @@
                     <h5 class="card-title mb-0">Featured Image</h5>
                 </div>
                 <div class="card-body">
-                    @if($post->image)
+                    @if($post->featured_image)
                         <div class="mb-2">
-                            <img src="{{ Storage::url($post->image) }}" alt="Current Image" class="img-thumbnail" style="max-height: 200px;">
+                            <img src="{{ $post->featured_image_url }}" alt="Current Image" class="img-thumbnail" style="max-height: 200px;">
                             <p class="text-muted small mb-0">Current image (upload new to replace)</p>
                         </div>
                     @endif
@@ -95,22 +95,10 @@
                         @error('tags')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
-                    <div class="mb-3">
-                        <label for="reading_time" class="form-label">Reading Time (minutes)</label>
-                        <input type="number" class="form-control @error('reading_time') is-invalid @enderror" id="reading_time" name="reading_time" value="{{ old('reading_time', $post->reading_time) }}" min="1">
-                        @error('reading_time')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                    </div>
-
                     <div class="form-check form-switch mb-3">
                         <input type="hidden" name="is_featured" value="0">
-                        <input class="form-check-input" type="checkbox" id="is_featured" name="is_featured" value="1" {{ old('is_featured', $post->is_featured) ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" id="is_featured" name="is_featured" value="1" {{ old('is_featured', $post->is_featured ?? false) ? 'checked' : '' }}>
                         <label class="form-check-label" for="is_featured">Featured Post</label>
-                    </div>
-
-                    <div class="form-check form-switch mb-3">
-                        <input type="hidden" name="allow_comments" value="0">
-                        <input class="form-check-input" type="checkbox" id="allow_comments" name="allow_comments" value="1" {{ old('allow_comments', $post->allow_comments) ? 'checked' : '' }}>
-                        <label class="form-check-label" for="allow_comments">Allow Comments</label>
                     </div>
                 </div>
             </div>
@@ -122,7 +110,7 @@
                 <div class="card-body">
                     <div class="form-check form-switch mb-3">
                         <input type="hidden" name="is_published" value="0">
-                        <input class="form-check-input" type="checkbox" id="is_published" name="is_published" value="1" {{ old('is_published', $post->is_published) ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" id="is_published" name="is_published" value="1" {{ old('is_published', $post->is_published ?? false) ? 'checked' : '' }}>
                         <label class="form-check-label" for="is_published">Published</label>
                     </div>
 

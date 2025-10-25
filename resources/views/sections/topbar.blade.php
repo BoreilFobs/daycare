@@ -10,20 +10,20 @@
     <div class="container topbar bg-primary d-none d-lg-block py-2" style="border-radius: 0 40px">
         <div class="d-flex justify-content-between">
             <div class="top-info ps-2">
-                <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">123 Street, New York</a></small>
-                <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">Email@Example.com</a></small>
+                <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">{{ $siteSettings['contact_address'] ?? '123 Street, New York' }}</a></small>
+                <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="mailto:{{ $siteSettings['contact_email'] ?? 'Email@Example.com' }}" class="text-white">{{ $siteSettings['contact_email'] ?? 'Email@Example.com' }}</a></small>
             </div>
             <div class="top-link pe-2">
-                <a href="" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-facebook-f text-secondary"></i></a>
-                <a href="" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-twitter text-secondary"></i></a>
-                <a href="" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-instagram text-secondary"></i></a>
-                <a href="" class="btn btn-light btn-sm-square rounded-circle me-0"><i class="fab fa-linkedin-in text-secondary"></i></a>
+                <a href="{{ $siteSettings['social_facebook'] ?? '#' }}" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-facebook-f text-secondary"></i></a>
+                <a href="{{ $siteSettings['social_twitter'] ?? '#' }}" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-twitter text-secondary"></i></a>
+                <a href="{{ $siteSettings['social_instagram'] ?? '#' }}" class="btn btn-light btn-sm-square rounded-circle"><i class="fab fa-instagram text-secondary"></i></a>
+                <a href="{{ $siteSettings['social_linkedin'] ?? '#' }}" class="btn btn-light btn-sm-square rounded-circle me-0"><i class="fab fa-linkedin-in text-secondary"></i></a>
             </div>
         </div>
     </div>
     <div class="container px-0">
         <nav class="navbar navbar-light navbar-expand-xl py-3">
-            <a href="{{ route('home') }}" class="navbar-brand"><h1 class="text-primary display-6">Baby<span class="text-secondary">Care</span></h1></a>
+            <a href="{{ route('home') }}" class="navbar-brand"><h1 class="text-primary display-6">ABC <span class="text-secondary">Centre</span></h1></a>
             <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars text-primary"></span>
             </button>
@@ -37,7 +37,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle {{ request()->routeIs('blog') || request()->routeIs('team') || request()->routeIs('testimonials') ? 'active' : '' }}" data-bs-toggle="dropdown">Community</a>
                         <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                            <a href="{{ route('blog') }}" class="dropdown-item {{ request()->routeIs('blog') ? 'active' : '' }}">Our Blog</a>
+                            <a href="{{ route('blog.index') }}" class="dropdown-item {{ request()->routeIs('blog.*') ? 'active' : '' }}">Our Blog</a>
                             <a href="{{ route('team') }}" class="dropdown-item {{ request()->routeIs('team') ? 'active' : '' }}">Our Team</a>
                             <a href="{{ route('testimonials') }}" class="dropdown-item {{ request()->routeIs('testimonials') ? 'active' : '' }}">Testimonial</a>
                         </div>
@@ -55,7 +55,7 @@
                     </div>
                     <div class="d-flex flex-column pe-3 border-end border-primary">
                         <span class="text-primary">Have any questions?</span>
-                        <a href="#"><span class="text-secondary">Free: + 0123 456 7890</span></a>
+                        <a href="tel:{{ str_replace(' ', '', $siteSettings['contact_phone'] ?? '+01234567890') }}"><span class="text-secondary">Free: {{ $siteSettings['contact_phone'] ?? '+ 0123 456 7890' }}</span></a>
                     </div>
                 </div>
                 <button class="btn-search btn btn-primary btn-md-square rounded-circle" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-white"></i></button>

@@ -33,12 +33,9 @@ class StoreBlogPostRequest extends FormRequest
             ],
             'excerpt' => 'nullable|string|max:500',
             'content' => 'required|string',
-            'featured_image' => 'required|image|mimes:jpeg,jpg,png,webp|max:2048',
-            'author_name' => 'required|string|max:255',
-            'author_bio' => 'nullable|string|max:500',
-            'author_image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:1024',
-            'meta_title' => 'nullable|string|max:60',
-            'meta_description' => 'nullable|string|max:160',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:2048',
+            'category' => 'nullable|string|max:100',
+            'tags' => 'nullable|string|max:255',
             'published_at' => 'nullable|date',
             'is_published' => 'nullable|boolean',
             'allow_comments' => 'nullable|boolean',
@@ -54,12 +51,7 @@ class StoreBlogPostRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'featured_image' => 'featured image',
-            'author_name' => 'author name',
-            'author_bio' => 'author bio',
-            'author_image' => 'author image',
-            'meta_title' => 'SEO title',
-            'meta_description' => 'SEO description',
+            'image' => 'featured image',
             'published_at' => 'publish date',
             'is_published' => 'published status',
             'allow_comments' => 'allow comments',
@@ -77,7 +69,6 @@ class StoreBlogPostRequest extends FormRequest
         return [
             'slug.regex' => 'The slug must contain only lowercase letters, numbers, and hyphens.',
             'slug.unique' => 'This slug is already in use. Please choose a different one.',
-            'featured_image.required' => 'Please upload a featured image for the blog post.',
         ];
     }
 

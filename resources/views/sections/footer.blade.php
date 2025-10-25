@@ -3,10 +3,11 @@
             <div class="row g-5">
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div class="footer-item">
-                        <h2 class="fw-bold mb-3"><a href="{{ route('home') }}" class="text-decoration-none"><span class="text-primary mb-0">Baby</span><span class="text-secondary">Care</span></a></h2>
-                        <p class="mb-4">There cursus massa at urnaaculis estieSed aliquamellus vitae ultrs condmentum leo massamollis its estiegittis miristum.</p>
+                        <h2 class="fw-bold mb-3"><a href="{{ route('home') }}" class="text-decoration-none"><span class="text-primary mb-0">ABC</span><span class="text-secondary"> Children Centre</span></a></h2>
+                        <p class="mb-4">At ABC Children Centre, we believe that every child deserves a joyful beginning — one filled with laughter, love, and learning. Join our growing community dedicated to nurturing little ones for a bright and confident future.</p>
                         <div class="border border-primary p-3 rounded bg-light">
                             <h5 class="mb-3">Newsletter</h5>
+                            <p class="small mb-3">Stay connected with updates, tips, and stories from our classrooms.</p>
                             <div class="position-relative mx-auto border border-primary rounded" style="max-width: 400px;">
                                 <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
                                 <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2 text-white">SignUp</button>
@@ -18,13 +19,13 @@
                     <div class="footer-item">
                         <div class="d-flex flex-column p-4 ps-5 text-dark border border-primary" 
                         style="border-radius: 50% 20% / 10% 40%;">
-                            <p>Monday: 8am to 5pm</p>
-                            <p>Tuesday: 8am to 5pm</p>
-                            <p>Wednes: 8am to 5pm</p>
-                            <p>Thursday: 8am to 5pm</p>
-                            <p>Friday: 8am to 5pm</p>
-                            <p>Saturday: 8am to 5pm</p>
-                            <p class="mb-0">Sunday: Closed</p>
+                            <p>Monday: {{ $siteSettings['hours_monday'] ?? '8am to 5pm' }}</p>
+                            <p>Tuesday: {{ $siteSettings['hours_tuesday'] ?? '8am to 5pm' }}</p>
+                            <p>Wednes: {{ $siteSettings['hours_wednesday'] ?? '8am to 5pm' }}</p>
+                            <p>Thursday: {{ $siteSettings['hours_thursday'] ?? '8am to 5pm' }}</p>
+                            <p>Friday: {{ $siteSettings['hours_friday'] ?? '8am to 5pm' }}</p>
+                            <p>Saturday: {{ $siteSettings['hours_saturday'] ?? '8am to 5pm' }}</p>
+                            <p class="mb-0">Sunday: {{ $siteSettings['hours_sunday'] ?? 'Closed' }}</p>
                         </div>
                     </div>
                 </div>
@@ -32,15 +33,15 @@
                     <div class="footer-item">
                         <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">LOCATION</h4>
                         <div class="d-flex flex-column align-items-start">
-                            <a href="" class="text-body mb-4"><i class="fa fa-map-marker-alt text-primary me-2"></i> 104 North tower New York, USA</a>
-                            <a href="" class="text-start rounded-0 text-body mb-4"><i class="fa fa-phone-alt text-primary me-2"></i> (+012) 3456 7890 123</a>
-                            <a href="" class="text-start rounded-0 text-body mb-4"><i class="fas fa-envelope text-primary me-2"></i> exampleemail@gmail.com</a>
-                            <a href="" class="text-start rounded-0 text-body mb-4"><i class="fa fa-clock text-primary me-2"></i> 26/7 Hours Service</a>
+                            <a href="#" class="text-body mb-4"><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ $siteSettings['contact_address'] ?? '104 North tower New York, USA' }}</a>
+                            <a href="tel:{{ str_replace(' ', '', $siteSettings['contact_phone'] ?? '+0123456789') }}" class="text-start rounded-0 text-body mb-4"><i class="fa fa-phone-alt text-primary me-2"></i> {{ $siteSettings['contact_phone'] ?? '(+012) 3456 7890 123' }}</a>
+                            <a href="mailto:{{ $siteSettings['contact_email'] ?? 'example@gmail.com' }}" class="text-start rounded-0 text-body mb-4"><i class="fas fa-envelope text-primary me-2"></i> {{ $siteSettings['contact_email'] ?? 'exampleemail@gmail.com' }}</a>
+                            <a href="#" class="text-start rounded-0 text-body mb-4"><i class="fa fa-clock text-primary me-2"></i> {{ $siteSettings['hours_service'] ?? '26/7 Hours Service' }}</a>
                             <div class="footer-icon d-flex">
-                                <a class="btn btn-primary btn-sm-square me-3 rounded-circle text-white" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-sm-square me-3 rounded-circle text-white" href=""><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="btn btn-primary btn-sm-square me-3 rounded-circle text-white"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="btn btn-primary btn-sm-square rounded-circle text-white"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-primary btn-sm-square me-3 rounded-circle text-white" href="{{ $siteSettings['social_facebook'] ?? '#' }}"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-primary btn-sm-square me-3 rounded-circle text-white" href="{{ $siteSettings['social_twitter'] ?? '#' }}"><i class="fab fa-twitter"></i></a>
+                                <a href="{{ $siteSettings['social_instagram'] ?? '#' }}" class="btn btn-primary btn-sm-square me-3 rounded-circle text-white"><i class="fab fa-instagram"></i></a>
+                                <a href="{{ $siteSettings['social_linkedin'] ?? '#' }}" class="btn btn-primary btn-sm-square rounded-circle text-white"><i class="fab fa-linkedin-in"></i></a>
                             </div>
                         </div>
                     </div>
@@ -93,7 +94,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <span class="text-light"><a href="{{ route('home') }}"><i class="fas fa-copyright text-light me-2"></i>BabyCare</a>, All right reserved.</span>
+                    <span class="text-light"><a href="{{ route('home') }}"><i class="fas fa-copyright text-light me-2"></i>{{ $siteSettings['site_name'] ?? 'BabyCare' }}</a>, All right reserved.</span>
                 </div>
                 <div class="col-md-6 my-auto text-center text-md-end text-white">
                     <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->

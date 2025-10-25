@@ -32,6 +32,8 @@ class StoreTeamMemberRequest extends FormRequest
             'twitter_url' => 'nullable|url|max:255',
             'instagram_url' => 'nullable|url|max:255',
             'linkedin_url' => 'nullable|url|max:255',
+            'is_active' => 'nullable|boolean',
+            'is_featured' => 'nullable|boolean',
             'order' => 'nullable|integer|min:0',
         ];
     }

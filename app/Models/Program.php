@@ -89,4 +89,34 @@ class Program extends Model
         }
         return asset('img/teacher-default.jpg');
     }
+
+    /**
+     * Accessor for capacity (alias for total_sits)
+     */
+    public function getCapacityAttribute(): int
+    {
+        return $this->total_sits;
+    }
+
+    /**
+     * Accessor for duration (formatted from total_hours)
+     */
+    public function getDurationAttribute(): ?string
+    {
+        if ($this->total_hours) {
+            return $this->total_hours . ' Hours';
+        }
+        return null;
+    }
+
+    /**
+     * Accessor for age_group (you may need to add this column to the database)
+     * For now, returning null - you can add this column later
+     */
+    public function getAgeGroupAttribute(): ?string
+    {
+        // You can add an age_group column to the programs table
+        // or calculate it based on other fields
+        return null;
+    }
 }

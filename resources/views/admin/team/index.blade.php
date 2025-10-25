@@ -62,25 +62,25 @@
                             @endif
                             
                             <!-- Social Links -->
-                            @if($member->facebook || $member->twitter || $member->instagram || $member->linkedin)
+                            @if($member->facebook_url || $member->twitter_url || $member->instagram_url || $member->linkedin_url)
                                 <div class="social-links mb-3">
-                                    @if($member->facebook)
-                                        <a href="{{ $member->facebook }}" target="_blank" class="btn btn-sm btn-outline-primary me-1">
+                                    @if($member->facebook_url)
+                                        <a href="{{ $member->facebook_url }}" target="_blank" class="btn btn-sm btn-outline-primary me-1">
                                             <i class="fab fa-facebook-f"></i>
                                         </a>
                                     @endif
-                                    @if($member->twitter)
-                                        <a href="{{ $member->twitter }}" target="_blank" class="btn btn-sm btn-outline-info me-1">
+                                    @if($member->twitter_url)
+                                        <a href="{{ $member->twitter_url }}" target="_blank" class="btn btn-sm btn-outline-info me-1">
                                             <i class="fab fa-twitter"></i>
                                         </a>
                                     @endif
-                                    @if($member->instagram)
-                                        <a href="{{ $member->instagram }}" target="_blank" class="btn btn-sm btn-outline-danger me-1">
+                                    @if($member->instagram_url)
+                                        <a href="{{ $member->instagram_url }}" target="_blank" class="btn btn-sm btn-outline-danger me-1">
                                             <i class="fab fa-instagram"></i>
                                         </a>
                                     @endif
-                                    @if($member->linkedin)
-                                        <a href="{{ $member->linkedin }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                    @if($member->linkedin_url)
+                                        <a href="{{ $member->linkedin_url }}" target="_blank" class="btn btn-sm btn-outline-primary">
                                             <i class="fab fa-linkedin-in"></i>
                                         </a>
                                     @endif

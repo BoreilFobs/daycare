@@ -24,14 +24,17 @@ class StoreEventRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'content' => 'nullable|string',
+            'full_description' => 'nullable|string',
             'event_date' => 'required|date|after_or_equal:today',
-            'event_time' => 'nullable|date_format:H:i',
-            'end_time' => 'nullable|date_format:H:i|after:event_time',
+            'start_time' => 'nullable|date_format:H:i',
+            'end_time' => 'nullable|date_format:H:i|after:start_time',
             'location' => 'nullable|string|max:255',
-            'location_url' => 'nullable|url|max:500',
+            'location_link' => 'nullable|url|max:500',
             'max_attendees' => 'nullable|integer|min:1',
-            'registration_deadline' => 'nullable|date|before_or_equal:event_date',
+            'price' => 'nullable|numeric|min:0',
+            'order' => 'nullable|integer|min:0',
+            'is_featured' => 'nullable|boolean',
+            'is_active' => 'nullable|boolean',
             'image' => 'required|image|mimes:jpeg,jpg,png,webp|max:2048',
         ];
     }
@@ -45,11 +48,13 @@ class StoreEventRequest extends FormRequest
     {
         return [
             'event_date' => 'event date',
-            'event_time' => 'start time',
+            'start_time' => 'start time',
             'end_time' => 'end time',
-            'location_url' => 'location URL',
+            'location_link' => 'location link',
             'max_attendees' => 'maximum attendees',
-            'registration_deadline' => 'registration deadline',
+            'full_description' => 'full description',
+            'is_featured' => 'featured status',
+            'is_active' => 'active status',
         ];
     }
 
@@ -63,7 +68,6 @@ class StoreEventRequest extends FormRequest
         return [
             'event_date.after_or_equal' => 'The event date must be today or in the future.',
             'end_time.after' => 'The end time must be after the start time.',
-            'registration_deadline.before_or_equal' => 'The registration deadline must be on or before the event date.',
         ];
     }
 }

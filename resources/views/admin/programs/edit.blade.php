@@ -44,7 +44,7 @@
 
                     <!-- Description -->
                     <div class="mb-3">
-                        <label for="description" class="form-label">Description <span class="text-danger">*</span></label>
+                        <label for="description" class="form-label">Short Description <span class="text-danger">*</span></label>
                         <textarea class="form-control @error('description') is-invalid @enderror" 
                                   id="description" 
                                   name="description" 
@@ -55,16 +55,15 @@
                         @enderror
                     </div>
 
-                    <!-- Features -->
+                    <!-- Full Description -->
                     <div class="mb-3">
-                        <label for="features" class="form-label">Features</label>
-                        <textarea class="form-control @error('features') is-invalid @enderror" 
-                                  id="features" 
-                                  name="features" 
-                                  rows="4" 
-                                  placeholder="Enter one feature per line">{{ old('features', $program->features) }}</textarea>
-                        <small class="text-muted">Enter each feature on a new line</small>
-                        @error('features')
+                        <label for="full_description" class="form-label">Full Description</label>
+                        <textarea class="form-control @error('full_description') is-invalid @enderror" 
+                                  id="full_description" 
+                                  name="full_description" 
+                                  rows="8">{{ old('full_description', $program->full_description) }}</textarea>
+                        <small class="text-muted">Detailed program information</small>
+                        @error('full_description')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -91,13 +90,14 @@
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="teacher_qualification" class="form-label">Teacher Qualification</label>
+                            <label for="teacher_title" class="form-label">Teacher Title/Qualification</label>
                             <input type="text" 
-                                   class="form-control @error('teacher_qualification') is-invalid @enderror" 
-                                   id="teacher_qualification" 
-                                   name="teacher_qualification" 
-                                   value="{{ old('teacher_qualification', $program->teacher_qualification) }}">
-                            @error('teacher_qualification')
+                                   class="form-control @error('teacher_title') is-invalid @enderror" 
+                                   id="teacher_title" 
+                                   name="teacher_title" 
+                                   value="{{ old('teacher_title', $program->teacher_title) }}"
+                                   placeholder="e.g., Lead Educator, M.Ed">
+                            @error('teacher_title')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
@@ -218,46 +218,38 @@
                 </div>
             </div>
 
-            <!-- Age Group & Schedule -->
+            <!-- Program Details -->
             <div class="card mb-4">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Age Group & Schedule</h5>
+                    <h5 class="card-title mb-0">Program Details</h5>
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
-                        <label for="age_group" class="form-label">Age Group</label>
-                        <input type="text" 
-                               class="form-control @error('age_group') is-invalid @enderror" 
-                               id="age_group" 
-                               name="age_group" 
-                               value="{{ old('age_group', $program->age_group) }}" 
-                               placeholder="e.g., 3-5 years">
-                        @error('age_group')
+                        <label for="total_lessons" class="form-label">Total Lessons</label>
+                        <input type="number" 
+                               class="form-control @error('total_lessons') is-invalid @enderror" 
+                               id="total_lessons" 
+                               name="total_lessons" 
+                               value="{{ old('total_lessons', $program->total_lessons) }}" 
+                               min="0"
+                               placeholder="e.g., 40">
+                        <small class="text-muted">Number of lessons in the program</small>
+                        @error('total_lessons')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="mb-3">
-                        <label for="duration" class="form-label">Duration</label>
-                        <input type="text" 
-                               class="form-control @error('duration') is-invalid @enderror" 
-                               id="duration" 
-                               name="duration" 
-                               value="{{ old('duration', $program->duration) }}" 
-                               placeholder="e.g., 3 months, 6 weeks">
-                        @error('duration')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="schedule" class="form-label">Schedule</label>
-                        <textarea class="form-control @error('schedule') is-invalid @enderror" 
-                                  id="schedule" 
-                                  name="schedule" 
-                                  rows="3" 
-                                  placeholder="e.g., Monday to Friday, 9:00 AM - 12:00 PM">{{ old('schedule', $program->schedule) }}</textarea>
-                        @error('schedule')
+                        <label for="total_hours" class="form-label">Total Hours</label>
+                        <input type="number" 
+                               class="form-control @error('total_hours') is-invalid @enderror" 
+                               id="total_hours" 
+                               name="total_hours" 
+                               value="{{ old('total_hours', $program->total_hours) }}" 
+                               min="0"
+                               placeholder="e.g., 120">
+                        <small class="text-muted">Total duration in hours</small>
+                        @error('total_hours')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>

@@ -120,6 +120,21 @@
                                     </td>
                                     <td class="text-end">
                                         <div class="btn-group btn-group-sm">
+                                            @if($post->is_published)
+                                                <form action="{{ route('admin.blog.toggle-publish', $post) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-outline-warning" title="Unpublish">
+                                                        <i class="fas fa-eye-slash"></i>
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <form action="{{ route('admin.blog.toggle-publish', $post) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-outline-success" title="Publish">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                </form>
+                                            @endif
                                             <a href="{{ route('admin.blog.edit', $post) }}" 
                                                class="btn btn-outline-primary"
                                                title="Edit">
@@ -177,7 +192,7 @@
                                             <div class="fw-semibold">{{ $post->title }}</div>
                                         </div>
                                     </td>
-                                    <td>{{ $post->published_at->format('M d, Y') }}</td>
+                                    <td>{{ $post->published_at ? $post->published_at->format('M d, Y') : 'Not published' }}</td>
                                     <td><i class="fas fa-eye me-1"></i>{{ number_format($post->views ?? 0) }}</td>
                                     <td><i class="fas fa-comments me-1"></i>{{ number_format($post->comments_count ?? 0) }}</td>
                                     <td class="text-end">

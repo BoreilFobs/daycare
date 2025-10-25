@@ -44,17 +44,17 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="pill" href="#pending-comments">
-                    <i class="fas fa-clock me-1"></i>Pending ({{ $comments->where('is_approved', false)->count() }})
+                    <i class="fas fa-clock me-1"></i>Pending ({{ $comments->where('status', 'pending')->count() }})
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="pill" href="#approved-comments">
-                    <i class="fas fa-check-circle me-1"></i>Approved ({{ $comments->where('is_approved', true)->count() }})
+                    <i class="fas fa-check-circle me-1"></i>Approved ({{ $comments->where('status', 'approved')->count() }})
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="pill" href="#spam-comments">
-                    <i class="fas fa-ban me-1"></i>Spam (0)
+                    <i class="fas fa-ban me-1"></i>Spam ({{ $comments->where('status', 'rejected')->count() }})
                 </a>
             </li>
         </ul>
@@ -83,8 +83,8 @@
                                     </td>
                                     <td>
                                         <div>
-                                            <div class="fw-semibold">{{ $comment->author_name }}</div>
-                                            <small class="text-muted">{{ $comment->author_email }}</small><br>
+                                            <div class="fw-semibold">{{ $comment->name }}</div>
+                                            <small class="text-muted">{{ $comment->email }}</small><br>
                                             <small class="text-muted">
                                                 <i class="fas fa-calendar me-1"></i>
                                                 {{ $comment->created_at->diffForHumans() }}
@@ -92,7 +92,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <p class="mb-1">{{ Str::limit($comment->content, 100) }}</p>
+                                        <p class="mb-1">{{ Str::limit($comment->comment, 100) }}</p>
                                         @if($comment->parent_id)
                                             <small class="text-muted">
                                                 <i class="fas fa-reply me-1"></i>Reply to another comment
@@ -100,13 +100,19 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('admin.blog.edit', $comment->blog_post_id) }}" class="text-decoration-none">
-                                            {{ Str::limit($comment->blog_post->title ?? 'Unknown', 30) }}
-                                        </a>
+                                        @if($comment->blogPost)
+                                            <a href="{{ route('admin.blog.edit', $comment->blogPost->id) }}" class="text-decoration-none">
+                                                {{ Str::limit($comment->blogPost->title, 30) }}
+                                            </a>
+                                        @else
+                                            <span class="text-muted">Unknown Post</span>
+                                        @endif
                                     </td>
                                     <td>
-                                        @if($comment->is_approved)
+                                        @if($comment->status === 'approved')
                                             <span class="badge bg-success">Approved</span>
+                                        @elseif($comment->status === 'rejected')
+                                            <span class="badge bg-danger">Spam</span>
                                         @else
                                             <span class="badge bg-warning text-dark">Pending</span>
                                         @endif
@@ -117,7 +123,7 @@
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-end">
-                                                @if(!$comment->is_approved)
+                                                @if($comment->status !== 'approved')
                                                     <li>
                                                         <form action="{{ route('admin.comments.approve', $comment) }}" method="POST">
                                                             @csrf
@@ -127,14 +133,16 @@
                                                         </form>
                                                     </li>
                                                 @endif
-                                                <li>
-                                                    <form action="{{ route('admin.comments.spam', $comment) }}" method="POST">
-                                                        @csrf
-                                                        <button type="submit" class="dropdown-item text-warning">
-                                                            <i class="fas fa-ban me-2"></i>Mark as Spam
-                                                        </button>
-                                                    </form>
-                                                </li>
+                                                @if($comment->status !== 'rejected')
+                                                    <li>
+                                                        <form action="{{ route('admin.comments.spam', $comment) }}" method="POST">
+                                                            @csrf
+                                                            <button type="submit" class="dropdown-item text-warning">
+                                                                <i class="fas fa-ban me-2"></i>Mark as Spam
+                                                            </button>
+                                                        </form>
+                                                    </li>
+                                                @endif
                                                 <li><hr class="dropdown-divider"></li>
                                                 <li>
                                                     <form action="{{ route('admin.comments.destroy', $comment) }}" 
@@ -166,17 +174,22 @@
 
             <div class="tab-pane fade" id="pending-comments">
                 <div class="list-group">
-                    @forelse($comments->where('is_approved', false) as $comment)
+                    @forelse($comments->where('status', 'pending') as $comment)
                         <div class="list-group-item">
                             <div class="d-flex justify-content-between align-items-start">
                                 <div class="flex-grow-1">
                                     <div class="d-flex justify-content-between">
-                                        <h6 class="mb-1">{{ $comment->author_name }}</h6>
+                                        <h6 class="mb-1">{{ $comment->name }}</h6>
                                         <small class="text-muted">{{ $comment->created_at->diffForHumans() }}</small>
                                     </div>
-                                    <p class="mb-2">{{ $comment->content }}</p>
+                                    <p class="mb-2">{{ $comment->comment }}</p>
                                     <small class="text-muted">
-                                        On: <a href="{{ route('admin.blog.edit', $comment->blog_post_id) }}">{{ $comment->blog_post->title ?? 'Unknown' }}</a>
+                                        On: 
+                                        @if($comment->blogPost)
+                                            <a href="{{ route('admin.blog.edit', $comment->blogPost->id) }}">{{ $comment->blogPost->title }}</a>
+                                        @else
+                                            Unknown Post
+                                        @endif
                                     </small>
                                 </div>
                                 <div class="ms-3">
@@ -206,17 +219,22 @@
 
             <div class="tab-pane fade" id="approved-comments">
                 <div class="list-group">
-                    @forelse($comments->where('is_approved', true) as $comment)
+                    @forelse($comments->where('status', 'approved') as $comment)
                         <div class="list-group-item">
                             <div class="d-flex justify-content-between align-items-start">
                                 <div class="flex-grow-1">
                                     <div class="d-flex justify-content-between">
-                                        <h6 class="mb-1">{{ $comment->author_name }}</h6>
+                                        <h6 class="mb-1">{{ $comment->name }}</h6>
                                         <small class="text-muted">{{ $comment->created_at->diffForHumans() }}</small>
                                     </div>
-                                    <p class="mb-2">{{ $comment->content }}</p>
+                                    <p class="mb-2">{{ $comment->comment }}</p>
                                     <small class="text-muted">
-                                        On: <a href="{{ route('admin.blog.edit', $comment->blog_post_id) }}">{{ $comment->blog_post->title ?? 'Unknown' }}</a>
+                                        On:
+                                        @if($comment->blogPost)
+                                            <a href="{{ route('admin.blog.edit', $comment->blogPost->id) }}">{{ $comment->blogPost->title }}</a>
+                                        @else
+                                            Unknown Post
+                                        @endif
                                     </small>
                                 </div>
                             </div>
@@ -235,9 +253,46 @@
                     Comments marked as spam are hidden from public view
                 </div>
                 <div class="list-group">
-                    <div class="text-center py-5">
-                        <p class="text-muted mb-0">No spam comments</p>
-                    </div>
+                    @forelse($comments->where('status', 'rejected') as $comment)
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="mb-1">{{ $comment->name }}</h6>
+                                        <small class="text-muted">{{ $comment->created_at->diffForHumans() }}</small>
+                                    </div>
+                                    <p class="mb-2">{{ $comment->comment }}</p>
+                                    <small class="text-muted">
+                                        On:
+                                        @if($comment->blogPost)
+                                            <a href="{{ route('admin.blog.edit', $comment->blogPost->id) }}">{{ $comment->blogPost->title }}</a>
+                                        @else
+                                            Unknown Post
+                                        @endif
+                                    </small>
+                                </div>
+                                <div class="ms-3">
+                                    <form action="{{ route('admin.comments.approve', $comment) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-success" title="Approve">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                    </form>
+                                    <form action="{{ route('admin.comments.destroy', $comment) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="text-center py-5">
+                            <p class="text-muted mb-0">No spam comments</p>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>

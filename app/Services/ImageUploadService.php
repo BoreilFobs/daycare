@@ -255,11 +255,11 @@ class ImageUploadService
      */
     public function validate(
         UploadedFile $file,
-        int $maxSize = 2048,
+        int $maxSize = 3048,
         array $allowedMimes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
     ): bool {
         // Check file size (convert KB to bytes)
-        if ($file->getSize() > ($maxSize * 1024)) {
+        if ($file->getSize() > ($maxSize * 2024)) {
             return false;
         }
 

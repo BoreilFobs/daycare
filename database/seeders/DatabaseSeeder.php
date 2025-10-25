@@ -21,5 +21,10 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin'), // Ensure to hash the password
             'role' => 'admin', // Set role to admin
         ]);
+
+        // Seed page sections with default content
+        $this->call([
+            PageSectionsSeeder::class,
+        ]);
     }
 }

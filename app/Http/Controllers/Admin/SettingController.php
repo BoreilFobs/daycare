@@ -33,17 +33,16 @@ class SettingController extends Controller
      */
     public function update(Request $request): RedirectResponse
     {
-        $request->validate([
-            'settings' => 'required|array',
-        ]);
-
-        foreach ($request->input('settings', []) as $key => $value) {
+        // Get all input except _token and section
+        $inputs = $request->except(['_token', 'section']);
+        
+        foreach ($inputs as $key => $value) {
             $setting = Setting::where('key', $key)->first();
             
             if ($setting) {
                 // Handle image uploads
-                if ($setting->type === 'image' && $request->hasFile("settings.{$key}")) {
-                    $file = $request->file("settings.{$key}");
+                if ($setting->type === 'image' && $request->hasFile($key)) {
+                    $file = $request->file($key);
                     $path = $this->imageUploadService->replace(
                         $file,
                         $setting->value,
@@ -54,12 +53,12 @@ class SettingController extends Controller
                 
                 $setting->update(['value' => $value]);
             } else {
-                // Create new setting
+                // Create new setting with defaults
                 Setting::create([
                     'key' => $key,
                     'value' => $value,
                     'type' => 'text',
-                    'group' => 'general',
+                    'group' => $request->input('section', 'general'),
                 ]);
             }
         }

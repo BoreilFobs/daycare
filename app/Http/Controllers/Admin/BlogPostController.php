@@ -37,26 +37,28 @@ class BlogPostController extends Controller
     {
         $validated = $request->validated();
 
-        $validated['author_id'] = Auth::user()->id;
+        $validated['author_id'] = Auth::id();
+        $validated['author_name'] = Auth::user()->name;
 
-        // Handle featured image
-        if ($request->hasFile('featured_image')) {
+        // Handle featured image (form field is 'image')
+        if ($request->hasFile('image')) {
             $validated['featured_image'] = $this->imageUploadService->upload(
-                $request->file('featured_image'),
+                $request->file('image'),
                 'blog',
                 1200,
                 630
             );
+            unset($validated['image']); // Remove the 'image' key as we saved it as 'featured_image'
         }
 
-        // Handle author image
-        if ($request->hasFile('author_image')) {
-            $validated['author_image'] = $this->imageUploadService->upload(
-                $request->file('author_image'),
-                'authors',
-                200,
-                200
-            );
+        // Generate slug if not provided
+        if (empty($validated['slug'])) {
+            $validated['slug'] = Str::slug($validated['title']);
+        }
+
+        // Set published_at if publishing
+        if (!empty($validated['is_published']) && empty($validated['published_at'])) {
+            $validated['published_at'] = now();
         }
 
         BlogPost::create($validated);
@@ -66,33 +68,43 @@ class BlogPostController extends Controller
 
     public function edit(BlogPost $blogPost): View
     {
-        return view('admin.blog.edit', compact('blogPost'));
+        $post = $blogPost;
+        return view('admin.blog.edit', compact('post'));
     }
 
     public function update(UpdateBlogPostRequest $request, BlogPost $blogPost): RedirectResponse
     {
         $validated = $request->validated();
 
-        // Handle featured image
-        if ($request->hasFile('featured_image')) {
+        // Handle featured image (form field is 'image')
+        if ($request->hasFile('image')) {
             $validated['featured_image'] = $this->imageUploadService->replace(
-                $request->file('featured_image'),
+                $request->file('image'),
                 $blogPost->featured_image,
                 'blog',
                 1200,
                 630
             );
+            unset($validated['image']); // Remove the 'image' key as we saved it as 'featured_image'
         }
 
-        // Handle author image
-        if ($request->hasFile('author_image')) {
-            $validated['author_image'] = $this->imageUploadService->replace(
-                $request->file('author_image'),
-                $blogPost->author_image,
-                'authors',
-                200,
-                200
-            );
+        // Generate slug if not provided
+        if (empty($validated['slug'])) {
+            $validated['slug'] = Str::slug($validated['title']);
+        }
+
+        // Handle published_at date
+        if (!empty($validated['is_published'])) {
+            // If publishing and no published_at is set, use now or the provided date
+            if (empty($blogPost->published_at) && empty($validated['published_at'])) {
+                $validated['published_at'] = now();
+            } elseif (empty($validated['published_at'])) {
+                // Keep existing published_at if not provided
+                unset($validated['published_at']);
+            }
+        } else {
+            // If unpublishing, clear the published_at date
+            $validated['published_at'] = null;
         }
 
         $blogPost->update($validated);
@@ -111,11 +123,14 @@ class BlogPostController extends Controller
 
     public function togglePublish(BlogPost $blogPost): RedirectResponse
     {
+        $isPublished = !$blogPost->is_published;
+        
         $blogPost->update([
-            'is_published' => !$blogPost->is_published,
-            'published_at' => !$blogPost->is_published ? now() : $blogPost->published_at,
+            'is_published' => $isPublished,
+            'published_at' => $isPublished ? now() : null,
         ]);
 
-        return redirect()->back()->with('success', 'Blog post publish status updated.');
+        $status = $isPublished ? 'published' : 'unpublished';
+        return redirect()->back()->with('success', "Blog post {$status} successfully.");
     }
 }

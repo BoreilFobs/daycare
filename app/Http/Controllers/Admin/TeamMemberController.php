@@ -80,4 +80,17 @@ class TeamMemberController extends Controller
 
         return redirect()->route('admin.team.index')->with('success', 'Team member deleted successfully.');
     }
+
+    public function reorder(Request $request): RedirectResponse
+    {
+        $order = $request->input('order', []);
+        
+        foreach ($order as $index => $id) {
+            TeamMember::where('id', $id)->update(['order' => $index]);
+        }
+
+        return redirect()
+            ->route('admin.team.index')
+            ->with('success', 'Team members reordered successfully.');
+    }
 }

@@ -15,17 +15,19 @@ class TeamMember extends Model
         'image',
         'email',
         'phone',
-        'facebook',
-        'twitter',
-        'instagram',
-        'linkedin',
+        'facebook_url',
+        'twitter_url',
+        'instagram_url',
+        'linkedin_url',
         'is_active',
+        'is_featured',
         'order',
     ];
 
     protected $casts = [
         'order' => 'integer',
         'is_active' => 'boolean',
+        'is_featured' => 'boolean',
     ];
 
     /**
@@ -34,6 +36,14 @@ class TeamMember extends Model
     public function scopeActive(Builder $query): Builder
     {
         return $query->where('is_active', true);
+    }
+
+    /**
+     * Scope to get only featured team members
+     */
+    public function scopeFeatured(Builder $query): Builder
+    {
+        return $query->where('is_featured', true);
     }
 
     /**
@@ -60,9 +70,9 @@ class TeamMember extends Model
      */
     public function getHasSocialLinksAttribute(): bool
     {
-        return !empty($this->facebook) || 
-               !empty($this->twitter) || 
-               !empty($this->instagram) || 
-               !empty($this->linkedin);
+        return !empty($this->facebook_url) || 
+               !empty($this->twitter_url) || 
+               !empty($this->instagram_url) || 
+               !empty($this->linkedin_url);
     }
 }

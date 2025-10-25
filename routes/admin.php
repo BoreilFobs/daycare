@@ -38,24 +38,35 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::delete('/settings/{key}', [SettingController::class, 'destroy'])->name('settings.destroy');
 
     // Services
-    Route::resource('services', ServiceController::class);
+    Route::resource('services', ServiceController::class)->parameters([
+        'services' => 'service'
+    ]);
     Route::post('/services/reorder', [ServiceController::class, 'reorder'])->name('services.reorder');
 
     // Programs
-    Route::resource('programs', ProgramController::class);
+    Route::resource('programs', ProgramController::class)->parameters([
+        'programs' => 'program'
+    ]);
     Route::post('/programs/{program}/toggle-featured', [ProgramController::class, 'toggleFeatured'])
         ->name('programs.toggle-featured');
 
     // Events
-    Route::resource('events', EventController::class);
+    Route::resource('events', EventController::class)->parameters([
+        'events' => 'event'
+    ]);
 
     // Blog Posts
-    Route::resource('blog', BlogPostController::class);
+    Route::resource('blog', BlogPostController::class)->parameters([
+        'blog' => 'blogPost'
+    ]);
     Route::post('/blog/{blogPost}/toggle-publish', [BlogPostController::class, 'togglePublish'])
         ->name('blog.toggle-publish');
 
     // Team Members
-    Route::resource('team', TeamMemberController::class);
+    Route::resource('team', TeamMemberController::class)->parameters([
+        'team' => 'teamMember'
+    ]);
+    Route::post('/team/reorder', [TeamMemberController::class, 'reorder'])->name('team.reorder');
 
     // Testimonials
     Route::get('/testimonials/pending', [TestimonialController::class, 'pending'])
@@ -66,10 +77,14 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         ->name('testimonials.reject');
     Route::post('/testimonials/{testimonial}/toggle-featured', [TestimonialController::class, 'toggleFeatured'])
         ->name('testimonials.toggle-featured');
-    Route::resource('testimonials', TestimonialController::class)->except(['create', 'store']);
+    Route::resource('testimonials', TestimonialController::class)->parameters([
+        'testimonials' => 'testimonial'
+    ])->except(['create', 'store']);
 
     // Gallery
-    Route::resource('gallery', GalleryController::class)->except(['create', 'edit']);
+    Route::resource('gallery', GalleryController::class)->parameters([
+        'gallery' => 'gallery'
+    ])->except(['create', 'edit']);
     Route::post('/gallery/bulk-upload', [GalleryController::class, 'bulkUpload'])
         ->name('gallery.bulk-upload');
 
@@ -84,7 +99,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         ->name('comments.bulk-approve');
     Route::post('/comments/bulk-delete', [BlogCommentController::class, 'bulkDelete'])
         ->name('comments.bulk-delete');
-    Route::resource('comments', BlogCommentController::class)->only(['index', 'destroy']);
+    Route::resource('comments', BlogCommentController::class)->parameters([
+        'comments' => 'comment'
+    ])->only(['index', 'destroy']);
 
     // Contact Messages
     Route::get('/messages/unread', [ContactMessageController::class, 'unread'])
@@ -97,7 +114,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         ->name('messages.archive');
     Route::put('/messages/{message}/notes', [ContactMessageController::class, 'updateNotes'])
         ->name('messages.update-notes');
-    Route::resource('messages', ContactMessageController::class)->only(['index', 'show', 'destroy']);
+    Route::resource('messages', ContactMessageController::class)->parameters([
+        'messages' => 'message'
+    ])->only(['index', 'show', 'destroy']);
 
     // Event Registrations
     Route::get('/registrations/pending', [EventRegistrationController::class, 'pending'])
@@ -108,13 +127,15 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         ->name('registrations.cancel');
     Route::put('/registrations/{registration}/notes', [EventRegistrationController::class, 'updateNotes'])
         ->name('registrations.update-notes');
-    Route::resource('registrations', EventRegistrationController::class)->only(['index', 'show', 'destroy']);
+    Route::resource('registrations', EventRegistrationController::class)->parameters([
+        'registrations' => 'registration'
+    ])->only(['index', 'show', 'destroy']);
 
     // Page Sections (Dynamic Content)
-    Route::get('/pages', [PageSectionController::class, 'index'])->name('pages.index');
-    Route::get('/pages/{page}/edit', [PageSectionController::class, 'edit'])->name('pages.edit');
-    Route::put('/pages/{page}', [PageSectionController::class, 'update'])->name('pages.update');
-    Route::post('/pages/sections', [PageSectionController::class, 'store'])->name('pages.sections.store');
-    Route::delete('/pages/sections/{pageSection}', [PageSectionController::class, 'destroy'])
-        ->name('pages.sections.destroy');
+    Route::get('/page-sections', [PageSectionController::class, 'index'])->name('page-sections.index');
+    Route::get('/page-sections/{page}/edit', [PageSectionController::class, 'edit'])->name('page-sections.edit');
+    Route::put('/page-sections/{page}', [PageSectionController::class, 'update'])->name('page-sections.update');
+    Route::post('/page-sections', [PageSectionController::class, 'store'])->name('page-sections.store');
+    Route::delete('/page-sections/{pageSection}', [PageSectionController::class, 'destroy'])
+        ->name('page-sections.destroy');
 });

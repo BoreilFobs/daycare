@@ -19,19 +19,22 @@ class Event extends Model
         'start_time',
         'end_time',
         'location',
+        'location_link',
         'max_attendees',
         'price',
-        'is_published',
+        'is_active',
         'is_featured',
         'order',
     ];
 
     protected $casts = [
         'event_date' => 'date',
+        'start_time' => 'datetime',
+        'end_time' => 'datetime',
         'price' => 'decimal:2',
         'max_attendees' => 'integer',
         'order' => 'integer',
-        'is_published' => 'boolean',
+        'is_active' => 'boolean',
         'is_featured' => 'boolean',
     ];
 
@@ -118,6 +121,17 @@ class Event extends Model
         if ($this->start_time && $this->end_time) {
             return $this->start_time->format('h:i A') . ' - ' . $this->end_time->format('h:i A');
         }
-        return $this->start_time ? $this->start_time->format('h:i A') : '';
+        if ($this->start_time) {
+            return $this->start_time->format('h:i A');
+        }
+        return 'Time TBD';
+    }
+
+    /**
+     * Get event time (alias for time_range for backward compatibility)
+     */
+    public function getEventTimeAttribute(): string
+    {
+        return $this->time_range;
     }
 }

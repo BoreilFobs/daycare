@@ -24,17 +24,19 @@ class StoreProgramRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'content' => 'nullable|string',
-            'age_range' => 'nullable|string|max:100',
-            'duration' => 'nullable|string|max:100',
-            'class_size' => 'nullable|integer|min:1',
-            'schedule' => 'nullable|string',
+            'full_description' => 'nullable|string',
             'price' => 'nullable|numeric|min:0',
-            'price_unit' => 'nullable|string|max:50',
-            'is_featured' => 'nullable|boolean',
-            'image' => 'required|image|mimes:jpeg,jpg,png,webp|max:2048',
+            'currency' => 'nullable|string|max:10',
+            'teacher_name' => 'nullable|string|max:255',
+            'teacher_title' => 'nullable|string|max:255',
             'teacher_image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:1024',
+            'total_sits' => 'required|integer|min:1',
+            'total_lessons' => 'nullable|integer|min:0',
+            'total_hours' => 'nullable|integer|min:0',
             'order' => 'nullable|integer|min:0',
+            'is_featured' => 'nullable|boolean',
+            'is_active' => 'nullable|boolean',
+            'image' => 'required|image|mimes:jpeg,jpg,png,webp|max:2048',
         ];
     }
 
@@ -46,11 +48,15 @@ class StoreProgramRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'age_range' => 'age range',
-            'class_size' => 'class size',
-            'price_unit' => 'price unit',
-            'is_featured' => 'featured status',
+            'full_description' => 'full description',
+            'teacher_name' => 'teacher name',
+            'teacher_title' => 'teacher title',
             'teacher_image' => 'teacher image',
+            'total_sits' => 'total seats',
+            'total_lessons' => 'total lessons',
+            'total_hours' => 'total hours',
+            'is_featured' => 'featured status',
+            'is_active' => 'active status',
         ];
     }
 

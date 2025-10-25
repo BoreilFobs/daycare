@@ -47,11 +47,17 @@
                             @error('location')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="max_capacity" class="form-label">Max Capacity</label>
-                            <input type="number" class="form-control @error('max_capacity') is-invalid @enderror" id="max_capacity" name="max_capacity" value="{{ old('max_capacity', $event->max_capacity) }}" min="0">
+                            <label for="max_attendees" class="form-label">Max Attendees</label>
+                            <input type="number" class="form-control @error('max_attendees') is-invalid @enderror" id="max_attendees" name="max_attendees" value="{{ old('max_attendees', $event->max_attendees) }}" min="0">
                             <small class="text-muted">Leave empty for unlimited</small>
-                            @error('max_capacity')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                            @error('max_attendees')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="full_description" class="form-label">Full Description</label>
+                        <textarea class="form-control @error('full_description') is-invalid @enderror" id="full_description" name="full_description" rows="6">{{ old('full_description', $event->full_description) }}</textarea>
+                        @error('full_description')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                 </div>
             </div>
@@ -93,10 +99,31 @@
                         @error('event_date')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
-                    <div class="mb-3">
-                        <label for="event_time" class="form-label">Event Time <span class="text-danger">*</span></label>
-                        <input type="time" class="form-control @error('event_time') is-invalid @enderror" id="event_time" name="event_time" value="{{ old('event_time', $event->event_time) }}" required>
-                        @error('event_time')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="start_time" class="form-label">Start Time</label>
+                            <input type="time" class="form-control @error('start_time') is-invalid @enderror" id="start_time" name="start_time" value="{{ old('start_time', $event->start_time ? \Carbon\Carbon::parse($event->start_time)->format('H:i') : '') }}">
+                            @error('start_time')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="end_time" class="form-label">End Time</label>
+                            <input type="time" class="form-control @error('end_time') is-invalid @enderror" id="end_time" name="end_time" value="{{ old('end_time', $event->end_time ? \Carbon\Carbon::parse($event->end_time)->format('H:i') : '') }}">
+                            @error('end_time')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ old('price', $event->price) }}" step="0.01" min="0">
+                            <small class="text-muted">Leave empty or 0 for free event</small>
+                            @error('price')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="location_link" class="form-label">Location Link</label>
+                            <input type="url" class="form-control @error('location_link') is-invalid @enderror" id="location_link" name="location_link" value="{{ old('location_link', $event->location_link) }}" placeholder="https://maps.google.com/...">
+                            @error('location_link')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        </div>
                     </div>
                 </div>
             </div>
@@ -106,6 +133,13 @@
                     <h5 class="card-title mb-0">Status</h5>
                 </div>
                 <div class="card-body">
+                    <div class="form-check form-switch mb-3">
+                        <input type="hidden" name="is_featured" value="0">
+                        <input class="form-check-input" type="checkbox" id="is_featured" name="is_featured" value="1" {{ old('is_featured', $event->is_featured) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="is_featured">
+                            <i class="fas fa-star text-warning me-1"></i>Featured Event
+                        </label>
+                    </div>
                     <div class="form-check form-switch mb-3">
                         <input type="hidden" name="is_active" value="0">
                         <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" {{ old('is_active', $event->is_active) ? 'checked' : '' }}>

@@ -79,7 +79,7 @@
                 
                 <div class="collapse" id="mobilePagesManagement">
                     <div class="list-group list-group-flush ps-4">
-                        <a href="{{ route('blog') }}" class="list-group-item list-group-item-action border-0 py-2 {{ request()->routeIs('blog') ? 'active bg-light border-0' : '' }}">
+                        <a href="{{ route('blog.index') }}" class="list-group-item list-group-item-action border-0 py-2 {{ request()->routeIs('blog.*') ? 'active bg-light border-0' : '' }}">
                             <i class="fas fa-newspaper me-3"></i> Our Blog
                         </a>
                         <a href="{{ route('team') }}" class="list-group-item list-group-item-action border-0 py-2 {{ request()->routeIs('team') ? 'active bg-light border-0' : '' }}">

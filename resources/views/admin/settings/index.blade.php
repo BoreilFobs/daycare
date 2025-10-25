@@ -63,6 +63,7 @@
             <div class="tab-pane fade show active" id="general">
                 <form action="{{ route('admin.settings.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <input type="hidden" name="section" value="general">
                     
                     <div class="row">
@@ -158,6 +159,7 @@
             <div class="tab-pane fade" id="contact">
                 <form action="{{ route('admin.settings.update') }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <input type="hidden" name="section" value="contact">
                     
                     <div class="row">
@@ -211,6 +213,7 @@
             <div class="tab-pane fade" id="social">
                 <form action="{{ route('admin.settings.update') }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <input type="hidden" name="section" value="social">
                     
                     <div class="mb-3">
@@ -258,6 +261,7 @@
             <div class="tab-pane fade" id="appearance">
                 <form action="{{ route('admin.settings.update') }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <input type="hidden" name="section" value="appearance">
                     
                     <div class="row">
@@ -309,6 +313,7 @@
             <div class="tab-pane fade" id="seo">
                 <form action="{{ route('admin.settings.update') }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <input type="hidden" name="section" value="seo">
                     
                     <div class="mb-3">
@@ -349,6 +354,7 @@
             <div class="tab-pane fade" id="email">
                 <form action="{{ route('admin.settings.update') }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <input type="hidden" name="section" value="email">
                     
                     <div class="alert alert-info">

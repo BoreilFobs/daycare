@@ -78,7 +78,7 @@
                 <div class="collapse" id="pagesManagement">
                     <ul class="nav flex-column ms-3">
                         <li class="nav-item">
-                            <a href="{{ route('blog') }}" class="nav-link text-dark {{ request()->routeIs('blog') ? 'active' : '' }}">
+                            <a href="{{ route('blog.index') }}" class="nav-link text-dark {{ request()->routeIs('blog.*') ? 'active' : '' }}">
                                 <i class="fas fa-rss me-2 text-primary"></i> Blog Posts
                             </a>
                         </li>

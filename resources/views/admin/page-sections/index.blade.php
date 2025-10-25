@@ -406,8 +406,8 @@
             const order = $(this).data('order');
             const isActive = $(this).data('is-active');
 
-            // Set form action
-            $('#editForm').attr('action', `/admin/page-sections/${id}`);
+            // Set form action - use the correct route with admin prefix
+            $('#editForm').attr('action', `{{ url('admin/page-sections') }}/${id}`);
 
             // Fill form fields
             $('#editPage').val(page);

@@ -10,8 +10,6 @@ if (!function_exists('setting')) {
      */
     function setting(string $key, $default = null)
     {
-        // You can implement this to fetch from database
-        // For now, return default or from config
-        return config('settings.' . $key, $default);
+        return \App\Models\Setting::get($key, $default);
     }
 }

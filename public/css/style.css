@@ -589,11 +589,31 @@ h6,
     height: 100%;
 }
 
+.team .team-item .team-img {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.team .team-item .team-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: 0.5s;
+}
+
+.team .team-item:hover .team-img img {
+    transform: scale(1.1);
+}
+
 .team .team-item .team-icon {
     position: absolute;
-    bottom: 120px;
+    bottom: 180px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 2;
 }
 
 .team .team-item .team-icon a.share-link {
@@ -605,10 +625,24 @@ h6,
     opacity: 1;
 }
 
+.team .team-item .team-content {
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .team .team-item .team-content,
 .team .team-item .team-content h4,
 .team .team-item .team-content p {
     transition: 0.5s;
+}
+
+.team .team-item .team-content p.small {
+    font-size: 0.875rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
 }
 
 .team .team-item:hover .team-content {
@@ -621,7 +655,7 @@ h6,
 }
 
 .team .team-item:hover .team-content p {
-    color: var(--bs-dark) !important;
+    color: var(--bs-white) !important;
 }
 /*** Team end ***/
 
