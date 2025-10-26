@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('value')->nullable();
             $table->string('type')->default('text'); // text, image, color, textarea, email, phone
             $table->string('group')->default('general'); // general, contact, social, appearance
+            $table->string('label')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });
