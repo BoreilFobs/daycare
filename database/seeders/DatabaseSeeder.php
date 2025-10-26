@@ -15,12 +15,15 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'ADMIN',
-            'email' => 'admin@admin.com',
-            'password' => bcrypt('admin'), // Ensure to hash the password
-            'role' => 'admin', // Set role to admin
-        ]);
+        // Create admin user only if it doesn't exist
+        if (!User::where('email', 'admin@admin.com')->exists()) {
+            User::factory()->create([
+                'name' => 'ADMIN',
+                'email' => 'admin@admin.com',
+                'password' => bcrypt('admin'), // Ensure to hash the password
+                'role' => 'admin', // Set role to admin
+            ]);
+        }
 
         // Seed page sections with default content
         $this->call([
