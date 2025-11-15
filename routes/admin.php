@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\EventRegistrationController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\PageSectionController;
 use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -34,8 +35,17 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SettingController::class, 'store'])->name('settings.store');
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
+    Route::get('/settings/advanced', [SettingController::class, 'advanced'])->name('settings.advanced');
+    Route::post('/settings/clear-cache', [SettingController::class, 'clearCache'])->name('settings.clear-cache');
+    Route::post('/settings/create-backup', [SettingController::class, 'createBackup'])->name('settings.create-backup');
     Route::get('/settings/{key}', [SettingController::class, 'show'])->name('settings.show');
     Route::delete('/settings/{key}', [SettingController::class, 'destroy'])->name('settings.destroy');
+
+    // Media Library
+    Route::get('/media', [MediaController::class, 'index'])->name('media.index');
+    Route::post('/media/upload', [MediaController::class, 'upload'])->name('media.upload');
+    Route::get('/media/{id}', [MediaController::class, 'show'])->name('media.show');
+    Route::delete('/media/{id}', [MediaController::class, 'destroy'])->name('media.destroy');
 
     // Services
     Route::resource('services', ServiceController::class)->parameters([

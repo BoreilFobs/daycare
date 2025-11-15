@@ -1,15 +1,17 @@
 @extends('layouts.web')
 @section('content')
     <!-- Hero Start -->
-    <div class="container-fluid py-5 hero-header wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid py-5 hero-header" data-aos="fade-up" data-aos-duration="1000">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-7 col-md-12">
-                    <h1 class="mb-3 text-primary">{{ $pageSections['hero']['title'] ?? 'We Care Your Baby' }}</h1>
-                    <h1 class="mb-5 display-1 text-white">{{ $pageSections['hero']['subtitle'] ?? 'let\'s give our little ones a strong start in life
+                    <h1 class="mb-3 text-primary" data-aos="fade-right" data-aos-delay="200">{{ $pageSections['hero']['title'] ?? 'We Care Your Baby' }}</h1>
+                    <h1 class="mb-5 display-1 text-white" data-aos="fade-right" data-aos-delay="400">{{ $pageSections['hero']['subtitle'] ?? 'let\'s give our little ones a strong start in life
 ' }}</h1>
-                    <a href="{{ $pageSections['hero']['button_1_link'] ?? '/contact' }}" class="btn btn-primary px-4 py-3 px-md-5  me-4 btn-border-radius">{{ $pageSections['hero']['button_1_text'] ?? 'Get Started' }}</a>
-                    <a href="{{ $pageSections['hero']['button_2_link'] ?? '/about' }}" class="btn btn-primary px-4 py-3 px-md-5 btn-border-radius">{{ $pageSections['hero']['button_2_text'] ?? 'Learn More' }}</a>
+                    <div data-aos="fade-up" data-aos-delay="600">
+                        <a href="{{ $pageSections['hero']['button_1_link'] ?? '/contact' }}" class="btn btn-primary px-4 py-3 px-md-5  me-4 btn-border-radius">{{ $pageSections['hero']['button_1_text'] ?? 'Get Started' }}</a>
+                        <a href="{{ $pageSections['hero']['button_2_link'] ?? '/about' }}" class="btn btn-primary px-4 py-3 px-md-5 btn-border-radius">{{ $pageSections['hero']['button_2_text'] ?? 'Learn More' }}</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -75,13 +77,13 @@
     <!-- Service Start -->
     <div class="container-fluid service py-5">
         <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+            <div class="mx-auto text-center" data-aos="fade-up" data-aos-duration="1000" style="max-width: 700px;">
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">{{ $pageSections['services']['title'] ?? 'Our Services' }}</h4>
                 <h1 class="mb-5 display-3">{{ $pageSections['services']['heading'] ?? 'What We Offer For You' }}</h1>
             </div>
             <div class="row g-5">
                 @forelse($services as $index => $service)
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeIn" data-wow-delay="{{ 0.1 + ($index * 0.2) }}s">
+                    <div class="col-md-6 col-lg-6 col-xl-3" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}" data-aos-duration="1000">
                         <div class="text-center border-primary border bg-white service-item">
                             <div class="service-content d-flex align-items-center justify-content-center p-4">
                                 <div class="service-content-inner">
@@ -107,17 +109,17 @@
     <!-- Programs Start -->
     <div class="container-fluid program  py-5">
         <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+            <div class="mx-auto text-center" data-aos="fade-up" data-aos-duration="1000" style="max-width: 700px;">
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">{{ $pageSections['programs']['title'] ?? 'Our Programs' }}</h4>
                 <h1 class="mb-5 display-3">{{ $pageSections['programs']['heading'] ?? 'We Offer An Exclusive Program For Kids' }}</h1>
             </div>
             <div class="row g-5 justify-content-center">
                 @forelse($featuredPrograms as $index => $program)
-                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="{{ 0.1 + ($index * 0.2) }}s">
+                    <div class="col-md-6 col-lg-6 col-xl-4" data-aos="zoom-in" data-aos-delay="{{ $index * 150 }}" data-aos-duration="1000">
                         <div class="program-item rounded">
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
-                                    <img src="{{ $program->image_url ?? asset('img/program-' . (($index % 3) + 1) . '.jpg') }}" class="img-fluid w-100" alt="{{ $program->title }}">
+                                    <img src="{{ $program->image_url ?? asset('img/program-' . (($index % 3) + 1) . '.jpg') }}" class="img-fluid w-100" alt="{{ $program->title }}" loading="lazy">
                                 </div>
                                 @if($program->price)
                                     <div class="px-4 py-2 bg-primary text-white program-rate">${{ number_format($program->price, 2) }}</div>
@@ -134,7 +136,7 @@
                             </div>
                             @if($program->teacher_name)
                                 <div class="program-teacher d-flex align-items-center border-top border-primary bg-white px-4 py-3">
-                                    <img src="{{ $program->teacher_image_url ?? asset('img/program-teacher.jpg') }}" class="img-fluid rounded-circle p-2 border border-primary bg-white" alt="{{ $program->teacher_name }}" style="width: 70px; height: 70px;">
+                                    <img src="{{ $program->teacher_image_url ?? asset('img/program-teacher.jpg') }}" class="img-fluid rounded-circle p-2 border border-primary bg-white" alt="{{ $program->teacher_name }}" style="width: 70px; height: 70px;" loading="lazy">
                                     <div class="ms-3">
                                         <h6 class="mb-0 text-primary">{{ $program->teacher_name }}</h6>
                                         @if($program->teacher_title)
@@ -163,7 +165,7 @@
                         <p>No programs available at the moment.</p>
                     </div>
                 @endforelse
-                <div class="d-inline-block text-center wow fadeIn" data-wow-delay="0.1s">
+                <div class="d-inline-block text-center" data-aos="fade-up" data-aos-delay="400">
                     <a href="{{ route('programs') }}" class="btn btn-primary px-5 py-3 text-white btn-border-radius">View All Programs</a>
                 </div>
             </div> 
@@ -175,17 +177,17 @@
     <!-- Events Start -->
     <div class="container-fluid events py-5 bg-light">
         <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+            <div class="mx-auto text-center" data-aos="fade-up" data-aos-duration="1000" style="max-width: 700px;">
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">{{ $pageSections['events']['title'] ?? 'Our Events' }}</h4>
                 <h1 class="mb-5 display-3">{{ $pageSections['events']['heading'] ?? 'Our Upcoming Events' }}</h1>
             </div>
             <div class="row g-5 justify-content-center">
                 @forelse($upcomingEvents as $index => $event)
-                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="{{ 0.1 + ($index * 0.2) }}s">
+                    <div class="col-md-6 col-lg-6 col-xl-4" data-aos="flip-left" data-aos-delay="{{ $index * 150 }}" data-aos-duration="1000">
                         <div class="events-item bg-primary rounded">
                             <div class="events-inner position-relative">
                                 <div class="events-img overflow-hidden rounded-circle position-relative">
-                                    <img src="{{ $event->image_url ?? asset('img/event-' . (($index % 3) + 1) . '.jpg') }}" class="img-fluid w-100 rounded-circle" alt="{{ $event->title }}">
+                                    <img src="{{ $event->image_url ?? asset('img/event-' . (($index % 3) + 1) . '.jpg') }}" class="img-fluid w-100 rounded-circle" alt="{{ $event->title }}" loading="lazy">
                                     <div class="event-overlay">
                                         <a href="{{ $event->image_url ?? asset('img/event-' . (($index % 3) + 1) . '.jpg') }}" data-lightbox="event-{{ $event->id }}"><i class="fas fa-search-plus text-white fa-2x"></i></a>
                                     </div>
@@ -219,16 +221,16 @@
     <!-- Blog Start-->
     <div class="container-fluid blog py-5">
         <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
+            <div class="mx-auto text-center" data-aos="fade-up" data-aos-duration="1000" style="max-width: 600px;">
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">{{ $pageSections['blog']['title'] ?? 'Latest News & Blog' }}</h4>
                 <h1 class="mb-5 display-3">{{ $pageSections['blog']['heading'] ?? 'Read Our Latest News & Blog' }}</h1>
             </div>
             <div class="row g-5 justify-content-center">
                 @forelse($recentBlogs as $index => $blog)
-                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="{{ 0.1 + ($index * 0.2) }}s">
+                    <div class="col-md-6 col-lg-6 col-xl-4" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}" data-aos-duration="1000">
                         <div class="blog-item rounded-bottom">
                             <div class="blog-img overflow-hidden position-relative img-border-radius">
-                                <img src="{{ $blog->featured_image_url }}" class="img-fluid w-100" alt="{{ $blog->title }}" style="height: 250px; object-fit: cover;">
+                                <img src="{{ $blog->featured_image_url }}" class="img-fluid w-100" alt="{{ $blog->title }}" style="height: 250px; object-fit: cover;" loading="lazy">
                             </div>
                             <div class="d-flex justify-content-between px-4 py-3 bg-light border-bottom border-primary blog-date-comments">
                                 <small class="text-dark"><i class="fas fa-calendar me-1 text-dark"></i> {{ $blog->published_at ? $blog->published_at->format('d M Y') : $blog->created_at->format('d M Y') }}</small>
@@ -236,7 +238,7 @@
                             </div>
                             <div class="blog-content d-flex align-items-center px-4 py-3 bg-light">
                                 <div class="overflow-hidden rounded-circle rounded-top border border-primary">
-                                    <img src="{{ $blog->author_image_url }}" class="img-fluid rounded-circle p-2 rounded-top" alt="{{ $blog->author_display_name }}" style="width: 70px; height: 70px; border-style: dotted; border-color: var(--bs-primary) !important;">
+                                    <img src="{{ $blog->author_image_url }}" class="img-fluid rounded-circle p-2 rounded-top" alt="{{ $blog->author_display_name }}" style="width: 70px; height: 70px; border-style: dotted; border-color: var(--bs-primary) !important;" loading="lazy">
                                 </div>
                                 <div class="ms-3">
                                     <h6 class="text-primary">{{ $blog->author_display_name }}</h6>

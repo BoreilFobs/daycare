@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid page-header py-5 aos-fade" data-aos-delay="0.1s">
         <div class="container text-center py-5">
             <h1 class="display-4 display-md-2 text-white mb-4">{{ $post->title }}</h1>
             <nav aria-label="breadcrumb">
@@ -32,14 +32,14 @@
                 <!-- Main Content -->
                 <div class="col-lg-8">
                     <!-- Featured Image -->
-                    <div class="mb-4 wow fadeIn" data-wow-delay="0.1s">
-                        <img src="{{ $post->featured_image_url }}" class="img-fluid w-100 rounded" alt="{{ $post->title }}" style="max-height: 500px; object-fit: cover;">
+                    <div class="mb-4 aos-fade" data-aos-delay="0.1s">
+                        <img src="{{ $post->featured_image_url }}" class="img-fluid w-100 rounded" alt="{{ $post->title }}" loading="lazy" style="max-height: 500px; object-fit: cover;">
                     </div>
 
                     <!-- Post Meta -->
-                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 pb-4 border-bottom wow fadeIn" data-wow-delay="0.2s">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 pb-4 border-bottom aos-fade" data-aos-delay="0.2s">
                         <div class="d-flex align-items-center mb-3 mb-md-0">
-                            <img src="{{ $post->author_image_url }}" class="rounded-circle me-3" alt="{{ $post->author_display_name }}" style="width: 60px; height: 60px; object-fit: cover;">
+                            <img src="{{ $post->author_image_url }}" class="rounded-circle me-3" alt="{{ $post->author_display_name }}" loading="lazy" style="width: 60px; height: 60px; object-fit: cover;">
                             <div>
                                 <h6 class="mb-0 text-primary">{{ $post->author_display_name }}</h6>
                                 @if($post->author_title)
@@ -56,13 +56,13 @@
                     </div>
 
                     @if($post->category)
-                        <div class="mb-4 wow fadeIn" data-wow-delay="0.3s">
+                        <div class="mb-4 aos-fade" data-aos-delay="0.3s">
                             <span class="badge bg-primary px-3 py-2">{{ $post->category }}</span>
                         </div>
                     @endif
 
                     @if($post->tags)
-                        <div class="mb-4 wow fadeIn" data-wow-delay="0.3s">
+                        <div class="mb-4 aos-fade" data-aos-delay="0.3s">
                             @foreach($post->tags_array as $tag)
                                 <span class="badge bg-light text-dark border me-2 mb-2 px-3 py-2">{{ $tag }}</span>
                             @endforeach
@@ -70,12 +70,12 @@
                     @endif
 
                     <!-- Post Content -->
-                    <div class="blog-content mb-5 wow fadeIn" data-wow-delay="0.4s">
+                    <div class="blog-content mb-5 aos-fade" data-aos-delay="0.4s">
                         {!! $post->content !!}
                     </div>
 
                     <!-- Share Buttons -->
-                    <div class="border-top border-bottom py-4 mb-5 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="border-top border-bottom py-4 mb-5 aos-fade" data-aos-delay="0.5s">
                         <h5 class="mb-3">Share this post:</h5>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" target="_blank" class="btn btn-primary btn-sm px-4">
@@ -97,7 +97,7 @@
                     </div>
 
                     <!-- Comments Section -->
-                    <div class="comments-section mb-5 wow fadeIn" data-wow-delay="0.6s">
+                    <div class="comments-section mb-5 aos-fade" data-aos-delay="0.6s">
                         <h4 class="mb-4 pb-3 border-bottom">
                             <i class="fas fa-comments me-2 text-primary"></i>
                             Comments ({{ $post->approvedComments->count() }})
@@ -131,7 +131,7 @@
                     </div>
 
                     <!-- Comment Form -->
-                    <div class="comment-form wow fadeIn" data-wow-delay="0.7s">
+                    <div class="comment-form aos-fade" data-aos-delay="0.7s">
                         <h4 class="mb-4 pb-3 border-bottom">
                             <i class="fas fa-pen me-2 text-primary"></i>
                             Leave a Comment
@@ -165,13 +165,13 @@
 
                     <!-- Related Posts -->
                     @if($relatedPosts->count() > 0)
-                        <div class="related-posts mt-5 pt-5 border-top wow fadeIn" data-wow-delay="0.8s">
+                        <div class="related-posts mt-5 pt-5 border-top aos-fade" data-aos-delay="0.8s">
                             <h4 class="mb-4">Related Posts</h4>
                             <div class="row g-4">
                                 @foreach($relatedPosts as $relatedPost)
                                     <div class="col-md-4">
                                         <div class="card h-100 border-0 shadow-sm">
-                                            <img src="{{ $relatedPost->featured_image_url }}" class="card-img-top" alt="{{ $relatedPost->title }}" style="height: 180px; object-fit: cover;">
+                                            <img src="{{ $relatedPost->featured_image_url }}" class="card-img-top" alt="{{ $relatedPost->title }}" loading="lazy" style="height: 180px; object-fit: cover;">
                                             <div class="card-body">
                                                 <h6 class="card-title">
                                                     <a href="{{ route('blog.show', $relatedPost->slug) }}" class="text-dark text-decoration-none">
@@ -192,11 +192,11 @@
                 <!-- Sidebar -->
                 <div class="col-lg-4">
                     <!-- Recent Posts -->
-                    <div class="mb-5 wow fadeIn" data-wow-delay="0.2s">
+                    <div class="mb-5 aos-fade" data-aos-delay="0.2s">
                         <h5 class="mb-4 pb-3 border-bottom">Recent Posts</h5>
                         @foreach($recentPosts as $recentPost)
                             <div class="d-flex mb-4">
-                                <img src="{{ $recentPost->featured_image_url }}" class="rounded me-3" alt="{{ $recentPost->title }}" style="width: 80px; height: 80px; object-fit: cover;">
+                                <img src="{{ $recentPost->featured_image_url }}" class="rounded me-3" alt="{{ $recentPost->title }}" loading="lazy" style="width: 80px; height: 80px; object-fit: cover;">
                                 <div>
                                     <h6 class="mb-2">
                                         <a href="{{ route('blog.show', $recentPost->slug) }}" class="text-dark text-decoration-none">
@@ -213,7 +213,7 @@
                     </div>
 
                     <!-- Back to Blog Button -->
-                    <div class="wow fadeIn" data-wow-delay="0.4s">
+                    <div class="aos-fade" data-aos-delay="0.4s">
                         <a href="{{ route('blog.index') }}" class="btn btn-primary w-100 py-3">
                             <i class="fas fa-arrow-left me-2"></i>Back to All Posts
                         </a>

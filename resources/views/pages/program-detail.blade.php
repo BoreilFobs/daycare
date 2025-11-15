@@ -1,7 +1,7 @@
 @extends('layouts.web')
 @section('content')
     <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid page-header py-5 aos-fade" data-aos-delay="0.1s">
         <div class="container text-center py-5">
             <h1 class="display-4 display-md-2 text-white mb-4">{{ $program->title }}</h1>
             <nav aria-label="breadcrumb">
@@ -23,7 +23,7 @@
                 <div class="col-lg-8">
                     <div class="mb-4 mb-lg-5">
                         <!-- Program Image -->
-                        <div class="position-relative mb-4 wow fadeIn" data-wow-delay="0.1s">
+                        <div class="position-relative mb-4 aos-fade" data-aos-delay="0.1s">
                             <img src="{{ $program->image_url ?? asset('img/program-1.jpg') }}" 
                                  class="img-fluid w-100 rounded" 
                                  alt="{{ $program->title }}"
@@ -38,7 +38,7 @@
                         </div>
 
                         <!-- Program Title & Meta -->
-                        <div class="mb-4 wow fadeIn" data-wow-delay="0.3s">
+                        <div class="mb-4 aos-fade" data-aos-delay="0.3s">
                             <h1 class="display-6 display-md-5 mb-4">{{ $program->title }}</h1>
                             
                             <!-- Program Stats - Mobile Friendly Grid -->
@@ -86,14 +86,14 @@
                         </div>
 
                         <!-- Short Description -->
-                        <div class="mb-4 wow fadeIn" data-wow-delay="0.5s">
+                        <div class="mb-4 aos-fade" data-aos-delay="0.5s">
                             <h4 class="text-primary mb-3">Overview</h4>
                             <p class="fs-6 fs-md-5 text-dark">{{ $program->description }}</p>
                         </div>
 
                         <!-- Full Description -->
                         @if($program->full_description)
-                            <div class="mb-5 wow fadeIn" data-wow-delay="0.7s">
+                            <div class="mb-5 aos-fade" data-aos-delay="0.7s">
                                 <h4 class="text-primary mb-3">Program Details</h4>
                                 <div class="text-dark">
                                     {!! nl2br(e($program->full_description)) !!}
@@ -103,7 +103,7 @@
 
                         <!-- Teacher Information -->
                         @if($program->teacher_name)
-                            <div class="card border-primary mb-5 wow fadeIn" data-wow-delay="0.9s">
+                            <div class="card border-primary mb-5 aos-fade" data-aos-delay="0.9s">
                                 <div class="card-header bg-primary text-white">
                                     <h5 class="mb-0"><i class="fas fa-chalkboard-teacher me-2"></i>About Your Teacher</h5>
                                 </div>
@@ -134,7 +134,7 @@
                         @endif
 
                         <!-- Enrollment CTA -->
-                        <div class="bg-light p-4 p-md-5 rounded text-center wow fadeIn" data-wow-delay="1.1s">
+                        <div class="bg-light p-4 p-md-5 rounded text-center aos-fade" data-aos-delay="1.1s">
                             <h3 class="mb-3">Ready to Enroll?</h3>
                             <p class="mb-4">Join our program today and give your child the best start in their educational journey!</p>
                             <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
@@ -152,7 +152,7 @@
                 <!-- Sidebar -->
                 <div class="col-lg-4">
                     <!-- Program Info Card -->
-                    <div class="card border-primary mb-4 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="card border-primary mb-4 aos-fade" data-aos-delay="0.1s">
                         <div class="card-header bg-primary text-white">
                             <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Program Information</h5>
                         </div>
@@ -203,7 +203,7 @@
                     </div>
 
                     <!-- Quick Contact Card -->
-                    <div class="card border-primary mb-4 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="card border-primary mb-4 aos-fade" data-aos-delay="0.3s">
                         <div class="card-header bg-primary text-white">
                             <h5 class="mb-0"><i class="fas fa-phone me-2"></i>Quick Contact</h5>
                         </div>
@@ -224,7 +224,7 @@
                     </div>
 
                     <!-- Share Card -->
-                    <div class="card border-primary wow fadeIn" data-wow-delay="0.5s">
+                    <div class="card border-primary aos-fade" data-aos-delay="0.5s">
                         <div class="card-header bg-primary text-white">
                             <h5 class="mb-0"><i class="fas fa-share-alt me-2"></i>Share This Program</h5>
                         </div>
@@ -258,13 +258,13 @@
             <!-- Related Programs -->
             @if($relatedPrograms->count() > 0)
                 <div class="mt-5 pt-5 border-top">
-                    <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+                    <div class="mx-auto text-center aos-fade" data-aos-delay="0.1s" style="max-width: 700px;">
                         <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">Related Programs</h4>
                         <h1 class="mb-5 display-5">You May Also Like</h1>
                     </div>
                     <div class="row g-5 justify-content-center">
                         @foreach($relatedPrograms as $index => $relatedProgram)
-                            <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="{{ 0.1 + ($index * 0.2) }}s">
+                            <div class="col-md-6 col-lg-4 aos-fade" data-aos-delay="{{ 0.1 + ($index * 0.2) }}s">
                                 <div class="program-item rounded">
                                     <div class="program-img position-relative">
                                         <div class="overflow-hidden img-border-radius">

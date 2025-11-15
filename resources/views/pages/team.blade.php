@@ -1,7 +1,7 @@
 @extends('layouts.web')
 @section('content')
     <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid page-header py-5 data-aos="fade-down" data-aos-duration="1000">
         <div class="container text-center py-5">
             <h1 class="display-2 text-white mb-4">{{ $pageSections['header']['title'] ?? 'Our Team' }}</h1>
             <nav aria-label="breadcrumb">
@@ -19,16 +19,16 @@
     <!-- Team Start-->
     <div class="container-fluid team py-5">
         <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
+            <div class="mx-auto text-center data-aos="fade-down" data-aos-duration="1000" style="max-width: 600px;">
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">{{ $pageSections['content']['title'] ?? 'Our Team' }}</h4>
                 <h1 class="mb-5 display-3">{{ $pageSections['content']['heading'] ?? 'Meet With Our Expert Teacher' }}</h1>
             </div>
             <div class="row g-5 justify-content-center">
                 @forelse($teamMembers as $index => $member)
-                    <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="{{ 0.1 + ($index * 0.2) }}s">
+                    <div class="col-md-6 col-lg-4 col-xl-3 aos-fade" data-aos-delay="{{ 0.1 + ($index * 0.2) }}s">
                         <div class="team-item border border-primary img-border-radius overflow-hidden">
                             <div class="team-img">
-                                <img src="{{ $member->image_url }}" alt="{{ $member->name }}">
+                                <img src="{{ $member->image_url }}" alt="{{ $member->name }}" loading="lazy">
                             </div>
                             <div class="team-icon d-flex align-items-center justify-content-center">
                                 <a class="share btn btn-primary btn-md-square text-white rounded-circle me-3" href=""><i class="fas fa-share-alt"></i></a>

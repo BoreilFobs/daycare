@@ -1,7 +1,7 @@
 @extends('layouts.web')
 @section('content')
     <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid page-header py-5 aos-fade" data-aos-delay="0.1s">
         <div class="container text-center py-5">
             <h1 class="display-4 display-md-2 text-white mb-4">{{ $event->title }}</h1>
             <nav aria-label="breadcrumb">
@@ -22,7 +22,7 @@
                 <!-- Main Content -->
                 <div class="col-lg-8">
                     <!-- Event Image -->
-                    <div class="mb-4 mb-lg-5 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="mb-4 mb-lg-5 aos-fade" data-aos-delay="0.1s">
                         <img src="{{ $event->image_url }}" 
                              class="img-fluid w-100 rounded" 
                              alt="{{ $event->title }}"
@@ -30,7 +30,7 @@
                     </div>
 
                     <!-- Event Info Cards - Mobile Optimized -->
-                    <div class="row g-3 mb-4 mb-lg-5 wow fadeIn" data-wow-delay="0.2s">
+                    <div class="row g-3 mb-4 mb-lg-5 aos-fade" data-aos-delay="0.2s">
                         <div class="col-6 col-sm-6 col-md-3">
                             <div class="bg-light rounded p-3 p-md-4 text-center h-100">
                                 <i class="fas fa-calendar-alt fa-2x text-primary mb-2 mb-md-3"></i>
@@ -68,7 +68,7 @@
                     </div>
 
                     <!-- Event Description -->
-                    <div class="wow fadeIn" data-wow-delay="0.3s">
+                    <div class="aos-fade" data-aos-delay="0.3s">
                         <h2 class="mb-3 mb-md-4">About This Event</h2>
                         <div class="mb-4">
                             <p class="text-dark">{{ $event->description }}</p>
@@ -99,7 +99,7 @@
                 <!-- Sidebar -->
                 <div class="col-lg-4">
                     <!-- Registration Card -->
-                    <div class="card border-primary mb-4 wow fadeIn" data-wow-delay="0.2s">
+                    <div class="card border-primary mb-4 aos-fade" data-aos-delay="0.2s">
                         <div class="card-header bg-primary text-white">
                             <h5 class="mb-0"><i class="fas fa-ticket-alt me-2"></i>Event Information</h5>
                         </div>
@@ -161,7 +161,7 @@
                     </div>
 
                     <!-- Share Event -->
-                    <div class="card mb-4 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="card mb-4 aos-fade" data-aos-delay="0.3s">
                         <div class="card-header bg-light">
                             <h5 class="mb-0">Share This Event</h5>
                         </div>
@@ -190,7 +190,7 @@
                     </div>
 
                     <!-- Contact Info -->
-                    <div class="card border-0 bg-light wow fadeIn" data-wow-delay="0.4s">
+                    <div class="card border-0 bg-light aos-fade" data-aos-delay="0.4s">
                         <div class="card-body">
                             <h5 class="mb-3">Need Help?</h5>
                             <p class="mb-2">
@@ -208,7 +208,7 @@
 
             <!-- Related Events -->
             @if($relatedEvents->count() > 0)
-                <div class="mt-5 pt-5 border-top wow fadeIn" data-wow-delay="0.5s">
+                <div class="mt-5 pt-5 border-top aos-fade" data-aos-delay="0.5s">
                     <h2 class="mb-4 text-center">Other Upcoming Events</h2>
                     <div class="row g-4">
                         @foreach($relatedEvents as $index => $relatedEvent)
@@ -216,7 +216,7 @@
                                 <div class="events-item bg-primary rounded h-100">
                                     <div class="events-inner position-relative">
                                         <div class="events-img overflow-hidden rounded-circle position-relative">
-                                            <img src="{{ $relatedEvent->image_url }}" class="img-fluid w-100 rounded-circle" alt="{{ $relatedEvent->title }}">
+                                            <img src="{{ $relatedEvent->image_url }}" class="img-fluid w-100 rounded-circle" alt="{{ $relatedEvent->title }}" loading="lazy">
                                             <div class="event-overlay">
                                                 <a href="{{ route('events.show', $relatedEvent->id) }}"><i class="fas fa-eye text-white fa-2x"></i></a>
                                             </div>

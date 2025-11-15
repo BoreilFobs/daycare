@@ -1,7 +1,7 @@
 @extends('layouts.web')
 @section('content')
      <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid page-header py-5" data-aos="fade-down" data-aos-duration="1000">
         <div class="container text-center py-5">
             <h1 class="display-2 text-white mb-4">{{ $pageSections['header']['title'] ?? 'Events' }}</h1>
             <nav aria-label="breadcrumb">
@@ -19,17 +19,17 @@
     <!-- Events Start -->
     <div class="container-fluid events py-5 bg-light">
         <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+            <div class="mx-auto text-center" data-aos="fade-up" data-aos-duration="1000" style="max-width: 700px;">
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">{{ $pageSections['content']['title'] ?? 'Our Events' }}</h4>
                 <h1 class="mb-5 display-3">{{ $pageSections['content']['heading'] ?? 'Our Upcoming Events' }}</h1>
             </div>
             <div class="row g-5 justify-content-center">
                 @forelse($events as $index => $event)
-                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="{{ 0.1 + ($index * 0.2) }}s">
+                    <div class="col-md-6 col-lg-6 col-xl-4" data-aos="flip-left" data-aos-delay="{{ $index * 150 }}" data-aos-duration="1000">
                         <div class="events-item bg-primary rounded">
                             <div class="events-inner position-relative">
                                 <div class="events-img overflow-hidden rounded-circle position-relative">
-                                    <img src="{{ $event->image_url ?? asset('img/event-' . (($index % 3) + 1) . '.jpg') }}" class="img-fluid w-100 rounded-circle" alt="{{ $event->title }}">
+                                    <img src="{{ $event->image_url ?? asset('img/event-' . (($index % 3) + 1) . '.jpg') }}" class="img-fluid w-100 rounded-circle" alt="{{ $event->title }}" loading="lazy" loading="lazy">
                                     <div class="event-overlay">
                                         <a href="{{ $event->image_url ?? asset('img/event-' . (($index % 3) + 1) . '.jpg') }}" data-lightbox="event-{{ $event->id }}"><i class="fas fa-search-plus text-white fa-2x"></i></a>
                                     </div>
@@ -57,7 +57,7 @@
                 
                 {{-- Pagination --}}
                 @if($events->hasPages())
-                    <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="col-12" data-aos="fade-up" data-aos-delay="300">
                         <div class="d-flex justify-content-center">
                             {{ $events->links() }}
                         </div>

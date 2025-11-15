@@ -1,7 +1,7 @@
 @extends('layouts.web')
 @section('content')
     <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid page-header py-5" data-aos="fade-down" data-aos-duration="1000">
         <div class="container text-center py-5">
             <h1 class="display-2 text-white mb-4">{{ $pageSections['header']['title'] ?? 'Programs' }}</h1>
             <nav aria-label="breadcrumb">
@@ -19,21 +19,21 @@
     <!-- Programs Start -->
     <div class="container-fluid program  py-5">
         <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+            <div class="mx-auto text-center" data-aos="fade-up" data-aos-duration="1000" style="max-width: 700px;">
                 <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">{{ $pageSections['content']['title'] ?? 'Our Programs' }}</h4>
                 <h1 class="mb-5 display-3">{{ $pageSections['content']['heading'] ?? 'We Offer An Exclusive Program For Kids' }}</h1>
-                <div class="bg-light border-primary rounded p-4 mb-5">
+                <div class="bg-light border-primary rounded p-4 mb-5" data-aos="fade-up" data-aos-delay="200">
                     <p class="mb-3">At ABC Children Centre, we believe that every child deserves a joyful beginning — one filled with laughter, love, and learning. Our carefully crafted programs are designed to meet children where they are and guide them gently toward where they can be.</p>
                     <p class="mb-0">Each program combines play-based learning with structured activities that nurture cognitive, social, emotional, and physical development. We create safe, welcoming spaces where children can explore, discover, and grow at their own pace while building the foundation for lifelong learning.</p>
                 </div>
             </div>
             <div class="row g-5 justify-content-center">
                 @forelse($programs as $index => $program)
-                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeIn" data-wow-delay="{{ 0.1 + ($index * 0.2) }}s">
+                    <div class="col-md-6 col-lg-6 col-xl-4" data-aos="zoom-in" data-aos-delay="{{ $index * 150 }}" data-aos-duration="1000">
                         <div class="program-item rounded">
                             <div class="program-img position-relative">
                                 <div class="overflow-hidden img-border-radius">
-                                    <img src="{{ $program->image_url ?? asset('img/program-' . (($index % 3) + 1) . '.jpg') }}" class="img-fluid w-100" alt="{{ $program->title }}">
+                                    <img src="{{ $program->image_url ?? asset('img/program-' . (($index % 3) + 1) . '.jpg') }}" class="img-fluid w-100" alt="{{ $program->title }}" loading="lazy" loading="lazy">
                                 </div>
                                 @if($program->price)
                                     <div class="px-4 py-2 bg-primary text-white program-rate">${{ number_format($program->price, 2) }}</div>
@@ -50,7 +50,7 @@
                             </div>
                             @if($program->teacher_name)
                                 <div class="program-teacher d-flex align-items-center border-top border-primary bg-white px-4 py-3">
-                                    <img src="{{ $program->teacher_image_url ?? asset('img/program-teacher.jpg') }}" class="img-fluid rounded-circle p-2 border border-primary bg-white" alt="{{ $program->teacher_name }}" style="width: 70px; height: 70px;">
+                                    <img src="{{ $program->teacher_image_url ?? asset('img/program-teacher.jpg') }}" class="img-fluid rounded-circle p-2 border border-primary bg-white" alt="{{ $program->teacher_name }}" loading="lazy" style="width: 70px; height: 70px;" loading="lazy">
                                     <div class="ms-3">
                                         <h6 class="mb-0 text-primary">{{ $program->teacher_name }}</h6>
                                         @if($program->teacher_title)
@@ -82,7 +82,7 @@
                 
                 {{-- Pagination --}}
                 @if($programs->hasPages())
-                    <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="col-12 aos-fade" data-aos-delay="0.1s">
                         <div class="d-flex justify-content-center">
                             {{ $programs->links() }}
                         </div>

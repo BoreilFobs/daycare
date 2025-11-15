@@ -25,9 +25,21 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // Seed page sections with default content
+        // Seed all database tables with demo data
         $this->call([
             PageSectionsSeeder::class,
+            ServiceSeeder::class,
+            ProgramSeeder::class,
+            EventSeeder::class,
+            BlogPostSeeder::class,
+            TeamMemberSeeder::class,
+            TestimonialSeeder::class,
+            GallerySeeder::class,
+            AdditionalSettingsSeeder::class,
         ]);
+
+        $this->command->info('✅ All seeders completed successfully!');
+        $this->command->info('-----------------------------------');
+        $this->command->info('Database is ready for deployment with demo data.');
     }
 }

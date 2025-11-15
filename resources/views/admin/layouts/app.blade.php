@@ -665,9 +665,23 @@
             <div class="menu-section-title">Settings</div>
             
             <div class="menu-item">
-                <a href="{{ route('admin.settings.index') }}" class="menu-link {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.settings.index') }}" class="menu-link {{ request()->routeIs('admin.settings.index') ? 'active' : '' }}">
                     <i class="menu-icon fas fa-cog"></i>
                     <span class="menu-text">Site Settings</span>
+                </a>
+            </div>
+
+            <div class="menu-item">
+                <a href="{{ route('admin.settings.advanced') }}" class="menu-link {{ request()->routeIs('admin.settings.advanced') ? 'active' : '' }}">
+                    <i class="menu-icon fas fa-sliders-h"></i>
+                    <span class="menu-text">Advanced Settings</span>
+                </a>
+            </div>
+
+            <div class="menu-item">
+                <a href="{{ route('admin.media.index') }}" class="menu-link {{ request()->routeIs('admin.media.*') ? 'active' : '' }}">
+                    <i class="menu-icon fas fa-photo-video"></i>
+                    <span class="menu-text">Media Library</span>
                 </a>
             </div>
         </nav>
@@ -859,6 +873,9 @@
             }
         });
     </script>
+
+    <!-- TinyMCE CDN -->
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     @stack('scripts')
 </body>
