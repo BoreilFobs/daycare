@@ -77,7 +77,7 @@
                         @if($event->full_description)
                             <div class="mb-4">
                                 <h4 class="mb-3">Event Details</h4>
-                                <div class="text-dark" style="white-space: pre-line;">{{ $event->full_description }}</div>
+                                <div class="text-dark">{!! $event->full_description !!}</div>
                             </div>
                         @endif
 
