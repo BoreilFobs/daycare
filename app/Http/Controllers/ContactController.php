@@ -11,12 +11,7 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $pageSections = all_page_sections('contact');
-
-        // Get contact info from page sections
-        $contactInfo = $pageSections['info'] ?? collect();
-
-        return view('pages.contact', compact('pageSections', 'contactInfo'));
+        return view('pages.contact');
     }
 
     public function store(Request $request)

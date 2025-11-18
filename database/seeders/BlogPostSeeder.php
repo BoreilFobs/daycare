@@ -59,7 +59,7 @@ class BlogPostSeeder extends Seeder
 </ul>
 
 <p>At ABC Children Centre, we understand the critical importance of these early years and are committed to providing an environment where every child can thrive.</p>',
-                'featured_image' => 'blog/early-education.jpg',
+                'featured_image' => null,
                 'author_id' => $admin->id,
                 'category' => 'Education',
                 'tags' => 'early childhood, brain development, education, learning',
@@ -104,7 +104,7 @@ class BlogPostSeeder extends Seeder
 <p>Adjustment takes time—typically 2-4 weeks. Some children adapt quickly, others need more time. Trust the process.</p>
 
 <p>Remember, our experienced teachers are here to support you and your child through this transition. Don\'t hesitate to reach out with questions or concerns!</p>',
-                'featured_image' => 'blog/daycare-transition.jpg',
+                'featured_image' => null,
                 'author_id' => $admin->id,
                 'category' => 'Parenting Tips',
                 'tags' => 'daycare, transition, tips, parenting',
@@ -174,7 +174,7 @@ class BlogPostSeeder extends Seeder
 </ul>
 
 <p>Remember, at ABC Children Centre, we provide nutritious meals and snacks daily. These ideas are perfect for home lunches and weekend meals!</p>',
-                'featured_image' => 'blog/healthy-lunchbox.jpg',
+                'featured_image' => null,
                 'author_id' => $admin->id,
                 'category' => 'Nutrition',
                 'tags' => 'nutrition, healthy eating, lunchbox, preschool',
@@ -234,7 +234,7 @@ class BlogPostSeeder extends Seeder
 </ul>
 
 <p>Remember, this phase will pass. With patience, consistency, and understanding, you\'ll help your toddler develop healthy ways to express and manage their emotions.</p>',
-                'featured_image' => 'blog/toddler-tantrums.jpg',
+                'featured_image' => null,
                 'author_id' => $admin->id,
                 'category' => 'Child Development',
                 'tags' => 'tantrums, toddlers, behavior, parenting',
@@ -306,7 +306,7 @@ class BlogPostSeeder extends Seeder
 </ul>
 
 <p>We believe outdoor play is not a luxury—it\'s a necessity for healthy child development!</p>',
-                'featured_image' => 'blog/outdoor-play.jpg',
+                'featured_image' => null,
                 'author_id' => $admin->id,
                 'category' => 'Activities',
                 'tags' => 'outdoor play, child development, nature, physical activity',
@@ -400,7 +400,7 @@ class BlogPostSeeder extends Seeder
 </ul>
 
 <p>Remember, every child develops at their own pace. Our goal is to foster a love of reading that will last a lifetime!</p>',
-                'featured_image' => 'blog/pre-reading-skills.jpg',
+                'featured_image' => null,
                 'author_id' => $admin->id,
                 'category' => 'Education',
                 'tags' => 'reading, literacy, preschool, education',
@@ -508,7 +508,7 @@ class BlogPostSeeder extends Seeder
 </ul>
 
 <p>Remember, social-emotional development is a journey, not a destination. Every interaction is an opportunity to teach and reinforce these critical life skills!</p>',
-                'featured_image' => 'blog/social-emotional.jpg',
+                'featured_image' => null,
                 'author_id' => $admin->id,
                 'category' => 'Child Development',
                 'tags' => 'social-emotional learning, child development, emotions',
@@ -648,7 +648,7 @@ class BlogPostSeeder extends Seeder
 </ul>
 
 <p>Remember, the goal isn\'t to completely eliminate screens—they\'re part of modern life. The goal is balance, quality, and ensuring technology enhances rather than replaces the experiences that truly support development.</p>',
-                'featured_image' => 'blog/screen-time.jpg',
+                'featured_image' => null,
                 'author_id' => $admin->id,
                 'category' => 'Parenting Tips',
                 'tags' => 'screen time, technology, parenting, child development',

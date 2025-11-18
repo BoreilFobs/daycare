@@ -3,12 +3,12 @@
      <!-- Page Header Start -->
     <div class="container-fluid page-header py-5" data-aos="fade-down" data-aos-duration="1000">
         <div class="container text-center py-5">
-            <h1 class="display-2 text-white mb-4">{{ $pageSections['header']['title'] ?? 'Our Blog' }}</h1>
+            <h1 class="display-2 text-white mb-4">Our Blog</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center mb-0">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}" class="text-white">Home</a></li>
                     <li class="breadcrumb-item"><a href="#" class="text-white">Community</a></li>
-                    <li class="breadcrumb-item text-white" aria-current="page">{{ $pageSections['header']['title'] ?? 'Our Blog' }}</li>
+                    <li class="breadcrumb-item text-white" aria-current="page">Our Blog</li>
                 </ol>
             </nav>
         </div>
@@ -20,8 +20,8 @@
     <div class="container-fluid blog py-5">
         <div class="container py-5">
             <div class="mx-auto text-center" data-aos="fade-up" data-aos-duration="1000" style="max-width: 700px;">
-                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">{{ $pageSections['content']['title'] ?? 'Latest News & Blog' }}</h4>
-                <h1 class="mb-4 display-3">{{ $pageSections['content']['heading'] ?? 'Read Our Latest News & Blog' }}</h1>
+                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">Latest News & Blog</h4>
+                <h1 class="mb-4 display-3">Read Our Latest News & Blog</h1>
                 <p class="text-muted mb-5">At ABC Children Centre, we believe that learning begins long before school — it begins at home, in play, and in every caring gesture. Our blog is a space for sharing joy, knowledge, and connections among parents, educators, and community partners who believe in giving little children a strong start in life.</p>
             </div>
             
@@ -64,7 +64,7 @@
                     <div class="col-md-6 col-lg-6 col-xl-4" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}" data-aos-duration="1000">
                         <div class="blog-item rounded-bottom h-100 d-flex flex-column">
                             <div class="blog-img overflow-hidden position-relative img-border-radius">
-                                <img src="{{ $blog->featured_image_url }}" class="img-fluid w-100" alt="{{ $blog->title }}" loading="lazy" style="height: 250px; object-fit: cover;" loading="lazy">
+                                <img src="{{ $blog->featured_image ?? asset("img/default-blog.webp") }}" class="img-fluid w-100" alt="{{ $blog->title }}" loading="lazy" style="height: 250px; object-fit: cover;" loading="lazy">
                             </div>
                             <div class="d-flex justify-content-between px-4 py-3 bg-light border-bottom border-primary blog-date-comments">
                                 <small class="text-dark"><i class="fas fa-calendar me-1 text-dark"></i> {{ $blog->published_at ? $blog->published_at->format('d M Y') : $blog->created_at->format('d M Y') }}</small>
@@ -72,7 +72,7 @@
                             </div>
                             <div class="blog-content d-flex align-items-center px-4 py-3 bg-light">
                                 <div class="overflow-hidden rounded-circle rounded-top border border-primary">
-                                    <img src="{{ $blog->author_image_url }}" class="img-fluid rounded-circle p-2 rounded-top" alt="{{ $blog->author_display_name }}" loading="lazy" style="width: 70px; height: 70px; border-style: dotted; border-color: var(--bs-primary) !important;" loading="lazy">
+                                    <img src="{{ $blog->author_image ?? asset("img/admin-profile.avif") }}" class="img-fluid rounded-circle p-2 rounded-top" alt="{{ $blog->author_display_name }}" loading="lazy" style="width: 70px; height: 70px; border-style: dotted; border-color: var(--bs-primary) !important;" loading="lazy">
                                 </div>
                                 <div class="ms-3">
                                     <h6 class="text-primary mb-0">{{ $blog->author_display_name }}</h6>

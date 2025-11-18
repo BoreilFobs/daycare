@@ -10,8 +10,6 @@ class ProgramsController extends Controller
 {
     public function index()
     {
-        $pageSections = all_page_sections('programs');
-
         $programs = Program::where('is_active', true)
             ->orderBy('order')
             ->orderBy('title')
@@ -23,7 +21,7 @@ class ProgramsController extends Controller
             ->take(3)
             ->get();
 
-        return view('pages.programs', compact('programs', 'featuredPrograms', 'pageSections'));
+        return view('pages.programs', compact('programs', 'featuredPrograms'));
     }
 
     public function show($id)

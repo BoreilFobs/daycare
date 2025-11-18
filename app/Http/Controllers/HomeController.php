@@ -16,8 +16,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $pageSections = all_page_sections('home');
-
         $featuredPrograms = Program::where('is_active', true)
             ->where('is_featured', true)
             ->orderBy('order')
@@ -53,13 +51,11 @@ class HomeController extends Controller
             ->get();
 
         $teamMembers = TeamMember::where('is_active', true)
-            ->where('is_featured', true)
             ->orderBy('order')
-            ->take(4)
+            ->take(3)
             ->get();
 
         return view('welcome', compact(
-            'pageSections',
             'featuredPrograms',
             'upcomingEvents',
             'recentBlogs',

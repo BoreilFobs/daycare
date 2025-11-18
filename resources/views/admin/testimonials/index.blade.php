@@ -22,7 +22,17 @@
 
 <div class="card">
     <div class="card-header">
-        <h5 class="card-title mb-0">All Testimonials</h5>
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">All Testimonials</h5>
+            <div class="btn-group btn-group-sm">
+                <a href="{{ route('admin.testimonials.index') }}" class="btn btn-outline-primary active">
+                    <i class="fas fa-list me-1"></i>All
+                </a>
+                <a href="{{ route('admin.testimonials.pending') }}" class="btn btn-outline-warning">
+                    <i class="fas fa-clock me-1"></i>Pending
+                </a>
+            </div>
+        </div>
     </div>
     <div class="card-body">
         @if(session('success'))
@@ -49,8 +59,8 @@
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center gap-3">
-                                    @if($testimonial->image)
-                                        <img src="{{ Storage::url($testimonial->image) }}" 
+                                    @if($testimonial->client_image)
+                                        <img src="{{ $testimonial->image_url }}" 
                                              alt="{{ $testimonial->client_name }}" 
                                              class="rounded-circle" 
                                              style="width: 50px; height: 50px; object-fit: cover;">
@@ -70,7 +80,7 @@
                                 </div>
                             </td>
                             <td>
-                                <span class="text-muted">{{ $testimonial->position ?? '—' }}</span>
+                                <span class="text-muted">{{ $testimonial->client_position ?? '—' }}</span>
                             </td>
                             <td>
                                 <div class="rating">
@@ -85,7 +95,7 @@
                                 <small class="text-muted d-block">{{ $testimonial->rating ?? 5 }}/5</small>
                             </td>
                             <td>
-                                <p class="mb-0 small">{{ Str::limit($testimonial->content, 60) }}</p>
+                                <p class="mb-0 small">{{ Str::limit($testimonial->message, 60) }}</p>
                             </td>
                             <td>
                                 @if($testimonial->is_active)
@@ -93,9 +103,18 @@
                                 @else
                                     <span class="badge bg-secondary">Inactive</span>
                                 @endif
+                                @if($testimonial->is_featured)
+                                    <span class="badge bg-primary">Featured</span>
+                                @endif
                             </td>
                             <td class="text-end">
                                 <div class="btn-group btn-group-sm">
+                                    <button type="button" 
+                                            class="btn btn-outline-secondary"
+                                            onclick="toggleFeatured({{ $testimonial->id }})"
+                                            title="{{ $testimonial->is_featured ? 'Remove from Featured' : 'Mark as Featured' }}">
+                                        <i class="fas fa-star{{ $testimonial->is_featured ? '' : '-o' }}"></i>
+                                    </button>
                                     <a href="{{ route('admin.testimonials.edit', $testimonial) }}" 
                                        class="btn btn-outline-primary"
                                        title="Edit">
@@ -140,5 +159,25 @@
             "pageLength": 25
         });
     });
+
+    function toggleFeatured(id) {
+        if (confirm('Toggle featured status for this testimonial?')) {
+            fetch(`/admin/testimonials/${id}/toggle-featured`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                location.reload();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        }
+    }
 </script>
 @endpush

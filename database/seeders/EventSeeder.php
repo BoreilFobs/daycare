@@ -28,7 +28,7 @@ class EventSeeder extends Seeder
                     <li>Photo opportunities with festive backdrops</li>
                 </ul>
                 <p>This is a wonderful opportunity for families to come together and celebrate the season. We look forward to seeing you there!</p>',
-                'image' => 'events/winter-celebration.jpg',
+                'image' => null,
                 'event_date' => Carbon::now()->addDays(20)->format('Y-m-d'),
                 'start_time' => '14:00:00',
                 'end_time' => '17:00:00',
@@ -51,7 +51,7 @@ class EventSeeder extends Seeder
                     <li>Resources and strategies for supporting learning at home</li>
                 </ul>
                 <p>Conferences are scheduled in 20-minute time slots. Please sign up for your preferred time at the front desk.</p>',
-                'image' => 'events/parent-teacher.jpg',
+                'image' => null,
                 'event_date' => Carbon::now()->addDays(35)->format('Y-m-d'),
                 'start_time' => '16:00:00',
                 'end_time' => '19:00:00',
@@ -81,7 +81,7 @@ class EventSeeder extends Seeder
                     <li>Light jacket (weather dependent)</li>
                 </ul>
                 <p>Transportation will be provided. Parent volunteers are welcome!</p>',
-                'image' => 'events/field-trip.jpg',
+                'image' => null,
                 'event_date' => Carbon::now()->addDays(50)->format('Y-m-d'),
                 'start_time' => '09:00:00',
                 'end_time' => '14:00:00',
@@ -106,7 +106,7 @@ class EventSeeder extends Seeder
                 </ul>
                 <p><strong>Dress Code:</strong> Semi-formal / Cocktail attire</p>
                 <p>Tickets are $75 per person or $140 for couples. All proceeds support our scholarship fund.</p>',
-                'image' => 'events/gala.jpg',
+                'image' => null,
                 'event_date' => Carbon::now()->addDays(65)->format('Y-m-d'),
                 'start_time' => '18:00:00',
                 'end_time' => '22:00:00',
@@ -139,7 +139,7 @@ class EventSeeder extends Seeder
                     <li>Session 4: July 27 - August 7</li>
                 </ul>
                 <p>Early bird discount available until April 30!</p>',
-                'image' => 'events/summer-camp.jpg',
+                'image' => null,
                 'event_date' => Carbon::now()->addDays(80)->format('Y-m-d'),
                 'start_time' => '08:00:00',
                 'end_time' => '16:00:00',
@@ -156,7 +156,7 @@ class EventSeeder extends Seeder
                 'description' => 'We celebrated the harvest season with pumpkin decorating, apple cider tasting, hayrides, and fall-themed games. Families enjoyed a wonderful autumn afternoon together.',
                 'full_description' => '<p>Our Fall Harvest Festival was a huge success! Thank you to all the families who joined us for this special celebration.</p>
                 <p>Event highlights included pumpkin decorating, fall crafts, hayrides, apple cider tasting, and a costume parade. The children had a wonderful time celebrating the autumn season with their friends and families.</p>',
-                'image' => 'events/harvest-festival.jpg',
+                'image' => null,
                 'event_date' => Carbon::now()->subDays(45)->format('Y-m-d'),
                 'start_time' => '14:00:00',
                 'end_time' => '17:00:00',
@@ -171,7 +171,7 @@ class EventSeeder extends Seeder
                 'description' => 'Parents met their child\'s teachers, toured classrooms, learned about curriculum, and connected with other families. A great start to the new school year!',
                 'full_description' => '<p>Thank you to all the families who attended our Back to School Night! It was wonderful to see so many parents engaged and excited about the new school year.</p>
                 <p>Parents had the opportunity to visit classrooms, meet teachers, review the curriculum, and ask questions about daily routines and expectations.</p>',
-                'image' => 'events/back-to-school.jpg',
+                'image' => null,
                 'event_date' => Carbon::now()->subDays(90)->format('Y-m-d'),
                 'start_time' => '18:00:00',
                 'end_time' => '20:00:00',
@@ -186,7 +186,7 @@ class EventSeeder extends Seeder
                 'description' => 'A beautiful evening showcasing the incredible artwork created by our children throughout the year. Families enjoyed viewing paintings, sculptures, and collaborative projects.',
                 'full_description' => '<p>Our Annual Art Show was a beautiful celebration of creativity and expression! The gallery-style display featured artwork from all age groups.</p>
                 <p>Thank you to our amazing teachers for nurturing the artistic talents of our children, and to all the families who came to celebrate their young artists!</p>',
-                'image' => 'events/art-show.jpg',
+                'image' => null,
                 'event_date' => Carbon::now()->subDays(120)->format('Y-m-d'),
                 'start_time' => '17:00:00',
                 'end_time' => '19:00:00',

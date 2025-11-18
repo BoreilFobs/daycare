@@ -567,13 +567,6 @@
             <div class="menu-section-title">Content Management</div>
             
             <div class="menu-item">
-                <a href="{{ route('admin.page-sections.index') }}" class="menu-link {{ request()->routeIs('admin.page-sections.*') ? 'active' : '' }}">
-                    <i class="menu-icon fas fa-file-alt"></i>
-                    <span class="menu-text">Page Sections</span>
-                </a>
-            </div>
-
-            <div class="menu-item">
                 <a href="{{ route('admin.services.index') }}" class="menu-link {{ request()->routeIs('admin.services.*') ? 'active' : '' }}">
                     <i class="menu-icon fas fa-briefcase"></i>
                     <span class="menu-text">Services</span>
@@ -875,7 +868,7 @@
     </script>
 
     <!-- TinyMCE CDN -->
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/haue7crjh1xbbxk70j1d38275csz24yfdps6w5iqcypnjueu/tinymce/8/tinymce.min.js" referrerpolicy="origin"></script>
 
     @stack('scripts')
 </body>

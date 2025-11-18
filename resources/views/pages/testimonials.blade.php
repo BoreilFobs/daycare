@@ -3,12 +3,12 @@
      <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 data-aos="fade-down" data-aos-duration="1000">
         <div class="container text-center py-5">
-            <h1 class="display-2 text-white mb-4">{{ $pageSections['header']['title'] ?? 'Testimonial' }}</h1>
+            <h1 class="display-2 text-white mb-4">Testimonial</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center mb-0">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}" class="text-white">Home</a></li>
                     <li class="breadcrumb-item"><a href="#" class="text-white">Community</a></li>
-                    <li class="breadcrumb-item text-white" aria-current="page">{{ $pageSections['header']['title'] ?? 'Testimonials' }}</li>
+                    <li class="breadcrumb-item text-white" aria-current="page">Testimonials</li>
                 </ol>
             </nav>
         </div>
@@ -20,8 +20,8 @@
     <div class="container-fluid testimonial py-5">
         <div class="container py-5">
             <div class="mx-auto text-center data-aos="fade-down" data-aos-duration="1000" style="max-width: 700px;">
-                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">{{ $pageSections['content']['title'] ?? 'Our Testimonials' }}</h4>
-                <h1 class="mb-5 display-3">{{ $pageSections['content']['heading'] ?? 'Parents Say About Us' }}</h1>
+                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">Our Testimonials</h4>
+                <h1 class="mb-5 display-3">Parents Say About Us</h1>
             </div>
             <div class="owl-carousel testimonial-carousel data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
                 @forelse($testimonials as $testimonial)

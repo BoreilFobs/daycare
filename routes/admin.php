@@ -87,16 +87,22 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         ->name('testimonials.reject');
     Route::post('/testimonials/{testimonial}/toggle-featured', [TestimonialController::class, 'toggleFeatured'])
         ->name('testimonials.toggle-featured');
+    Route::post('/testimonials/reorder', [TestimonialController::class, 'reorder'])
+        ->name('testimonials.reorder');
     Route::resource('testimonials', TestimonialController::class)->parameters([
         'testimonials' => 'testimonial'
-    ])->except(['create', 'store']);
+    ]);
 
     // Gallery
-    Route::resource('gallery', GalleryController::class)->parameters([
-        'gallery' => 'gallery'
-    ])->except(['create', 'edit']);
     Route::post('/gallery/bulk-upload', [GalleryController::class, 'bulkUpload'])
         ->name('gallery.bulk-upload');
+    Route::post('/gallery/bulk-delete', [GalleryController::class, 'bulkDelete'])
+        ->name('gallery.bulk-delete');
+    Route::post('/gallery/reorder', [GalleryController::class, 'reorder'])
+        ->name('gallery.reorder');
+    Route::resource('gallery', GalleryController::class)->parameters([
+        'gallery' => 'gallery'
+    ]);
 
     // Blog Comments
     Route::get('/comments/pending', [BlogCommentController::class, 'pending'])
@@ -140,12 +146,4 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('registrations', EventRegistrationController::class)->parameters([
         'registrations' => 'registration'
     ])->only(['index', 'show', 'destroy']);
-
-    // Page Sections (Dynamic Content)
-    Route::get('/page-sections', [PageSectionController::class, 'index'])->name('page-sections.index');
-    Route::get('/page-sections/{page}/edit', [PageSectionController::class, 'edit'])->name('page-sections.edit');
-    Route::put('/page-sections/{page}', [PageSectionController::class, 'update'])->name('page-sections.update');
-    Route::post('/page-sections', [PageSectionController::class, 'store'])->name('page-sections.store');
-    Route::delete('/page-sections/{pageSection}', [PageSectionController::class, 'destroy'])
-        ->name('page-sections.destroy');
 });

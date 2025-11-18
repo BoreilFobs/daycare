@@ -33,13 +33,13 @@
                 <div class="col-lg-8">
                     <!-- Featured Image -->
                     <div class="mb-4 aos-fade" data-aos-delay="0.1s">
-                        <img src="{{ $post->featured_image_url }}" class="img-fluid w-100 rounded" alt="{{ $post->title }}" loading="lazy" style="max-height: 500px; object-fit: cover;">
+                        <img src="{{ $post->featured_image ?? asset("img/default-blog.webp") }}" class="img-fluid w-100 rounded" alt="{{ $post->title }}" loading="lazy" style="max-height: 500px; object-fit: cover;">
                     </div>
 
                     <!-- Post Meta -->
                     <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 pb-4 border-bottom aos-fade" data-aos-delay="0.2s">
                         <div class="d-flex align-items-center mb-3 mb-md-0">
-                            <img src="{{ $post->author_image_url }}" class="rounded-circle me-3" alt="{{ $post->author_display_name }}" loading="lazy" style="width: 60px; height: 60px; object-fit: cover;">
+                            <img src="{{ $post->author_image ?? asset("img/admin-profile.avif") }}" class="rounded-circle me-3" alt="{{ $post->author_display_name }}" loading="lazy" style="width: 60px; height: 60px; object-fit: cover;">
                             <div>
                                 <h6 class="mb-0 text-primary">{{ $post->author_display_name }}</h6>
                                 @if($post->author_title)
@@ -196,7 +196,7 @@
                         <h5 class="mb-4 pb-3 border-bottom">Recent Posts</h5>
                         @foreach($recentPosts as $recentPost)
                             <div class="d-flex mb-4">
-                                <img src="{{ $recentPost->featured_image_url }}" class="rounded me-3" alt="{{ $recentPost->title }}" loading="lazy" style="width: 80px; height: 80px; object-fit: cover;">
+                                <img src="{{ $recentPost->featured_image ?? asset("img/default-blog.webp") }}" class="rounded me-3" alt="{{ $recentPost->title }}" loading="lazy" style="width: 80px; height: 80px; object-fit: cover;">
                                 <div>
                                     <h6 class="mb-2">
                                         <a href="{{ route('blog.show', $recentPost->slug) }}" class="text-dark text-decoration-none">

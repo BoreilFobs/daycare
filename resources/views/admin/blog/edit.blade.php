@@ -138,7 +138,33 @@
 @endsection
 
 @push('scripts')
+<!-- TinyMCE -->
+<script src="https://cdn.tiny.cloud/1/haue7crjh1xbbxk70j1d38275csz24yfdps6w5iqcypnjueu/tinymce/8/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
+    // Initialize TinyMCE
+    tinymce.init({
+        selector: '#content',
+        height: 500,
+        menubar: false,
+        plugins: [
+            'advlist', 'autolink', 'lists', 'link', 'charmap', 'preview',
+            'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+            'insertdatetime', 'table', 'help', 'wordcount'
+        ],
+        toolbar: 'undo redo | blocks | ' +
+            'bold italic forecolor | alignleft aligncenter ' +
+            'alignright alignjustify | bullist numlist outdent indent | ' +
+            'removeformat | link | code | help',
+        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+        block_formats: 'Paragraph=p; Heading 2=h2; Heading 3=h3; Heading 4=h4',
+        setup: function(editor) {
+            editor.on('change', function() {
+                editor.save();
+            });
+        }
+    });
+
+    // Image preview
     document.getElementById('image').addEventListener('change', function(e) {
         const file = e.target.files[0];
         if (file) {

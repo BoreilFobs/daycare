@@ -23,7 +23,7 @@
                 <div class="col-lg-8">
                     <!-- Event Image -->
                     <div class="mb-4 mb-lg-5 aos-fade" data-aos-delay="0.1s">
-                        <img src="{{ $event->image_url }}" 
+                        <img src="{{ $event->image ?? asset('img/default-event.jpg') }}" 
                              class="img-fluid w-100 rounded" 
                              alt="{{ $event->title }}"
                              style="max-height: 500px; object-fit: cover;">
@@ -216,7 +216,7 @@
                                 <div class="events-item bg-primary rounded h-100">
                                     <div class="events-inner position-relative">
                                         <div class="events-img overflow-hidden rounded-circle position-relative">
-                                            <img src="{{ $relatedEvent->image_url }}" class="img-fluid w-100 rounded-circle" alt="{{ $relatedEvent->title }}" loading="lazy">
+                                            <img src="{{ $relatedEvent->image ?? asset('img/default-event.jpg') }}" class="img-fluid w-100 rounded-circle" alt="{{ $relatedEvent->title }}" loading="lazy">
                                             <div class="event-overlay">
                                                 <a href="{{ route('events.show', $relatedEvent->id) }}"><i class="fas fa-eye text-white fa-2x"></i></a>
                                             </div>

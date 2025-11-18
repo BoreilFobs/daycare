@@ -14,8 +14,11 @@
         </nav>
     </div>
     <div class="page-actions">
+        <a href="{{ route('admin.gallery.create') }}" class="btn btn-success me-2">
+            <i class="fas fa-plus me-2"></i>Add Image
+        </a>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal">
-            <i class="fas fa-upload me-2"></i>Upload Images
+            <i class="fas fa-upload me-2"></i>Bulk Upload
         </button>
     </div>
 </div>
@@ -94,16 +97,11 @@
                             
                             <!-- Actions -->
                             <div class="btn-group btn-group-sm w-100">
-                                <button type="button" 
-                                        class="btn btn-outline-primary edit-image"
-                                        data-id="{{ $image->id }}"
-                                        data-title="{{ $image->title }}"
-                                        data-description="{{ $image->description }}"
-                                        data-category="{{ $image->category }}"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#editModal">
+                                <a href="{{ route('admin.gallery.edit', $image) }}" 
+                                   class="btn btn-outline-primary"
+                                   title="Edit">
                                     <i class="fas fa-edit"></i>
-                                </button>
+                                </a>
                                 <form action="{{ route('admin.gallery.destroy', $image) }}" 
                                       method="POST" 
                                       class="flex-fill"
@@ -134,33 +132,35 @@
 <div class="modal fade" id="uploadModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="{{ route('admin.gallery.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.gallery.bulk-upload') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title">Upload Images</h5>
+                    <h5 class="modal-title">Bulk Upload Images</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label">Select Images</label>
+                        <label class="form-label">Select Images <span class="text-danger">*</span></label>
                         <input type="file" name="images[]" class="form-control" multiple accept="image/*" required>
-                        <small class="text-muted">You can select multiple images at once</small>
+                        <small class="text-muted">Select multiple images to upload at once (max 2MB each)</small>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Category</label>
-                        <select name="category" class="form-select">
+                        <label class="form-label">Category <span class="text-danger">*</span></label>
+                        <select name="category" class="form-select" required>
+                            <option value="">Select Category</option>
                             <option value="general">General</option>
                             <option value="events">Events</option>
                             <option value="activities">Activities</option>
                             <option value="facilities">Facilities</option>
-                            <option value="team">Team</option>
+                            <option value="celebrations">Celebrations</option>
                         </select>
+                        <small class="text-muted">All uploaded images will be assigned to this category</small>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-upload me-2"></i>Upload
+                        <i class="fas fa-upload me-2"></i>Upload Images
                     </button>
                 </div>
             </form>
@@ -187,48 +187,6 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
-        </div>
-    </div>
-</div>
-
-<!-- Edit Modal -->
-<div class="modal fade" id="editModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form id="editForm" method="POST">
-                @csrf
-                @method('PUT')
-                <div class="modal-header">
-                    <h5 class="modal-title">Edit Image</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label class="form-label">Title</label>
-                        <input type="text" name="title" id="editTitle" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Description</label>
-                        <textarea name="description" id="editDescription" class="form-control" rows="3"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Category</label>
-                        <select name="category" id="editCategory" class="form-select">
-                            <option value="general">General</option>
-                            <option value="events">Events</option>
-                            <option value="activities">Activities</option>
-                            <option value="facilities">Facilities</option>
-                            <option value="team">Team</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save me-2"></i>Save Changes
-                    </button>
-                </div>
-            </form>
         </div>
     </div>
 </div>
@@ -279,15 +237,6 @@
             $('#imageModalDate').text($(this).data('date'));
         });
 
-        // Edit Image Modal
-        $('.edit-image').on('click', function() {
-            const id = $(this).data('id');
-            $('#editForm').attr('action', `/admin/gallery/${id}`);
-            $('#editTitle').val($(this).data('title'));
-            $('#editDescription').val($(this).data('description'));
-            $('#editCategory').val($(this).data('category'));
-        });
-
         // Bulk Delete
         $('#bulkDelete').on('click', function() {
             const selected = $('.image-checkbox:checked').map(function() {
@@ -309,6 +258,9 @@
                     },
                     success: function() {
                         location.reload();
+                    },
+                    error: function() {
+                        alert('An error occurred. Please try again.');
                     }
                 });
             }

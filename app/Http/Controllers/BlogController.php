@@ -10,8 +10,6 @@ class BlogController extends Controller
 {
     public function index(Request $request)
     {
-        $pageSections = all_page_sections('blog');
-
         $query = BlogPost::where('is_published', true)
             ->where('published_at', '<=', now())
             ->with('author');
@@ -43,7 +41,7 @@ class BlogController extends Controller
             ->take(5)
             ->get();
 
-        return view('pages.blog', compact('blogPosts', 'categories', 'recentPosts', 'pageSections'));
+        return view('pages.blog', compact('blogPosts', 'categories', 'recentPosts'));
     }
 
     public function show($slug)

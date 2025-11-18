@@ -3,12 +3,12 @@
  <!-- Page Header Start -->
 <div class="container-fluid page-header py-5" data-aos="fade-down" data-aos-duration="1000">
     <div class="container text-center py-5">
-        <h1 class="display-2 text-white mb-4">{{ $pageSections['header']['title'] ?? 'About Us' }}</h1>
+        <h1 class="display-2 text-white mb-4">About Us</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center mb-0">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                 {{-- <li class="breadcrumb-item"><a href="#">Pages</a></li> --}}
-                <li class="breadcrumb-item text-white" aria-current="page">{{ $pageSections['header']['title'] ?? 'About Us' }}</li>
+                <li class="breadcrumb-item text-white" aria-current="page">About Us</li>
             </ol>
         </nav>
     </div>
@@ -22,26 +22,26 @@
         <div class="row g-5 align-items-center">
             <div class="col-lg-5" data-aos="fade-right" data-aos-duration="1000">
                 <div class="video border">
-                    <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="{{ $pageSections['about']['video_url'] ?? 'https://www.youtube.com/embed/DWRcNpR6Kdc' }}" data-bs-target="#videoModal">
+                    <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
                         <span></span>
                     </button>
                 </div>
             </div>
             <div class="col-lg-7" data-aos="fade-left" data-aos-duration="1000">
-                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">{{ $pageSections['about']['title'] ?? 'About Us' }}</h4>
-                <h1 class="text-dark mb-4 display-5">{{ $pageSections['about']['heading'] ?? 'We Learn Smart Way To Build Bright Future For Your Children' }}</h1>
+                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">About Us</h4>
+                <h1 class="text-dark mb-4 display-5">We Learn Smart Way To Build Bright Future For Your Children</h1>
                 <p class="text-dark mb-3">At ABC Children Centre, we believe that every child deserves a joyful beginning — one filled with laughter, love, and learning. We're excited to welcome you into our growing community of parents, teachers, & friends who share a common dream: to nurture little children for a bright and confident future.</p>
                 <p class="text-dark mb-4">Our approach goes beyond traditional education. We create an environment where curiosity is encouraged, creativity is celebrated, and every child feels valued. From their first steps into our classrooms to the friendships they build and the skills they develop, we're here to support every milestone along the way.</p>
                 <div class="row mb-4">
                     <div class="col-lg-6">
-                        <h6 class="mb-3" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-check-circle me-2"></i>{{ $pageSections['about']['feature_1'] ?? 'Sport Activities' }}</h6>
-                        <h6 class="mb-3" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-check-circle me-2 text-primary"></i>{{ $pageSections['about']['feature_2'] ?? 'Outdoor Games' }}</h6>
-                        <h6 class="mb-3" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-check-circle me-2 text-secondary"></i>{{ $pageSections['about']['feature_3'] ?? 'Nutritious Foods' }}</h6>
+                        <h6 class="mb-3" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-check-circle me-2"></i>Sport Activities</h6>
+                        <h6 class="mb-3" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-check-circle me-2 text-primary"></i>Outdoor Games</h6>
+                        <h6 class="mb-3" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-check-circle me-2 text-secondary"></i>Nutritious Foods</h6>
                     </div>
                     <div class="col-lg-6">
-                        <h6 class="mb-3" data-aos="fade-up" data-aos-delay="500"><i class="fas fa-check-circle me-2"></i>{{ $pageSections['about']['feature_4'] ?? 'Highly Secured' }}</h6>
-                        <h6 class="mb-3" data-aos="fade-up" data-aos-delay="600"><i class="fas fa-check-circle me-2 text-primary"></i>{{ $pageSections['about']['feature_5'] ?? 'Friendly Environment' }}</h6>
-                        <h6 data-aos="fade-up" data-aos-delay="700"><i class="fas fa-check-circle me-2 text-secondary"></i>{{ $pageSections['about']['feature_6'] ?? 'Qualified Teacher' }}</h6>
+                        <h6 class="mb-3" data-aos="fade-up" data-aos-delay="500"><i class="fas fa-check-circle me-2"></i>Highly Secured</h6>
+                        <h6 class="mb-3" data-aos="fade-up" data-aos-delay="600"><i class="fas fa-check-circle me-2 text-primary"></i>Friendly Environment</h6>
+                        <h6 data-aos="fade-up" data-aos-delay="700"><i class="fas fa-check-circle me-2 text-secondary"></i>Qualified Teacher</h6>
                     </div>
                 </div>
                 <a href="{{ $pageSections['about']['button_link'] ?? route('contact') }}" class="btn btn-primary px-5 py-3 btn-border-radius" data-aos="fade-up" data-aos-delay="800">{{ $pageSections['about']['button_text'] ?? 'More Details' }}</a>

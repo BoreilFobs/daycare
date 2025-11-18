@@ -11,8 +11,6 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $pageSections = all_page_sections('about');
-
         $teamMembers = TeamMember::where('is_active', true)
             ->where('is_featured', true)
             ->orderBy('order')
@@ -24,6 +22,6 @@ class AboutController extends Controller
             ->take(6)
             ->get();
 
-        return view('pages.about', compact('pageSections', 'teamMembers', 'services'));
+        return view('pages.about', compact('teamMembers', 'services'));
     }
 }

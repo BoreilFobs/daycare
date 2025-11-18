@@ -10,8 +10,6 @@ class EventsController extends Controller
 {
     public function index(Request $request)
     {
-        $pageSections = all_page_sections('events');
-
         $filter = $request->get('filter', 'upcoming');
 
         $query = Event::where('is_active', true);
@@ -34,7 +32,7 @@ class EventsController extends Controller
             ->where('event_date', '<', now()->toDateString())
             ->count();
 
-        return view('pages.events', compact('events', 'filter', 'upcomingCount', 'pastCount', 'pageSections'));
+        return view('pages.events', compact('events', 'filter', 'upcomingCount', 'pastCount'));
     }
 
     public function show($id)

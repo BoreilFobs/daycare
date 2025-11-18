@@ -3,12 +3,12 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5" data-aos="fade-down" data-aos-duration="1000">
         <div class="container text-center py-5">
-            <h1 class="display-2 text-white mb-4">{{ $pageSections['header']['title'] ?? 'Services' }}</h1>
+            <h1 class="display-2 text-white mb-4">Services</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center mb-0">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                     {{-- <li class="breadcrumb-item"><a href="#">Pages</a></li> --}}
-                    <li class="breadcrumb-item text-white" aria-current="page">{{ $pageSections['header']['title'] ?? 'Services' }}</li>
+                    <li class="breadcrumb-item text-white" aria-current="page">Services</li>
                 </ol>
             </nav>
         </div>
@@ -20,8 +20,8 @@
     <div class="container-fluid service py-5">
         <div class="container py-5">
             <div class="mx-auto text-center" data-aos="fade-up" data-aos-duration="1000" style="max-width: 700px;">
-                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">{{ $pageSections['content']['title'] ?? 'What We Do' }}</h4>
-                <h1 class="mb-5 display-3">{{ $pageSections['content']['heading'] ?? 'Our Professional Services' }}</h1>
+                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">What We Do</h4>
+                <h1 class="mb-5 display-3">Our Professional Services</h1>
             </div>
             <div class="row g-5">
                 @forelse($services as $index => $service)
