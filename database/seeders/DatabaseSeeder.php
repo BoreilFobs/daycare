@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
 
         // Seed all database tables with demo data
         $this->call([
+            SettingSeeder::class,
             PageSectionsSeeder::class,
             ServiceSeeder::class,
             ProgramSeeder::class,
