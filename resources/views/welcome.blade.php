@@ -1,379 +1,754 @@
 @extends('layouts.web')
+@section('title', __('site.nav.home'))
 @section('content')
-    <!-- Hero Start -->
-    <div class="container-fluid py-5 hero-header" data-aos="fade-up" data-aos-duration="1000">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-7 col-md-12">
-                    <h1 class="mb-3 text-primary" data-aos="fade-right" data-aos-delay="200">We Care Your Baby</h1>
-                    <h1 class="mb-5 display-1 text-white" data-aos="fade-right" data-aos-delay="400">let's give our little ones a strong start in life
-' }}</h1>
-                    <div data-aos="fade-up" data-aos-delay="600">
-                        <a href="{{ route('contact') }}" class="btn btn-primary px-4 py-3 px-md-5  me-4 btn-border-radius">Get Started</a>
-                        <a href="{{ route('about') }}" class="btn btn-primary px-4 py-3 px-md-5 btn-border-radius">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Hero End -->
-
-
-    <!-- About Start -->
-    <div class="container-fluid py-5 about bg-light">
-        <div class="container py-5">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-5 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="video border">
-                        <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                            <span></span>
-                        </button>
-                    </div>
-                </div>
-                <div class="col-lg-7 wow fadeIn" data-wow-delay="0.3s">
-                    <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">About Us</h4>
-                    <h1 class="text-dark mb-4 display-5">We Learn Smart Way To Build Bright Future For Your Children</h1>
-                    <p class="text-dark mb-4">{{ $pageSections['home_abou']['description'] ?? 'At ABC Children Centre, we believe that every child deserves a joyful beginning — one filled with laughter, love, and learning. We’re excited to welcome you into our growing community of parents, teachers, & friends who share a common dream: to nurture little children for a bright and confident future.
-' }}
-                    </p>
-                    <div class="row mb-4">
-                        <div class="col-lg-6">
-                            <h6 class="mb-3"><i class="fas fa-check-circle me-2"></i>Sport Activities</h6>
-                            <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-primary"></i>Outdoor Games</h6>
-                            <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-secondary"></i>Nutritious Foods</h6>
-                        </div>
-                        <div class="col-lg-6">
-                            <h6 class="mb-3"><i class="fas fa-check-circle me-2"></i>Highly Secured</h6>
-                            <h6 class="mb-3"><i class="fas fa-check-circle me-2 text-primary"></i>Friendly Environment</h6>
-                            <h6><i class="fas fa-check-circle me-2 text-secondary"></i>Qualified Teacher</h6>
+    <!-- Hero Section Start -->
+    <section class="banner-section banner-1 overflow-hidden">
+        <div class="container">
+            <div class="banner-wrapperv1 position-relative">
+                <div class="row justify-content-lg-between justify-content-center">
+                    <div class="col-lg-3 col-md-4 col-sm-5 order-lg-0 order-1">
+                        <div class="banner-shape-thumb1">
+                            <img src="{{ asset('img/abanner/bn-v1-thumb1.png') }}" alt="img">
                         </div>
                     </div>
-                    <a href="{{ route('about') }}" class="btn btn-primary px-5 py-3 btn-border-radius">More Details</a>
+                    <div class="col-lg-6">
+                        <div class="banner-v1-content text-center">
+                            <h1 class="wow fadeInDown" data-wow-delay=".6s"> 
+                                <span class="title-explore position-relative wow fadeInRight d-inline-block" data-wow-delay=".4s">
+                                    <img src="{{ asset('img/abanner/text-layer.png') }}" alt="img" class="text-layer">
+                                    {{ __('site.welcome.hero_title') }}
+                                </span>
+                                ABC Centre
+                                <span class="text-sount">
+                                    Foumbot
+                                </span>
+                            </h1>
+                            <p class="wow fadeInUp" data-wow-delay=".5s">
+                                {{ __('site.welcome.hero_description') }}
+                            </p>
+                            <a href="{{ route('contact') }}" class="theme-btn p4-bg">
+                                <span>
+                                    {{ __('site.welcome.learn_more') }}
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-5">
+                        <div class="banner-shape-thumb2">
+                            <img src="{{ asset('img/abanner/bn-v1-thumb2.png') }}" alt="img">
+                        </div>
+                    </div>
                 </div>
+                <img src="{{ asset('img/abanner/railbow.png') }}" alt="img" class="rainbow-shape">
             </div>
         </div>
-    </div>
-    <!-- Modal Video -->
-    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content rounded-0">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- Element -->
+        <img src="{{ asset('img/abanner/left-ring.png') }}" alt="img" class="left-ring">
+        <img src="{{ asset('img/abanner/right-ring.png') }}" alt="img" class="right-ring">
+        <img src="{{ asset('img/abanner/upen-element.png') }}" alt="img" class="global-upen">
+        <!-- Element -->
+    </section>
+
+    <!-- Vision Mission Section Start -->
+    <section class="talk-counter space-top overflow-hidden">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-8">
+                    <div class="talk-content">
+                        <div class="section-title mb-60">
+                            <span class="sub-title wow fadeInUp p2-clr">
+                                {{ __('site.about.vision_title') }}
+                            </span>
+                            <h3 class="m-title wow fadeInUp black" data-wow-delay=".3s">
+                                {{ __('site.about.vision_text') }}
+                            </h3>
+                            <p class="wow fadeInUp" data-wow-delay=".4s">
+                                {{ __('site.about.mission_text') }}
+                            </p>
+                            <a href="{{ route('contact') }}" class="theme-btn gra-border2">
+                                <span class="black fw-medium">
+                                    {{ __('site.nav.donate') }}
+                                </span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <!-- 16:9 aspect ratio -->
-                    <div class="ratio ratio-16x9">
-                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
-                            allow="autoplay"></iframe>
+                <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="counter-inner">
+                        <div class="counter-talk-items gra-border round10 mb-30">
+                            <div class="icon iconbg-v2">
+                                <i class="fas fa-child fa-2x" style="color: #ff4880;"></i>
+                            </div>
+                            <div class="content">
+                                <h3>
+                                    3m-5{{ app()->getLocale() == 'fr' ? 'ans' : 'yrs' }}
+                                </h3>
+                                <p>{{ app()->getLocale() == 'fr' ? 'Âges d\'admission' : 'Admission Ages' }}</p>
+                            </div>
+                        </div>
+                        <div class="counter-talk-items gra-border round10">
+                            <div class="icon iconbg-v4">
+                                <i class="fas fa-clock fa-2x" style="color: #4d65f9;"></i>
+                            </div>
+                            <div class="content">
+                                <h3>
+                                    7:30-16:30
+                                </h3>
+                                <p>{{ app()->getLocale() == 'fr' ? 'Lundi - Vendredi' : 'Monday - Friday' }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".5s">
+                    <div class="counter-inner">
+                        <div class="counter-talk-items gra-border round10 mb-30">
+                            <div class="icon iconbg-v3">
+                                <img src="{{ asset('img/aicon/icon2.png') }}" alt="img">
+                            </div>
+                            <div class="content">
+                                <h3>
+                                    <span class="count">{{ $stats['completed'] ?? '12' }}</span>K
+                                </h3>
+                                <p>Completed</p>
+                            </div>
+                        </div>
+                        <div class="counter-talk-items gra-border round10">
+                            <div class="icon iconbg-v5">
+                                <img src="{{ asset('img/aicon/icon4.png') }}" alt="img">
+                            </div>
+                            <div class="content">
+                                <h3>
+                                    <span class="count">{{ $stats['satisfaction'] ?? '13' }}</span>K
+                                </h3>
+                                <p>Guardian Satisfaction</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- About End -->
+    </section>
 
-
-    <!-- Service Start -->
-    <div class="container-fluid service py-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center" data-aos="fade-up" data-aos-duration="1000" style="max-width: 700px;">
-                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">Our Services</h4>
-                <h1 class="mb-5 display-3">What We Offer For You</h1>
-            </div>
-            <div class="row g-5">
-                @forelse($services as $index => $service)
-                    <div class="col-md-6 col-lg-6 col-xl-3" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}" data-aos-duration="1000">
-                        <div class="text-center border-primary border bg-white service-item">
-                            <div class="service-content d-flex align-items-center justify-content-center p-4">
-                                <div class="service-content-inner">
-                                    <div class="p-4"><i class="{{ $service->icon ?? 'fas fa-child' }} fa-6x text-primary"></i></div>
-                                    <a href="{{ route('services') }}" class="h4">{{ $service->title }}</a>
-                                    <p class="my-3">{{ Str::limit($service->description, 120) }}</p>
-                                    <a href="{{ route('services') }}" class="btn btn-primary text-white px-4 py-2 my-2 btn-border-radius">Read More</a>
+    <!-- About Section Start -->
+    <section class="about-sectionv1 space-top overflow-hidden space-bottom">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="about-one-thumbs">
+                        <div class="thumbs position-relative wow fadeInUp" data-wow-delay="1200">
+                            <img src="{{ asset('img/about/about-1.png') }}" alt="img" class="round10 main-img">
+                            <!-- Element -->
+                            <img src="{{ asset('img/about/lighing-cmn.png') }}" alt="img" class="about-light1">
+                            <img src="{{ asset('img/about/arrows-cmn.png') }}" alt="img" class="about-arrows">
+                        </div>
+                        <div class="about-one-grow">
+                            <div class="academy-box text-center mb-30 wow fadeInUp" data-wow-delay="1400">
+                                <img src="{{ asset('img/about/grow.svg') }}" alt="img">
+                                <h4 class="black">
+                                    Academy
+                                </h4>
+                                <p class="pra">
+                                    Learning Ladder School
+                                </p>
+                            </div>
+                            <div class="academy-box2 gra-border round10 wow fadeInUp" data-wow-delay="1600">
+                                <div class="content">
+                                    <h3>
+                                        <span class="count">{{ $stats['experience'] ?? '10' }}</span>+
+                                    </h3>
+                                    <p>years of experiences</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @empty
-                    <div class="col-12 text-center">
-                        <p>No services available at the moment.</p>
+                </div>
+                <div class="col-lg-5 col-md-6 col-sm-6">
+                    <div class="about-contentv1 ps-xxl-5">
+                        <div class="section-title mb-60">
+                            <span class="sub-title wow fadeInUp p5-clr">
+                                {{ __('site.about.subtitle') }}
+                            </span>
+                            <h3 class="m-title wow fadeInUp black mb-sm-3 mb-2" data-wow-delay=".3s">
+                                {{ __('site.about.description') }}
+                            </h3>
+                            <p class="mb-24 wow fadeInUp" data-wow-delay=".4s">
+                                {{ __('site.about.mission_text') }}
+                            </p>
+                            <a href="{{ route('about') }}" class="theme-btn gra-border2">
+                                <span class="black fw-medium">
+                                    {{ __('site.read_more') }}
+                                </span>
+                            </a>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Section Start -->
+    <section class="program-sectionv1 overflow-hidden space-bottom position-relative">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section-title text-center mb-60">
+                        <span class="sub-title wow fadeInUp p4-clr">
+                            {{ __('site.nav.programs') }}
+                        </span>
+                        <h3 class="m-title wow fadeInUp black" data-wow-delay=".3s">
+                            {{ __('site.services.subtitle') }}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-lg-4 g-3 justify-content-center">
+                @forelse($featuredPrograms ?? [] as $index => $program)
+                <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".{{ 3 + $index }}s">
+                    <div class="program-item gra-border">
+                        <div class="icons gra-border round10 d-center">
+                            <img src="{{ $program->icon ?? asset('img/aicon/car-icons' . (($index % 6) + 1) . '.png') }}" alt="img">
+                        </div>
+                        <div class="content">
+                            <h4>
+                                <a href="{{ route('programs.show', $program->id) }}">{{ $program->title }}</a>
+                            </h4>
+                            <p>
+                                {{ Str::limit($program->description, 100) }}
+                            </p>
+                            <a href="{{ route('programs.show', $program->id) }}" class="readmore d-flex align-items-center gap-2">
+                                {{ __('site.read_more') }}
+                                <span class="arrows mt-1">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @empty
+                <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="program-item gra-border">
+                        <div class="icons gra-border round10 d-center">
+                            <img src="{{ asset('img/aicon/car-icons1.png') }}" alt="img">
+                        </div>
+                        <div class="content">
+                            <h4><a href="#">Online Class</a></h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+                            <a href="#" class="readmore d-flex align-items-center gap-2">
+                                Read More
+                                <span class="arrows mt-1"><i class="fa-solid fa-arrow-right"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".4s">
+                    <div class="program-item gra-border">
+                        <div class="icons gra-border round10 d-center">
+                            <img src="{{ asset('img/aicon/car-icons2.png') }}" alt="img">
+                        </div>
+                        <div class="content">
+                            <h4><a href="#">Formal Tuition</a></h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+                            <a href="#" class="readmore d-flex align-items-center gap-2">
+                                Read More
+                                <span class="arrows mt-1"><i class="fa-solid fa-arrow-right"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".5s">
+                    <div class="program-item gra-border">
+                        <div class="icons gra-border round10 d-center">
+                            <img src="{{ asset('img/aicon/car-icons3.png') }}" alt="img">
+                        </div>
+                        <div class="content">
+                            <h4><a href="#">Preschool</a></h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipiscing elit</p>
+                            <a href="#" class="readmore d-flex align-items-center gap-2">
+                                Read More
+                                <span class="arrows mt-1"><i class="fa-solid fa-arrow-right"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 @endforelse
             </div>
         </div>
-    </div>
-    <!-- Service End -->
+    </section>
 
-
-    <!-- Programs Start -->
-    <div class="container-fluid program  py-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center" data-aos="fade-up" data-aos-duration="1000" style="max-width: 700px;">
-                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">Our Programs</h4>
-                <h1 class="mb-5 display-3">We Offer An Exclusive Program For Kids</h1>
+    <!-- Service Section Start -->
+    <section class="service-sectionv1 overflow-hidden position-relative">
+        <div class="container">
+            <div class="row g-2 justify-content-between align-items-center mb-xxl-4 mb-xl-3 mb-2">
+                <div class="col-lg-4">
+                    <div class="section-title">
+                        <span class="sub-title wow fadeInUp p5-clr">
+                            {{ __('site.services.title') }}
+                        </span>
+                        <h3 class="m-title wow fadeInUp black" data-wow-delay=".3s">
+                            {{ __('site.services.subtitle') }}
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <p class="pra">
+                        {{ __('site.about.description') }}
+                    </p>
+                </div>
             </div>
-            <div class="row g-5 justify-content-center">
-                @forelse($featuredPrograms as $index => $program)
-                    <div class="col-md-6 col-lg-6 col-xl-4" data-aos="zoom-in" data-aos-delay="{{ $index * 150 }}" data-aos-duration="1000">
-                        <div class="program-item rounded">
-                            <div class="program-img position-relative">
-                                <div class="overflow-hidden img-border-radius">
-                                    <img src="{{ $program->image_url ?? asset('img/program-' . (($index % 3) + 1) . '.jpg') }}" class="img-fluid w-100" alt="{{ $program->title }}" loading="lazy">
+            <div class="row g-3 justify-content-between">
+                <div class="col-lg-3">
+                    <div class="service-left">
+                        <div class="dot-cmn mb-40"></div>
+                        <a href="{{ route('services') }}" class="theme-btn p5-btn p5-border">
+                            <span class="black fw-medium">
+                                {{ __('site.read_more') }}
+                            </span>
+                            <i class="fa-solid fa-arrow-right p5-clr"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="d-center">
+                        <div class="swiper service-wrapslide">
+                            <div class="swiper-wrapper">
+                                @forelse($services ?? [] as $service)
+                                <div class="swiper-slide">
+                                    <div class="program-item gap-3 d-grid justify-content-start">
+                                        <div class="icon">
+                                            <img src="{{ $service->icon ?? asset('img/aicon/car-icons1.png') }}" alt="img">
+                                        </div>
+                                        <div class="content">
+                                            <h4 class="mb-xxl-3 mb-2">
+                                                <a href="{{ route('services') }}">
+                                                    {{ $service->title }}
+                                                </a>
+                                            </h4>
+                                            <p class="mb-xxl-3 mb-2">
+                                                {{ Str::limit($service->description, 60) }}
+                                            </p>
+                                            <a href="{{ route('services') }}" class="readmore d-flex align-items-center gap-2">
+                                                Read More
+                                                <span class="arrows mt-1">
+                                                    <i class="fa-solid fa-arrow-right p4-clr"></i>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                                @if($program->price)
-                                    <div class="px-4 py-2 bg-primary text-white program-rate">${{ number_format($program->price, 2) }}</div>
+                                @empty
+                                <div class="swiper-slide">
+                                    <div class="program-item gap-3 d-grid justify-content-start">
+                                        <div class="icon">
+                                            <img src="{{ asset('img/aicon/car-icons1.png') }}" alt="img">
+                                        </div>
+                                        <div class="content">
+                                            <h4 class="mb-xxl-3 mb-2">
+                                                <a href="#">Learning School</a>
+                                            </h4>
+                                            <p class="mb-xxl-3 mb-2">
+                                                Quality education for your children
+                                            </p>
+                                            <a href="#" class="readmore d-flex align-items-center gap-2">
+                                                Read More
+                                                <span class="arrows mt-1">
+                                                    <i class="fa-solid fa-arrow-right p4-clr"></i>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforelse
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Element -->
+        <img src="{{ asset('img/aservices/sertd-shape.png') }}" alt="img" class="aservice-shape1">
+    </section>
+
+    <!-- FAQ Section Start -->
+    <section class="faq-sectionv mt-60 overflow-hidden space-bottom">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-6 col-md-5">
+                    <div class="faq-thumbs">
+                        <img src="{{ asset('img/about/faq.png') }}" alt="img">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-7">
+                    <div class="faq-content">
+                        <div class="section-title mb-40">
+                            <span class="sub-title wow fadeInUp p5-clr">
+                                {{ __('site.nav.faq') }}
+                            </span>
+                            <h3 class="m-title wow fadeInUp black" data-wow-delay=".3s">
+                                {{ __('site.info.title') }}
+                            </h3>
+                        </div>
+                        <div class="tab-faq faq">
+                            <div class="accordion-section d-grid gap-xxl-4 gap-lg-3 gap-2">
+                                @forelse($faqs ?? [] as $faq)
+                                <div class="accordion-single">
+                                    <h5 class="header-area">
+                                        <button class="accordion-btn d-flex align-items-center d-flex position-relative w-100" type="button">
+                                            {{ $faq->question }}
+                                        </button>
+                                    </h5>
+                                    <div class="content-area">
+                                        <div class="content-body">
+                                            <p>{{ $faq->answer }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                @empty
+                                <div class="accordion-single">
+                                    <h5 class="header-area">
+                                        <button class="accordion-btn d-flex align-items-center d-flex position-relative w-100" type="button">
+                                            What are the prerequisites for this course?
+                                        </button>
+                                    </h5>
+                                    <div class="content-area">
+                                        <div class="content-body">
+                                            <p>Our programs are designed for children of various ages. Contact us to learn about specific requirements.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-single">
+                                    <h5 class="header-area">
+                                        <button class="accordion-btn d-flex align-items-center d-flex position-relative w-100" type="button">
+                                            What subjects will my child learn?
+                                        </button>
+                                    </h5>
+                                    <div class="content-area">
+                                        <div class="content-body">
+                                            <p>We offer a comprehensive curriculum including reading, math, science, arts, and social skills development.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-single">
+                                    <h5 class="header-area">
+                                        <button class="accordion-btn d-flex align-items-center d-flex position-relative w-100" type="button">
+                                            How long is a school day?
+                                        </button>
+                                    </h5>
+                                    <div class="content-area">
+                                        <div class="content-body">
+                                            <p>Our programs run from morning to afternoon with flexible scheduling options to meet your family's needs.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforelse
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Section Start -->
+    <section class="professional-sectionv1 overflow-hidden mt-2 space-bottom position-relative">
+        <div class="container">
+            <div class="row justify-content-center mb-60">
+                <div class="col-lg-6">
+                    <div class="section-title text-center">
+                        <span class="sub-title wow fadeInUp p5-clr">
+                            {{ __('site.nav.team') }}
+                        </span>
+                        <h3 class="m-title wow fadeInUp black" data-wow-delay=".3s">
+                            {{ __('site.info.staff') }}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-lg-4 g-3 justify-content-center">
+                @forelse($teamMembers ?? [] as $index => $member)
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="professional-item">
+                        <div class="thumb mb-24">
+                            <img src="{{ $member->image_url ?? asset('img/aprotfolio/professonal' . (($index % 3) + 1) . '.png') }}" alt="{{ $member->name }}">
+                        </div>
+                        <div class="content">
+                            <div class="mb-24">
+                                <h4 class="mb-2">
+                                    <a href="#" class="black">{{ $member->name }}</a>
+                                </h4>
+                                <span>{{ $member->position }}</span>
+                            </div>
+                            <div class="social-wrapper footer-social d-flex align-items-center">
+                                @if($member->facebook)
+                                <a href="{{ $member->facebook }}" class="white"><i class="white fab fa-facebook-f"></i></a>
+                                @endif
+                                @if($member->twitter)
+                                <a href="{{ $member->twitter }}" class="white">
+                                    <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6.55735 5.16157L10.5183 0.65625H9.57971L6.14039 4.56816L3.39341 0.65625H0.225098L4.37906 6.57174L0.225098 11.2963H1.16378L4.79579 7.16516L7.6968 11.2963H10.8651L6.55712 5.16157H6.55735ZM5.2717 6.62386L4.85082 6.03481L1.502 1.34768H2.94375L5.64629 5.13034L6.06717 5.71939L9.58015 10.6363H8.13839L5.2717 6.62409V6.62386Z" fill="white"/>
+                                    </svg>
+                                </a>
+                                @endif
+                                @if($member->linkedin)
+                                <a href="{{ $member->linkedin }}" class="white"><i class="white fa-brands fa-linkedin-in"></i></a>
                                 @endif
                             </div>
-                            <div class="program-text bg-white px-4 pb-3">
-                                <div class="program-text-inner">
-                                    <a href="{{ route('programs.show', $program->id) }}" class="h4">{{ $program->title }}</a>
-                                    <p class="mt-3 mb-3">{{ Str::limit($program->description, 100) }}</p>
-                                    <a href="{{ route('programs.show', $program->id) }}" class="btn btn-primary btn-sm px-4 py-2 btn-border-radius">
-                                        Read More <i class="fas fa-arrow-right ms-2"></i>
-                                    </a>
-                                </div>
+                        </div>
+                    </div>
+                </div>
+                @empty
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="professional-item">
+                        <div class="thumb mb-24">
+                            <img src="{{ asset('img/aprotfolio/professonal1.png') }}" alt="img">
+                        </div>
+                        <div class="content">
+                            <div class="mb-24">
+                                <h4 class="mb-2"><a href="#" class="black">Jane Cooper</a></h4>
+                                <span>Head Teacher</span>
                             </div>
-                            @if($program->teacher_name)
-                                <div class="program-teacher d-flex align-items-center border-top border-primary bg-white px-4 py-3">
-                                    <img src="{{ $program->teacher_image_url ?? asset('img/program-teacher.jpg') }}" class="img-fluid rounded-circle p-2 border border-primary bg-white" alt="{{ $program->teacher_name }}" style="width: 70px; height: 70px;" loading="lazy">
-                                    <div class="ms-3">
-                                        <h6 class="mb-0 text-primary">{{ $program->teacher_name }}</h6>
-                                        @if($program->teacher_title)
-                                            <small>{{ $program->teacher_title }}</small>
-                                        @endif
-                                    </div>
-                                </div>
-                            @endif
-                            <div class="bg-primary rounded-bottom">
-                                <div class="d-flex justify-content-between px-4 py-2">
-                                    @if($program->total_sits > 0)
-                                        <small class="text-white"><i class="fas fa-users me-1"></i> {{ $program->total_sits }} Seats</small>
-                                    @endif
-                                    @if($program->total_lessons > 0)
-                                        <small class="text-white"><i class="fas fa-book me-1"></i> {{ $program->total_lessons }} Lessons</small>
-                                    @endif
-                                    @if($program->total_hours > 0)
-                                        <small class="text-white"><i class="fas fa-clock me-1"></i> {{ $program->total_hours }} Hours</small>
-                                    @endif
-                                </div>
+                            <div class="social-wrapper footer-social d-flex align-items-center">
+                                <a href="#" class="white"><i class="white fab fa-facebook-f"></i></a>
+                                <a href="#" class="white"><i class="white fa-brands fa-linkedin-in"></i></a>
                             </div>
                         </div>
                     </div>
-                @empty
-                    <div class="col-12 text-center">
-                        <p>No programs available at the moment.</p>
-                    </div>
-                @endforelse
-                <div class="d-inline-block text-center" data-aos="fade-up" data-aos-delay="400">
-                    <a href="{{ route('programs') }}" class="btn btn-primary px-5 py-3 text-white btn-border-radius">View All Programs</a>
                 </div>
-            </div> 
-        </div>
-    </div>
-    <!-- Program End -->
-
-
-    <!-- Events Start -->
-    <div class="container-fluid events py-5 bg-light">
-        <div class="container py-5">
-            <div class="mx-auto text-center" data-aos="fade-up" data-aos-duration="1000" style="max-width: 700px;">
-                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">Our Events</h4>
-                <h1 class="mb-5 display-3">Our Upcoming Events</h1>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="professional-item">
+                        <div class="thumb mb-24">
+                            <img src="{{ asset('img/aprotfolio/professonal2.png') }}" alt="img">
+                        </div>
+                        <div class="content">
+                            <div class="mb-24">
+                                <h4 class="mb-2"><a href="#" class="black">John Cooper</a></h4>
+                                <span>Teacher</span>
+                            </div>
+                            <div class="social-wrapper footer-social d-flex align-items-center">
+                                <a href="#" class="white"><i class="white fab fa-facebook-f"></i></a>
+                                <a href="#" class="white"><i class="white fa-brands fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="professional-item">
+                        <div class="thumb mb-24">
+                            <img src="{{ asset('img/aprotfolio/professonal3.png') }}" alt="img">
+                        </div>
+                        <div class="content">
+                            <div class="mb-24">
+                                <h4 class="mb-2"><a href="#" class="black">David Warner</a></h4>
+                                <span>Teacher</span>
+                            </div>
+                            <div class="social-wrapper footer-social d-flex align-items-center">
+                                <a href="#" class="white"><i class="white fab fa-facebook-f"></i></a>
+                                <a href="#" class="white"><i class="white fa-brands fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforelse
             </div>
-            <div class="row g-5 justify-content-center">
-                @forelse($upcomingEvents as $index => $event)
-                    <div class="col-md-6 col-lg-6 col-xl-4" data-aos="flip-left" data-aos-delay="{{ $index * 150 }}" data-aos-duration="1000">
-                        <div class="events-item bg-primary rounded">
-                            <div class="events-inner position-relative">
-                                <div class="events-img overflow-hidden rounded-circle position-relative">
-                                    <img src="{{ $event->image ?? asset('img/default-event.jpg') }}" class="img-fluid w-100 rounded-circle" alt="{{ $event->title }}" loading="lazy">
-                                    <div class="event-overlay">
-                                        <a href="{{ $event->image ?? asset('img/default-event.jpg') }}" data-lightbox="event-{{ $event->id }}"><i class="fas fa-search-plus text-white fa-2x"></i></a>
+        </div>
+    </section>
+
+    <!-- Testimonial Section Start -->
+    <section class="testimonial-sectionv1 section-padding overflow-hidden white-bg">
+        <div class="container">
+            <div class="row g-2 justify-content-between mb-60">
+                <div class="col-lg-4 col-md-5">
+                    <div class="section-title">
+                        <span class="sub-title wow fadeInUp p5-clr">
+                            {{ __('site.testimonials.subtitle') }}
+                        </span>
+                        <h3 class="m-title wow fadeInUp black" data-wow-delay=".3s">
+                            {{ __('site.testimonials.title') }}
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    {{ __('site.thanks.description') }}
+                </div>
+            </div>
+            <div class="testimonial-innerbox">
+                <div class="row justify-content-end">
+                    <div class="col-lg-6 col-md-7 col-sm-8">
+                        <div class="swiper testimonial-slidewrap01">
+                            <div class="swiper-wrapper">
+                                @forelse($testimonials ?? [] as $testimonial)
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item01">
+                                        <div class="d-flex align-items-center justify-content-between gap-1">
+                                            <div class="man-info d-flex align-items-center">
+                                                <div class="thumb">
+                                                    <img src="{{ $testimonial->image ?? asset('img/atestimonial/testimonial-small.png') }}" alt="">
+                                                </div>
+                                                <div class="cont">
+                                                    <h4 class="black mb-1">{{ $testimonial->name }}</h4>
+                                                    <span class="black fw-normal">{{ $testimonial->position ?? 'Parent' }}</span>
+                                                </div>
+                                            </div>
+                                            <img src="{{ asset('img/atestimonial/quote.png') }}" alt="img" class="quote-testi">
+                                        </div>
+                                        <p class="pra mt-24 mb-40">{{ $testimonial->content }}</p>
+                                        <div class="ratting-area d-flex align-items-center gap-2">
+                                            @for($i = 1; $i <= 5; $i++)
+                                                @if($i <= ($testimonial->rating ?? 5))
+                                                    <i class="fas fa-star"></i>
+                                                @else
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                @endif
+                                            @endfor
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="px-4 py-2 bg-secondary text-white text-center events-rate">{{ $event->event_date->format('d M') }}</div>
-                                <div class="d-flex justify-content-between px-4 py-2 bg-secondary">
-                                    <small class="text-white"><i class="fas fa-calendar me-1 text-primary"></i> {{ $event->start_time ? \Carbon\Carbon::parse($event->start_time)->format('g:i A') : 'TBA' }}</small>
-                                    <small class="text-white"><i class="fas fa-map-marker-alt me-1 text-primary"></i> {{ Str::limit($event->location, 15) ?? 'TBA' }}</small>
+                                @empty
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item01">
+                                        <div class="d-flex align-items-center justify-content-between gap-1">
+                                            <div class="man-info d-flex align-items-center">
+                                                <div class="thumb">
+                                                    <img src="{{ asset('img/atestimonial/testimonial-small.png') }}" alt="">
+                                                </div>
+                                                <div class="cont">
+                                                    <h4 class="black mb-1">Sarah Johnson</h4>
+                                                    <span class="black fw-normal">Parent</span>
+                                                </div>
+                                            </div>
+                                            <img src="{{ asset('img/atestimonial/quote.png') }}" alt="img" class="quote-testi">
+                                        </div>
+                                        <p class="pra mt-24 mb-40">The care and attention my child receives at this center is exceptional. The teachers are dedicated and the environment is nurturing.</p>
+                                        <div class="ratting-area d-flex align-items-center gap-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                    </div>
                                 </div>
+                                @endforelse
                             </div>
-                            <div class="events-text p-4 border border-primary bg-white border-top-0 rounded-bottom">
-                                <a href="{{ route('events.show', $event->id) }}" class="h4 d-block mb-3">{{ $event->title }}</a>
-                                <p class="mb-3">{{ Str::limit($event->description, 80) }}</p>
-                                <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary btn-sm px-4 py-2">
-                                    Read More <i class="fas fa-arrow-right ms-2"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section Start -->
+    <section class="blog-sectionv1 section-padding overflow-hidden">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-8 col-sm-9">
+                    <div class="section-title mb-60">
+                        <span class="sub-title wow fadeInUp p5-clr">{{ __('site.nav.blog') }}</span>
+                        <h3 class="m-title wow fadeInUp black" data-wow-delay=".3s">
+                            {{ __('site.events.title') }}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                @forelse($latestPosts ?? [] as $index => $post)
+                    @if($index < 2)
+                    <div class="col-xl-6 col-lg-6 col-md-7">
+                        <div class="news-small-items mb-24 wow fadeInUp" data-wow-delay=".{{ 4 + $index }}s">
+                            <div class="news-thumb">
+                                <img src="{{ $post->image_url ?? asset('img/ablog/blog-small' . ($index + 1) . '.png') }}" alt="img">
+                            </div>
+                            <div class="news-content">
+                                <ul>
+                                    <li>
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                        {{ $post->created_at->format('F d, Y') }}
+                                    </li>
+                                    <li>
+                                        <i class="fa-regular fa-user"></i> By {{ $post->author ?? 'admin' }}
+                                    </li>
+                                </ul>
+                                <h4>
+                                    <a href="{{ route('blog.show', $post->slug ?? $post->id) }}">
+                                        {{ $post->title }}
+                                    </a>
+                                </h4>
+                                <a href="{{ route('blog.show', $post->slug ?? $post->id) }}" class="readmore d-flex align-items-center gap-2">
+                                    Read More
+                                    <span class="arrows mt-1">
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </span>
                                 </a>
                             </div>
                         </div>
                     </div>
+                    @endif
                 @empty
-                    <div class="col-12 text-center">
-                        <p>No upcoming events at the moment.</p>
-                    </div>
-                @endforelse
-            </div>
-        </div>
-    </div>
-    <!-- Events End-->
-
-
-    <!-- Blog Start-->
-    <div class="container-fluid blog py-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center" data-aos="fade-up" data-aos-duration="1000" style="max-width: 600px;">
-                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">Latest News & Blog</h4>
-                <h1 class="mb-5 display-3">Read Our Latest News & Blog</h1>
-            </div>
-            <div class="row g-5 justify-content-center">
-                @forelse($recentBlogs as $index => $blog)
-                    <div class="col-md-6 col-lg-6 col-xl-4" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}" data-aos-duration="1000">
-                        <div class="blog-item rounded-bottom">
-                            <div class="blog-img overflow-hidden position-relative img-border-radius">
-                                <img src="{{ $blog->featured_image  ?? asset("img/default-blog.webp") }}" class="img-fluid w-100" alt="{{ $blog->title }}" style="height: 250px; object-fit: cover;" loading="lazy">
-                            </div>
-                            <div class="d-flex justify-content-between px-4 py-3 bg-light border-bottom border-primary blog-date-comments">
-                                <small class="text-dark"><i class="fas fa-calendar me-1 text-dark"></i> {{ $blog->published_at ? $blog->published_at->format('d M Y') : $blog->created_at->format('d M Y') }}</small>
-                                <small class="text-dark"><i class="fas fa-comment-alt me-1 text-dark"></i> Comments ({{ $blog->comments_count ?? 0 }})</small>
-                            </div>
-                            <div class="blog-content d-flex align-items-center px-4 py-3 bg-light">
-                                <div class="overflow-hidden rounded-circle rounded-top border border-primary">
-                                    <img src="{{ $blog->author_image ?? asset("img/admin-profile.avif") }}" class="img-fluid rounded-circle p-2 rounded-top" alt="{{ $blog->author_display_name }}" style="width: 70px; height: 70px; border-style: dotted; border-color: var(--bs-primary) !important;" loading="lazy">
-                                </div>
-                                <div class="ms-3">
-                                    <h6 class="text-primary">{{ $blog->author_display_name }}</h6>
-                                    <p class="text-muted mb-0">{{ $blog->category ?? 'Blog Post' }}</p>
-                                </div>
-                            </div>
-                            <div class="px-4 pb-4 bg-light rounded-bottom">
-                                <div class="blog-text-inner">
-                                    <a href="{{ route('blog.show', $blog->slug) }}" class="h4">{{ $blog->title }}</a>
-                                    <p class="mt-3 mb-4">{{ $blog->excerpt ?? Str::limit(strip_tags($blog->content), 100) }}</p>
-                                </div>
-                                <div class="text-center">
-                                    <a href="{{ route('blog.show', $blog->slug) }}" class="btn btn-primary text-white px-4 py-2 mb-3 btn-border-radius">Read More <i class="fas fa-arrow-right ms-2"></i></a>
-                                </div>
-                            </div>
+                <div class="col-xl-6 col-lg-6 col-md-7">
+                    <div class="news-small-items mb-24 wow fadeInUp" data-wow-delay=".4s">
+                        <div class="news-thumb">
+                            <img src="{{ asset('img/ablog/blog-small1.png') }}" alt="img">
+                        </div>
+                        <div class="news-content">
+                            <ul>
+                                <li><i class="fa-solid fa-calendar-days"></i> October 19, 2024</li>
+                                <li><i class="fa-regular fa-user"></i> By admin</li>
+                            </ul>
+                            <h4><a href="#">Empowering Children Through Education</a></h4>
+                            <a href="#" class="readmore d-flex align-items-center gap-2">
+                                Read More <span class="arrows mt-1"><i class="fa-solid fa-arrow-right"></i></span>
+                            </a>
                         </div>
                     </div>
-                @empty
-                    <div class="col-12 text-center">
-                        <p>No blog posts available at the moment.</p>
+                    <div class="news-small-items wow fadeInUp" data-wow-delay=".6s">
+                        <div class="news-thumb">
+                            <img src="{{ asset('img/ablog/blog-small2.png') }}" alt="img">
+                        </div>
+                        <div class="news-content">
+                            <ul>
+                                <li><i class="fa-solid fa-calendar-days"></i> October 19, 2024</li>
+                                <li><i class="fa-regular fa-user"></i> By admin</li>
+                            </ul>
+                            <h4><a href="#">Joyful Journeys in Childcare and Education</a></h4>
+                            <a href="#" class="readmore d-flex align-items-center gap-2">
+                                Read More <span class="arrows mt-1"><i class="fa-solid fa-arrow-right"></i></span>
+                            </a>
+                        </div>
                     </div>
-                @endforelse
-            </div>
-            
-            @if($recentBlogs->count() > 0)
-                <div class="text-center mt-5 wow fadeIn" data-wow-delay="0.5s">
-                    <a href="{{ route('blog.index') }}" class="btn btn-primary btn-lg px-5 py-3 btn-border-radius">
-                        View More Blogs <i class="fas fa-arrow-right ms-2"></i>
-                    </a>
                 </div>
-            @endif
-        </div>
-    </div>
-    <!-- Blog End-->
-
-
-    <!-- Team Start-->
-    <div class="container-fluid team py-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">Our Team</h4>
-                <h1 class="mb-5 display-3">Meet With Our Expert Teacher</h1>
-            </div>
-            <div class="row g-5 justify-content-center">
-                @forelse($teamMembers as $index => $member)
-                    <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="{{ 0.1 + ($index * 0.2) }}s">
-                        <div class="team-item border border-primary img-border-radius overflow-hidden">
-                            <div class="team-img">
-                                <img src="{{ $member->image ?? 'img/team-1.jpg' }}" alt="{{ $member->name }}">
-                            </div>
-                            <div class="team-icon d-flex align-items-center justify-content-center">
-                                <a class="share btn btn-primary btn-md-square text-white rounded-circle me-3" href=""><i class="fas fa-share-alt"></i></a>
-                                @if($member->facebook_url)
-                                    <a class="share-link btn btn-primary btn-md-square text-white rounded-circle me-3" href="{{ $member->facebook_url }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                @endif
-                                @if($member->twitter_url)
-                                    <a class="share-link btn btn-primary btn-md-square text-white rounded-circle me-3" href="{{ $member->twitter_url }}" target="_blank"><i class="fab fa-twitter"></i></a>
-                                @endif
-                                @if($member->instagram_url)
-                                    <a class="share-link btn btn-primary btn-md-square text-white rounded-circle" href="{{ $member->instagram_url }}" target="_blank"><i class="fab fa-instagram"></i></a>
-                                @endif
-                                @if($member->linkedin_url)
-                                    <a class="share-link btn btn-primary btn-md-square text-white rounded-circle ms-3" href="{{ $member->linkedin_url }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                                @endif
-                            </div>
-                            <div class="team-content text-center py-3">
-                                <h4 class="text-primary">{{ $member->name }}</h4>
-                                <p class="text-muted mb-2">{{ $member->position }}</p>
-                                @if($member->bio)
-                                    <p class="text-muted small px-3">{{ Str::limit($member->bio, 80) }}</p>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                @empty
-                    <div class="col-md-6 col-lg-4 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="team-item border border-primary img-border-radius overflow-hidden">
-                            <div class="team-img">
-                                <img src="img/team-1.jpg" alt="Team Member">
-                            </div>
-                            <div class="team-icon d-flex align-items-center justify-content-center">
-                                <a class="share btn btn-primary btn-md-square text-white rounded-circle me-3" href=""><i class="fas fa-share-alt"></i></a>
-                            </div>
-                            <div class="team-content text-center py-3">
-                                <h4 class="text-primary">Our Team</h4>
-                                <p class="text-muted mb-2">Coming Soon</p>
-                            </div>
-                        </div>
-                    </div>
                 @endforelse
             </div>
         </div>
-    </div>
-    <!-- Team End-->
+    </section>
 
-
-    <!-- Testimonial Start -->
-    <div class="container-fluid testimonial py-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">Our Testimonials</h4>
-                <h1 class="mb-5 display-3">Parents Say About Us</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay="0.3s">
-                @forelse($testimonials as $testimonial)
-                    <div class="testimonial-item img-border-radius bg-light border border-primary p-4">
-                        <div class="p-4 position-relative">
-                            <i class="fa fa-quote-right fa-2x text-primary position-absolute" style="top: 15px; right: 15px;"></i>
-                            <div class="d-flex align-items-center">
-                                <div class="border border-primary bg-white rounded-circle">
-                                    <img src="{{ asset('storage/' . $testimonial->client_image) ?? asset('img/testimonial-2.jpg') }}" class="rounded-circle p-2" style="width: 80px; height: 80px; border-style: dotted; border-color: var(--bs-primary);" alt="{{ $testimonial->parent_name }}">
-                                </div>
-                                <div class="ms-4">
-                                    <h4 class="text-dark">{{ $testimonial->parent_name }}</h4>
-                                    <p class="m-0 pb-3">{{ $testimonial->relation ?? 'Parent' }}</p>
-                                    <div class="d-flex pe-5">
-                                        @for($i = 1; $i <= 5; $i++)
-                                            <i class="fas fa-star {{ $i <= $testimonial->rating ? 'text-primary' : 'text-secondary' }}"></i>
-                                        @endfor
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="border-top border-primary mt-4 pt-3">
-                                <p class="mb-0">{{ $testimonial->message }}</p>
-                            </div>
+    <!--<< Newsletter Section Start >>-->
+    <section class="inspair-section position-relative overflow-hidden">
+        <div class="container">
+            <div class="row flex-row-reverse g-4 align-items-end justify-content-between">
+                <div class="col-lg-5 col-md-6 col-sm-7">
+                    <div class="inspair-content">
+                        <div class="section-title mb-40">
+                            <span class="sub-title wow fadeInUp black">Get Connected</span>
+                            <h3 class="m-title wow fadeInUp black" data-wow-delay=".3s">
+                                Education That Sparks Imagination & Nurtures Curiosity
+                            </h3>
+                        </div>
+                        <form action="{{ route('contact') }}" method="GET" class="footer-form wow fadeInUp" data-wow-delay=".4s">
+                            <input type="text" name="email" placeholder="Enter Your Email">
+                            <button type="submit" class="white d-flex align-content-center gap-2">
+                                Submit
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-5">
+                    <div class="inspainr-thumb-box">
+                        <div class="inspair-thumb">
+                            <img src="{{ asset('img/ainspair/inspair-thumb.png') }}" alt="img">
                         </div>
                     </div>
-                @empty
-                    <div class="testimonial-item img-border-radius bg-light border border-primary p-4">
-                        <div class="p-4 position-relative text-center">
-                            <p class="mb-0">No testimonials available at the moment.</p>
-                        </div>
-                    </div>
-                @endforelse
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 @endsection

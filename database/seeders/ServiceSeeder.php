@@ -12,62 +12,57 @@ class ServiceSeeder extends Seeder
      */
     public function run(): void
     {
+        // Clear existing services
+        Service::truncate();
+
         $services = [
             [
-                'title' => 'Infant Care',
-                'description' => 'Our infant care program provides a nurturing, safe environment for babies aged 6 weeks to 18 months. We focus on building secure attachments, supporting developmental milestones, and creating a home-like atmosphere where your little one can thrive.',
+                'title' => 'Child Day Care',
+                'description' => 'Active supervision and a good balance of play, learning, and rest. We provide a warm and nurturing environment for children aged 3 months to 5 years.',
+                'full_description' => 'Our child day care service provides active supervision and a good balance of play, learning, and rest. We create a warm and nurturing environment especially for children aged 3 months to 5 years. Our trained female staff with up to 6 years of experience ensures every child feels safe, loved, and engaged throughout the day. We follow a gentle, no-punishment approach, guiding children with patience, respect, and love.',
                 'icon' => 'fas fa-baby',
                 'is_active' => true,
                 'order' => 1,
             ],
             [
-                'title' => 'Toddler Programs',
-                'description' => 'Our toddler program (18 months to 3 years) encourages exploration, independence, and social-emotional growth. Through play-based learning, language development activities, and structured routines, we help toddlers develop confidence and curiosity.',
-                'icon' => 'fas fa-child',
+                'title' => 'Early Learning',
+                'description' => 'We build early literacy and numeracy skills through play, songs, games, storytelling, and problem-solving, creating a strong base for lifelong learning.',
+                'full_description' => 'Our early learning program builds foundational literacy and numeracy skills through play, songs, games, storytelling, and problem-solving activities. We believe in helping children develop skills at their own pace through step-by-step guidance. Our approach creates a strong base for lifelong learning, preparing children for success in school and beyond.',
+                'icon' => 'fas fa-book-reader',
                 'is_active' => true,
                 'order' => 2,
             ],
             [
-                'title' => 'Preschool Education',
-                'description' => 'Our preschool program (3-5 years) prepares children for kindergarten through hands-on learning experiences. We focus on literacy, numeracy, creative expression, and social skills in a fun, engaging environment that nurtures a love for learning.',
-                'icon' => 'fas fa-graduation-cap',
+                'title' => 'Nutrition & Health',
+                'description' => 'We offer healthy meals and clean drinking water for all children, collaborating with health authorities for vaccination, vitamin A supplementation, and deworming.',
+                'full_description' => 'We offer healthy meals and clean drinking water for all children. We collaborate with parents and health authorities to ensure children benefit from essential health services including vaccination, vitamin A supplementation, and deworming. Sick children are referred to approved health facilities and only return when fully fit.',
+                'icon' => 'fas fa-heartbeat',
                 'is_active' => true,
                 'order' => 3,
             ],
             [
-                'title' => 'After School Care',
-                'description' => 'Our after school program provides a safe, enriching environment for school-aged children. We offer homework assistance, recreational activities, healthy snacks, and opportunities for creative play and social interaction with peers.',
-                'icon' => 'fas fa-school',
+                'title' => 'Parent Support',
+                'description' => 'We build parents skills on child nutrition, health, development, and positive parenting through mini workshops and seminars.',
+                'full_description' => 'Our parent support program builds parents skills on child nutrition, health, development, and positive parenting through mini workshops and seminars. We believe in strong collaboration with parents and our community for lasting impact.',
+                'icon' => 'fas fa-hands-helping',
                 'is_active' => true,
                 'order' => 4,
             ],
             [
-                'title' => 'Meal & Nutrition',
-                'description' => 'We provide nutritious, well-balanced meals and snacks prepared fresh daily. Our menu accommodates dietary restrictions and allergies, ensuring every child receives healthy, delicious food that supports their growth and development.',
-                'icon' => 'fas fa-utensils',
+                'title' => 'Birthday Celebrations',
+                'description' => 'Monthly celebrations that help children feel loved and valued. We create special moments for every child.',
+                'full_description' => 'Our monthly birthday celebrations help children feel loved and valued. We create joyful moments where children can celebrate their special day with friends and caregivers.',
+                'icon' => 'fas fa-birthday-cake',
                 'is_active' => true,
                 'order' => 5,
             ],
             [
-                'title' => 'Learning Activities',
-                'description' => 'Our comprehensive curriculum includes age-appropriate activities: arts & crafts, music & movement, outdoor play, STEM activities, literacy games, and more. Each activity is designed to support holistic child development.',
-                'icon' => 'fas fa-palette',
+                'title' => 'Special Events',
+                'description' => 'Joyful annual events like our Christmas Party with songs, games, dances, and gifts shared with families and community.',
+                'full_description' => 'Our special events, including our annual Christmas Party, create joyful shared moments with families and our community. These events feature songs, games, dances, and gifts.',
+                'icon' => 'fas fa-gift',
                 'is_active' => true,
                 'order' => 6,
-            ],
-            [
-                'title' => 'Transportation',
-                'description' => 'We offer safe and reliable transportation services for school pick-up and drop-off. Our experienced drivers and well-maintained vehicles ensure your child travels safely to and from our center.',
-                'icon' => 'fas fa-bus',
-                'is_active' => true,
-                'order' => 7,
-            ],
-            [
-                'title' => 'Parent Partnership',
-                'description' => 'We believe in strong parent partnerships. Through regular communication, parent-teacher conferences, family events, and daily updates, we keep you connected to your child\'s progress and create a true community of care.',
-                'icon' => 'fas fa-hands-helping',
-                'is_active' => true,
-                'order' => 8,
             ],
         ];
 

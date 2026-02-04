@@ -65,7 +65,11 @@ class Program extends Model
      */
     public function getFormattedPriceAttribute(): string
     {
-        return $this->currency . number_format($this->price, 2);
+        // FCFA doesn't use decimal places
+        if ($this->currency === 'FCFA') {
+            return number_format($this->price, 0, ',', ' ') . ' FCFA';
+        }
+        return $this->currency . ' ' . number_format($this->price, 2);
     }
 
     /**

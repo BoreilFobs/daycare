@@ -175,6 +175,7 @@
                         <select class="form-select @error('currency') is-invalid @enderror" 
                                 id="currency" 
                                 name="currency">
+                            <option value="FCFA" {{ old('currency', 'FCFA') == 'FCFA' ? 'selected' : '' }}>FCFA (XAF)</option>
                             <option value="USD" {{ old('currency') == 'USD' ? 'selected' : '' }}>USD ($)</option>
                             <option value="EUR" {{ old('currency') == 'EUR' ? 'selected' : '' }}>EUR (€)</option>
                             <option value="GBP" {{ old('currency') == 'GBP' ? 'selected' : '' }}>GBP (£)</option>

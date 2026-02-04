@@ -19,6 +19,11 @@ class BlogController extends Controller
             $query->where('category', $request->category);
         }
 
+        // Tag filter
+        if ($request->has('tag') && $request->tag) {
+            $query->where('tags', 'like', '%' . $request->tag . '%');
+        }
+
         // Search filter
         if ($request->has('search') && $request->search) {
             $query->where(function($q) use ($request) {
@@ -28,12 +33,14 @@ class BlogController extends Controller
             });
         }
 
-        $blogPosts = $query->orderBy('published_at', 'desc')->paginate(9);
+        $posts = $query->orderBy('published_at', 'desc')->paginate(9);
 
+        // Get categories with post counts
         $categories = BlogPost::where('is_published', true)
-            ->distinct()
-            ->pluck('category')
-            ->filter();
+            ->selectRaw('category as name, category as slug, count(*) as posts_count')
+            ->whereNotNull('category')
+            ->groupBy('category')
+            ->get();
 
         $recentPosts = BlogPost::where('is_published', true)
             ->where('published_at', '<=', now())
@@ -41,7 +48,24 @@ class BlogController extends Controller
             ->take(5)
             ->get();
 
-        return view('pages.blog', compact('blogPosts', 'categories', 'recentPosts'));
+        // Get unique tags
+        $tags = collect();
+        BlogPost::where('is_published', true)
+            ->whereNotNull('tags')
+            ->pluck('tags')
+            ->each(function($tagString) use ($tags) {
+                if ($tagString) {
+                    $tagArray = is_array($tagString) ? $tagString : explode(',', $tagString);
+                    foreach ($tagArray as $tag) {
+                        $tag = trim($tag);
+                        if ($tag && !$tags->contains('name', $tag)) {
+                            $tags->push((object)['name' => $tag, 'slug' => \Str::slug($tag)]);
+                        }
+                    }
+                }
+            });
+
+        return view('pages.blog', compact('posts', 'categories', 'recentPosts', 'tags'));
     }
 
     public function show($slug)
@@ -54,6 +78,9 @@ class BlogController extends Controller
 
         // Increment views
         $post->increment('views');
+
+        // Get comments
+        $comments = $post->approvedComments ?? collect();
 
         $relatedPosts = BlogPost::where('is_published', true)
             ->where('id', '!=', $post->id)
@@ -68,32 +95,58 @@ class BlogController extends Controller
             ->take(5)
             ->get();
 
-        return view('pages.blog-detail', compact('post', 'relatedPosts', 'recentPosts'));
+        // Get categories with post counts
+        $categories = BlogPost::where('is_published', true)
+            ->selectRaw('category as name, category as slug, count(*) as posts_count')
+            ->whereNotNull('category')
+            ->groupBy('category')
+            ->get();
+
+        // Get unique tags
+        $tags = collect();
+        BlogPost::where('is_published', true)
+            ->whereNotNull('tags')
+            ->pluck('tags')
+            ->each(function($tagString) use ($tags) {
+                if ($tagString) {
+                    $tagArray = is_array($tagString) ? $tagString : explode(',', $tagString);
+                    foreach ($tagArray as $tag) {
+                        $tag = trim($tag);
+                        if ($tag && !$tags->contains('name', $tag)) {
+                            $tags->push((object)['name' => $tag, 'slug' => \Str::slug($tag)]);
+                        }
+                    }
+                }
+            });
+
+        return view('pages.blog-detail', compact('post', 'comments', 'relatedPosts', 'recentPosts', 'categories', 'tags'));
     }
 
     /**
      * Store a new comment for a blog post
      */
-    public function storeComment(Request $request, BlogPost $blog)
+    public function storeComment(Request $request, $postId)
     {
+        $post = BlogPost::findOrFail($postId);
+        
         $validated = $request->validate([
-            'author_name' => 'required|string|max:255',
-            'author_email' => 'required|email|max:255',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
             'content' => 'required|string|max:1000',
         ]);
 
         \App\Models\Comment::create([
-            'blog_post_id' => $blog->id,
-            'name' => $validated['author_name'],
-            'email' => $validated['author_email'],
+            'blog_post_id' => $post->id,
+            'name' => $validated['name'],
+            'email' => $validated['email'],
             'comment' => $validated['content'],
             'ip_address' => $request->ip(),
             'user_agent' => $request->userAgent(),
-            'status' => 'pending', // Comments need approval
+            'status' => 'pending',
         ]);
 
         return redirect()
-            ->route('blog.show', $blog->slug)
+            ->route('blog.show', $post->slug)
             ->with('success', 'Thank you for your comment! It will be published after review.');
     }
 }

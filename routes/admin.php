@@ -57,6 +57,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('programs', ProgramController::class)->parameters([
         'programs' => 'program'
     ]);
+    Route::post('/programs/reorder', [ProgramController::class, 'reorder'])->name('programs.reorder');
     Route::post('/programs/{program}/toggle-featured', [ProgramController::class, 'toggleFeatured'])
         ->name('programs.toggle-featured');
 

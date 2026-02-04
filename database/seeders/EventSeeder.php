@@ -16,136 +16,121 @@ class EventSeeder extends Seeder
         $events = [
             // Upcoming Events
             [
-                'title' => 'Winter Holiday Celebration',
-                'description' => 'Join us for our annual Winter Holiday Celebration! Children will enjoy festive activities, holiday crafts, cookie decorating, and a special visit from Santa. Families are welcome to attend this joyful celebration of the season.',
-                'full_description' => '<p>Our Winter Holiday Celebration is a cherished tradition at ABC Children Centre. This year\'s event will feature:</p>
+                'title' => 'Monthly Birthday Celebrations',
+                'description' => 'Join us for our monthly birthday celebration! We honor all children with birthdays this month with songs, games, and special treats. These celebrations help children feel loved and valued.',
+                'full_description' => '<p>Our monthly birthday celebrations are a cherished tradition at ABC Children Centre Foumbot. Every month, we come together to celebrate all the children who have birthdays.</p>
+                <p><strong>What to expect:</strong></p>
                 <ul>
-                    <li>Holiday crafts and decorations</li>
-                    <li>Cookie decorating station</li>
-                    <li>Hot cocoa and treats</li>
-                    <li>Special visit from Santa Claus</li>
-                    <li>Holiday songs and performances by our children</li>
-                    <li>Photo opportunities with festive backdrops</li>
+                    <li>Birthday songs and dances</li>
+                    <li>Fun games and activities</li>
+                    <li>Special birthday treats</li>
+                    <li>Photo opportunities</li>
+                    <li>Small gifts for birthday children</li>
                 </ul>
-                <p>This is a wonderful opportunity for families to come together and celebrate the season. We look forward to seeing you there!</p>',
+                <p>Parents are welcome to join us for this joyful celebration!</p>',
                 'image' => null,
-                'event_date' => Carbon::now()->addDays(20)->format('Y-m-d'),
+                'event_date' => Carbon::now()->addDays(15)->format('Y-m-d'),
                 'start_time' => '14:00:00',
-                'end_time' => '17:00:00',
-                'location' => 'ABC Children Centre Main Hall, 123 Main Street, Yaoundé, Cameroon',
-                'max_attendees' => 150,
+                'end_time' => '16:00:00',
+                'location' => 'ABC Children Centre, Njingouo Quarter, Foumbot',
+                'max_attendees' => 50,
                 'is_featured' => true,
                 'is_active' => true,
                 'order' => 1,
             ],
             [
-                'title' => 'Parent-Teacher Conference',
-                'description' => 'Schedule your one-on-one meeting with your child\'s teacher to discuss progress, milestones, and development goals. This is a great opportunity to strengthen our partnership in your child\'s education.',
-                'full_description' => '<p>Our Parent-Teacher Conferences provide dedicated time for meaningful conversations about your child\'s development and learning journey.</p>
-                <p><strong>What to Expect:</strong></p>
+                'title' => 'Christmas Party & Family Celebration',
+                'description' => 'Our annual Christmas party brings together children, families, and the community for a joyful celebration with songs, games, dances, and gifts. A highlight of our year!',
+                'full_description' => '<p>ABC Children Centre\'s Christmas Party is a joyful annual event that brings our entire community together.</p>
+                <p><strong>Event Program:</strong></p>
                 <ul>
-                    <li>Review of your child\'s progress and achievements</li>
-                    <li>Discussion of social-emotional development</li>
-                    <li>Learning goals for the upcoming months</li>
-                    <li>Opportunity to ask questions and share concerns</li>
-                    <li>Resources and strategies for supporting learning at home</li>
+                    <li>Christmas songs and carols by the children</li>
+                    <li>Traditional dances and performances</li>
+                    <li>Fun games for children and families</li>
+                    <li>Gift distribution for all children</li>
+                    <li>Festive refreshments</li>
+                    <li>Community fellowship</li>
                 </ul>
-                <p>Conferences are scheduled in 20-minute time slots. Please sign up for your preferred time at the front desk.</p>',
+                <p>This is a wonderful opportunity for families to celebrate together and strengthen community bonds.</p>',
                 'image' => null,
-                'event_date' => Carbon::now()->addDays(35)->format('Y-m-d'),
-                'start_time' => '16:00:00',
-                'end_time' => '19:00:00',
-                'location' => 'Individual Classrooms, ABC Children Centre',
-                'max_attendees' => 100,
-                'is_featured' => false,
+                'event_date' => Carbon::now()->year . '-12-20',
+                'start_time' => '10:00:00',
+                'end_time' => '14:00:00',
+                'location' => 'ABC Children Centre, Njingouo Quarter, Foumbot',
+                'max_attendees' => 150,
+                'is_featured' => true,
                 'is_active' => true,
                 'order' => 2,
             ],
             [
-                'title' => 'Spring Field Trip to Botanical Garden',
-                'description' => 'Preschoolers will explore the Botanical Garden to learn about plants, flowers, and nature. This hands-on outdoor learning experience includes a guided tour and nature scavenger hunt.',
-                'full_description' => '<p>Join us for an exciting outdoor learning adventure at the Botanical Garden!</p>
-                <p><strong>Trip Details:</strong></p>
+                'title' => 'Parent Workshop: Child Nutrition',
+                'description' => 'A practical workshop for parents on child nutrition, healthy feeding practices, and preparing nutritious meals on a budget. Learn how to support your child\'s growth and development.',
+                'full_description' => '<p>Join us for an informative workshop designed to help parents provide optimal nutrition for their children.</p>
+                <p><strong>Topics Covered:</strong></p>
                 <ul>
-                    <li>Guided tour of the garden</li>
-                    <li>Nature scavenger hunt</li>
-                    <li>Plant identification activity</li>
-                    <li>Picnic lunch in the garden</li>
-                    <li>Photo opportunities</li>
+                    <li>Understanding child nutritional needs by age</li>
+                    <li>Preparing balanced meals on a budget</li>
+                    <li>Local nutritious food options</li>
+                    <li>Dealing with picky eaters</li>
+                    <li>Healthy snack ideas</li>
+                    <li>Importance of clean water and hygiene</li>
                 </ul>
-                <p><strong>What to Bring:</strong></p>
-                <ul>
-                    <li>Sun hat and sunscreen</li>
-                    <li>Water bottle</li>
-                    <li>Comfortable walking shoes</li>
-                    <li>Light jacket (weather dependent)</li>
-                </ul>
-                <p>Transportation will be provided. Parent volunteers are welcome!</p>',
+                <p>Refreshments will be provided. All parents and caregivers are welcome!</p>',
                 'image' => null,
-                'event_date' => Carbon::now()->addDays(50)->format('Y-m-d'),
+                'event_date' => Carbon::now()->addDays(30)->format('Y-m-d'),
                 'start_time' => '09:00:00',
-                'end_time' => '14:00:00',
-                'location' => 'Yaoundé Botanical Garden',
-                'max_attendees' => 60,
-                'is_featured' => true,
+                'end_time' => '12:00:00',
+                'location' => 'ABC Children Centre, Njingouo Quarter, Foumbot',
+                'max_attendees' => 50,
+                'is_featured' => false,
                 'is_active' => true,
                 'order' => 3,
             ],
             [
-                'title' => 'Fundraiser Gala Night',
-                'description' => 'Join us for an elegant evening to support our scholarship program. Enjoy dinner, live music, silent auction, and networking with other families who share our commitment to quality early childhood education.',
-                'full_description' => '<p>Our annual Fundraiser Gala is our biggest event of the year, supporting scholarships for families in need.</p>
-                <p><strong>Evening Program:</strong></p>
+                'title' => 'Parent Workshop: Positive Parenting',
+                'description' => 'Learn positive parenting techniques that support your child\'s development without punishment. Discover gentle guidance methods that build trust and cooperation.',
+                'full_description' => '<p>This workshop helps parents develop positive parenting skills aligned with our center\'s approach.</p>
+                <p><strong>What You\'ll Learn:</strong></p>
                 <ul>
-                    <li>Cocktail reception (6:00 PM)</li>
-                    <li>Welcome remarks and program overview</li>
-                    <li>Three-course dinner</li>
-                    <li>Live music performance</li>
-                    <li>Silent auction featuring local art and experiences</li>
-                    <li>Testimonials from scholarship families</li>
+                    <li>Understanding child development stages</li>
+                    <li>Effective communication with young children</li>
+                    <li>Alternatives to punishment</li>
+                    <li>Setting healthy boundaries with love</li>
+                    <li>Building your child\'s confidence</li>
+                    <li>Managing tantrums and difficult behaviors</li>
                 </ul>
-                <p><strong>Dress Code:</strong> Semi-formal / Cocktail attire</p>
-                <p>Tickets are $75 per person or $140 for couples. All proceeds support our scholarship fund.</p>',
+                <p>At ABC Centre, we believe in guiding children with patience, respect, and love - and we want to share these techniques with parents!</p>',
                 'image' => null,
-                'event_date' => Carbon::now()->addDays(65)->format('Y-m-d'),
-                'start_time' => '18:00:00',
-                'end_time' => '22:00:00',
-                'location' => 'Grand Hotel Yaoundé, Avenue de l\'Indépendance',
-                'max_attendees' => 200,
-                'price' => 75.00,
+                'event_date' => Carbon::now()->addDays(45)->format('Y-m-d'),
+                'start_time' => '14:00:00',
+                'end_time' => '17:00:00',
+                'location' => 'ABC Children Centre, Njingouo Quarter, Foumbot',
+                'max_attendees' => 50,
                 'is_featured' => true,
                 'is_active' => true,
                 'order' => 4,
             ],
             [
-                'title' => 'Summer Camp Registration Open',
-                'description' => 'Registration is now open for our exciting Summer Camp program! Featuring themed weeks of fun activities, outdoor adventures, creative arts, sports, and STEM projects for ages 3-12.',
-                'full_description' => '<p>Get ready for an amazing summer of learning and fun!</p>
-                <p><strong>Summer Camp Highlights:</strong></p>
+                'title' => 'Community Health Day',
+                'description' => 'In partnership with local health authorities, we\'re hosting a health day for children. Services include vaccination, vitamin A supplementation, deworming, and health checkups.',
+                'full_description' => '<p>ABC Children Centre collaborates with health authorities to ensure all children benefit from essential health services.</p>
+                <p><strong>Services Available:</strong></p>
                 <ul>
-                    <li>Weekly themes (Space Explorers, Ocean Adventures, Art Studio, Sports Week, etc.)</li>
-                    <li>Daily outdoor activities and water play</li>
-                    <li>Arts & crafts projects</li>
-                    <li>STEM activities and experiments</li>
-                    <li>Sports and team games</li>
-                    <li>Special weekly field trips</li>
-                    <li>Nutritious snacks and lunch included</li>
+                    <li>Routine vaccinations</li>
+                    <li>Vitamin A supplementation</li>
+                    <li>Deworming medication</li>
+                    <li>Growth monitoring</li>
+                    <li>Basic health checkups</li>
+                    <li>Health education for parents</li>
                 </ul>
-                <p><strong>Session Dates:</strong></p>
-                <ul>
-                    <li>Session 1: June 15 - June 26</li>
-                    <li>Session 2: June 29 - July 10</li>
-                    <li>Session 3: July 13 - July 24</li>
-                    <li>Session 4: July 27 - August 7</li>
-                </ul>
-                <p>Early bird discount available until April 30!</p>',
+                <p>This event is free and open to all children in our community, not just enrolled families.</p>',
                 'image' => null,
-                'event_date' => Carbon::now()->addDays(80)->format('Y-m-d'),
+                'event_date' => Carbon::now()->addDays(60)->format('Y-m-d'),
                 'start_time' => '08:00:00',
-                'end_time' => '16:00:00',
-                'location' => 'ABC Children Centre',
-                'max_attendees' => 120,
-                'is_featured' => false,
+                'end_time' => '13:00:00',
+                'location' => 'ABC Children Centre, Njingouo Quarter, Foumbot',
+                'max_attendees' => 200,
+                'is_featured' => true,
                 'is_active' => true,
                 'order' => 5,
             ],

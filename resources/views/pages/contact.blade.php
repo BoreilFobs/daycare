@@ -1,94 +1,231 @@
 @extends('layouts.web')
+@section('title', __('site.contact.title'))
 @section('content')
-    <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 data-aos="fade-down" data-aos-duration="1000">
-        <div class="container text-center py-5">
-            <h1 class="display-2 text-white mb-4">Contact Us</h1>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item text-white" aria-current="page">Contact Us</li>
-                </ol>
-            </nav>
+    <!-- Breadcrumnd Banner Start -->
+    <section class="breadcrumnd-banner cmn-bg overflow-hidden">
+        <div class="container">
+            <div class="breadcrumnd-wrapper">
+                <div class="breadcrumnd-content">
+                    <h1 class="black mb-lg-4 mb-md-3 mb-2">
+                        {{ __('site.contact.title') }}
+                    </h1>
+                    <ul class="bread-list d-flex align-items-center gap-lg-4 gap-md-3 gap-2">
+                        <li>
+                            <a href="{{ route('home') }}">
+                                {{ __('site.nav.home') }}
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </li>
+                        <li>
+                            {{ __('site.contact.title') }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="breadcrumnd-thumb position-relative">
+                    <img src="{{ asset('img/abanner/bread-thumb.png') }}" alt="img" class="mimg">
+                    <img src="{{ asset('img/abanner/bread-child.png') }}" alt="img" class="bread-child">
+                    <img src="{{ asset('img/abanner/bread-cat.png') }}" alt="img" class="bread-cat">
+                </div>
+            </div>
         </div>
-    </div>
-    <!-- Page Header End -->
+    </section>
 
-
-    <!-- Contact Start -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="p-5 bg-light rounded">
-                <div class="mx-auto text-center data-aos="fade-down" data-aos-duration="1000" style="max-width: 700px;">
-                    <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">Contact Us</h4>
-                    <h1 class="display-3 mb-4">Contact For Any Query</h1>
-                    <p class="mb-4">Let's walk this journey hand in hand! Whether you have questions about our programs, want to schedule a visit, or simply want to learn more about how we can support your child's development, we're here to help.</p>
-                    <p class="mb-5">As you reach out, you become part of the ABC story — a story of togetherness, hope, and love. We look forward to welcoming you to our family of strong beginnings!</p>
-                </div>
-                <div class="row g-5 mb-5">
-                    <div class="col-lg-4 data-aos="fade-down" data-aos-duration="1000">
-                        <div class="d-flex w-100 border border-primary p-4 rounded bg-white">
-                            <i class="fas fa-map-marker-alt fa-2x text-primary me-4"></i>
-                            <div class="">
-                                <h4>Address</h4>
-                                <p class="mb-2">{{ $siteSettings['contact_address'] ?? '123 Main Street, Downtown, Douala, Cameroon' }}</p>
-                            </div>
+    <!-- Contact Info Start -->
+    <section class="contact-infosectionv1 space-top overflow-hidden space-bottom">
+        <div class="container">
+            <div class="row g-lg-4 g-3 justify-content-center">
+                <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="contact-call-info">
+                        <div class="icon d-center">
+                            <i class="fa-solid fa-location-dot"></i>
                         </div>
-                    </div>
-                    <div class="col-lg-4 data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
-                        <div class="d-flex w-100 border border-primary p-4 rounded bg-white">
-                            <i class="fas fa-envelope fa-2x text-primary me-4"></i>
-                            <div class="">
-                                <h4>Mail Us</h4>
-                                <p class="mb-2">{{ $siteSettings['contact_email'] ?? 'info@abcchildrencentre.com' }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
-                        <div class="d-flex w-100 border border-primary p-4 rounded bg-white">
-                            <i class="fa fa-phone-alt fa-2x text-primary me-4"></i>
-                            <div class="">
-                                <h4>Telephone</h4>
-                                <p class="mb-2">{{ $siteSettings['contact_phone'] ?? '+237 650 123 456' }}</p>
-                            </div>
-                        </div>
+                        <h5 class="black">
+                            {{ __('site.contact.location') }}
+                        </h5>
+                        <a href="#" class="pra">
+                            {{ $contactData->address ?? __('site.contact.address') }}
+                        </a>
                     </div>
                 </div>
-                <div class="row g-5">
-                    <div class="col-lg-6 data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
-                        @if(session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-                        @if($errors->any())
-                            <div class="alert alert-danger">
-                                <ul class="mb-0">
-                                    @foreach($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        <form action="{{ route('contact.store') }}" method="POST">
-                            @csrf
-                            <input type="text" name="name" class="w-100 form-control py-3 mb-5 border-primary" placeholder="Your Name" value="{{ old('name') }}" required>
-                            <input type="email" name="email" class="w-100 form-control py-3 mb-5 border-primary" placeholder="Enter Your Email" value="{{ old('email') }}" required>
-                            <input type="text" name="subject" class="w-100 form-control py-3 mb-5 border-primary" placeholder="Subject" value="{{ old('subject') }}" required>
-                            <textarea name="message" class="w-100 form-control mb-5 border-primary" rows="8" cols="10" placeholder="Your Message" required>{{ old('message') }}</textarea>
-                            <button class="w-100 btn btn-primary form-control py-3 border-primary text-white bg-primary" type="submit">Submit</button>
-                        </form>
+                <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".4s">
+                    <div class="contact-call-info">
+                        <div class="icon d-center">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <h5 class="black">
+                            {{ __('site.contact.email') }}
+                        </h5>
+                        <a href="mailto:{{ $contactData->email ?? 'abccentre4kids@gmail.com' }}" class="pra">
+                            {{ $contactData->email ?? 'abccentre4kids@gmail.com' }}
+                        </a>
                     </div>
-                    <div class="col-lg-6 data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
-                        <div class="border border-primary h-100 rounded">
-                            <iframe src="{{ $siteSettings['contact_map_url'] ?? 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613507864!3d-6.194741295493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e67356080477!2sPT%20Kulkul%20Teknologi%20Internasional!5e0!3m2!1sen!2sid!4v1601138221085!5m2!1sen!2sid' }}" 
-                            class="w-100 h-100 rounded" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".5s">
+                    <div class="contact-call-info">
+                        <div class="icon d-center">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <h5 class="black">
+                            {{ __('site.contact.phone') }}
+                        </h5>
+                        <a href="tel:{{ $contactData->phone ?? '+237678165580' }}" class="pra">
+                            {{ $contactData->phone ?? '+237 678 165 580' }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Map -->
+    <section class="google-map">
+        <iframe
+            src="{{ $contactData->map_embed ?? 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.1661744810296!2d10.6275!3d5.5175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMzEnMDMuMCJOIDEwwrAzNyc0MC4wIkU!5e0!3m2!1sen!2scm!4v1717004161632!5m2!1sen!2scm' }}"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-sectionv02 section-padding">
+        <div class="container">
+            <div class="section-title text-center mb-60">
+                <span class="sub-title wow fadeInUp p5-clr">
+                    {{ __('site.contact.subtitle') }}
+                </span>
+                <h3 class="m-title wow fadeInUp black" data-wow-delay=".3s">
+                    {{ __('site.contact.send_message') }}
+                </h3>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6 col-md-6">
+                    <div class="contact-thumbv02 position-relative">
+                        <div class="thumb-smal">
+                            <img src="{{ asset('img/contact/contact-s1.png') }}" alt="img">
+                        </div>
+                        <div class="thumbb">
+                            <img src="{{ asset('img/contact/contact-b1.png') }}" alt="img">
+                        </div>
+                        <div class="badg-count">
+                            <img src="{{ asset('img/contact/contact-badge.png') }}" alt="img">
+                            <div class="cont">
+                                <h4>
+                                    <span class="count">{{ $stats['projects'] ?? '2' }}</span>k+
+                                </h4>
+                                <span class="subti">
+                                    Happy Families
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="contact-contentv2">
+                        <div class="write-comment">
+                            <h4 class="black fw-semibold mb-24">
+                                {{ __('site.contact.send_message') }}
+                            </h4>
+                            @if(session('success'))
+                                <div class="alert alert-success mb-3">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            <form action="{{ route('contact.store') }}" method="POST" class="row g-lg-4 g-3">
+                                @csrf
+                                <div class="col-lg-6">
+                                    <div class="comment-grp">
+                                        <input type="text" name="name" placeholder="{{ __('site.contact.your_name') }}" required value="{{ old('name') }}">
+                                        <i class="fa-solid fa-user"></i>
+                                    </div>
+                                    @error('name')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="comment-grp">
+                                        <input type="email" name="email" placeholder="{{ __('site.contact.your_email') }}" required value="{{ old('email') }}">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+                                    @error('email')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="comment-grp">
+                                        <input type="tel" name="phone" placeholder="{{ __('site.contact.phone') }}" value="{{ old('phone') }}">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </div>
+                                    @error('phone')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="comment-grp">
+                                        <input type="text" name="subject" placeholder="{{ __('site.contact.subject') }}" value="{{ old('subject') }}">
+                                        <i class="fa-solid fa-tag"></i>
+                                    </div>
+                                    @error('subject')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-lg-12 mb-xl-3">
+                                    <div class="comment-grp text-aras position-relative">
+                                        <textarea name="message" rows="5" placeholder="{{ __('site.contact.message') }}" required>{{ old('message') }}</textarea>
+                                        <span class="enves">
+                                            <i class="fa-solid fa-message"></i>
+                                        </span>
+                                    </div>
+                                    @error('message')
+                                        <span class="text-danger small">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="comment-btn">
+                                    <button type="submit" class="theme-btn w-100 round100 p2-bg py-3 px-xl-5 px-4">
+                                        <span class="white fw-medium">
+                                            {{ __('site.contact.send') }}
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Contact End -->
+    </section>
+
+    <!-- Stay Success Section Start -->
+    <section class="stay-section pt-50 pb-50 cmn-bg overflow-hidden position-relative">
+        <div class="container">
+            <div class="row justify-content-between align-items-center g-4">
+                <div class="col-lg-5 col-md-6 col-sm-7">
+                    <div class="stay-content">
+                        <div class="section-title">
+                            <span class="sub-title wow fadeInUp black">
+                                {{ __('site.support.subtitle') }}
+                            </span>
+                            <h3 class="m-title wow fadeInUp black mb-sm-3 mb-2" data-wow-delay=".3s">
+                                {{ __('site.support.title') }}
+                            </h3>
+                            <p class="mb-24 pra wow fadeInUp" data-wow-delay=".4s">
+                                {{ __('site.support.description') }}
+                            </p>
+                            <a href="{{ route('about') }}" class="theme-btn round100 p2-bg py-3">
+                                <span class="white fw-medium">
+                                    {{ __('site.learn_more') }}
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 me-xl-5 col-sm-5">
+                    <div class="stay-thumb w-100">
+                        <img src="{{ asset('img/aservices/stay-thumb.png') }}" alt="img" class="w-100">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Element-->
+        <img src="{{ asset('img/aservices/stay-shape.png') }}" alt="img" class="stay-element">
+    </section>
 @endsection

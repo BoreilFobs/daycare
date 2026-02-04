@@ -13,11 +13,14 @@ class TestimonialSeeder extends Seeder
      */
     public function run(): void
     {
+        // Clear existing testimonials
+        Testimonial::truncate();
+        
         $testimonials = [
             [
-                'client_name' => 'Amara Okafor',
-                'client_position' => 'Parent of Chioma, Age 4',
-                'message' => 'ABC Children Centre has been an absolute blessing for our family! Chioma has blossomed socially and academically since starting here. The teachers are incredibly caring and professional, and they truly understand early childhood development. We couldn\'t be happier!',
+                'client_name' => 'Internally Displaced Mother',
+                'client_position' => 'Parent',
+                'message' => 'When we had nowhere to turn, ABC Centre welcomed us with love. Today, my child is safe and learning well, and I am gradually rebuilding my business.',
                 'rating' => 5,
                 'client_image' => null,
                 'is_active' => true,
@@ -25,9 +28,9 @@ class TestimonialSeeder extends Seeder
                 'order' => 1,
             ],
             [
-                'client_name' => 'Kwame Mensah',
-                'client_position' => 'Parent of Ama & Kofi, Ages 2 & 5',
-                'message' => 'As a parent of two children at ABC, I can confidently say this is the best daycare in the area. The staff goes above and beyond to create a nurturing environment. My kids actually get excited to go to school every morning! The communication with parents is excellent too.',
+                'client_name' => 'Student Mother',
+                'client_position' => 'Parent',
+                'message' => 'ABC Centre gave me the chance to continue schooling while my child was cared for with love. Today, I am learning, and my child is growing happily.',
                 'rating' => 5,
                 'client_image' => null,
                 'is_active' => true,
@@ -35,14 +38,24 @@ class TestimonialSeeder extends Seeder
                 'order' => 2,
             ],
             [
-                'client_name' => 'Fatima Diallo',
-                'client_position' => 'Parent of Ibrahim, Age 3',
-                'message' => 'The transition to daycare was smooth thanks to the wonderful teachers at ABC Children Centre. They took the time to understand Ibrahim\'s needs and made him feel comfortable from day one. I love the daily updates and seeing photos of him learning and playing!',
+                'client_name' => 'Working Mother',
+                'client_position' => 'Parent of 2-year-old',
+                'message' => 'The caregivers at ABC Centre treat my daughter like their own child. The nutrition program has helped her grow strong and healthy. I can work peacefully knowing she is in good hands.',
                 'rating' => 5,
                 'client_image' => null,
                 'is_active' => true,
                 'is_featured' => true,
                 'order' => 3,
+            ],
+            [
+                'client_name' => 'Community Leader',
+                'client_position' => 'Njingouo Quarter',
+                'message' => 'ABC Centre has transformed our community. Children who were once idle are now learning and developing. The parent workshops have empowered many families to better care for their children.',
+                'rating' => 5,
+                'client_image' => null,
+                'is_active' => true,
+                'is_featured' => false,
+                'order' => 4,
             ],
         ];
 

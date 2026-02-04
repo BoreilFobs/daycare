@@ -1,73 +1,164 @@
 @extends('layouts.web')
+@section('title', 'Testimonials')
 @section('content')
-     <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 data-aos="fade-down" data-aos-duration="1000">
-        <div class="container text-center py-5">
-            <h1 class="display-2 text-white mb-4">Testimonial</h1>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}" class="text-white">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#" class="text-white">Community</a></li>
-                    <li class="breadcrumb-item text-white" aria-current="page">Testimonials</li>
-                </ol>
-            </nav>
+    <!-- Breadcrumnd Banner Start -->
+    <section class="breadcrumnd-banner cmn-bg overflow-hidden">
+        <div class="container">
+            <div class="breadcrumnd-wrapper">
+                <div class="breadcrumnd-content">
+                    <h1 class="black mb-lg-4 mb-md-3 mb-2">
+                        Testimonials
+                    </h1>
+                    <ul class="bread-list d-flex align-items-center gap-lg-4 gap-md-3 gap-2">
+                        <li>
+                            <a href="{{ route('home') }}">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </li>
+                        <li>
+                            Testimonials
+                        </li>
+                    </ul>
+                </div>
+                <div class="breadcrumnd-thumb position-relative">
+                    <img src="{{ asset('img/abanner/bread-thumb.png') }}" alt="img" class="mimg">
+                    <img src="{{ asset('img/abanner/bread-child.png') }}" alt="img" class="bread-child">
+                    <img src="{{ asset('img/abanner/bread-cat.png') }}" alt="img" class="bread-cat">
+                </div>
+            </div>
         </div>
-    </div>
-    <!-- Page Header End -->
+    </section>
 
-
-    <!-- Testimonial Start -->
-    <div class="container-fluid testimonial py-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center data-aos="fade-down" data-aos-duration="1000" style="max-width: 700px;">
-                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">Our Testimonials</h4>
-                <h1 class="mb-5 display-3">Parents Say About Us</h1>
+    <!-- Testimonials Section Start -->
+    <section class="testimonials-section mt-60 overflow-hidden space-bottom">
+        <div class="container">
+            <div class="section-title text-center mb-50">
+                <span class="sub-title d-block p1-clr mb-15">
+                    Parent Testimonials
+                </span>
+                <h2 class="black fw-medium">
+                    What Parents Say About Us
+                </h2>
             </div>
-            <div class="owl-carousel testimonial-carousel data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
-                @forelse($testimonials as $testimonial)
-                    <div class="testimonial-item img-border-radius bg-light border border-primary p-4">
-                        <div class="p-4 position-relative">
-                            <i class="fa fa-quote-right fa-2x text-primary position-absolute" style="top: 15px; right: 15px;"></i>
-                            <div class="d-flex align-items-center">
-                                <div class="border border-primary bg-white rounded-circle">
-                                    <img src="{{ $testimonial->image_url ? asset('storage/' . $testimonial->image_url) : asset('img/testimonial-2.jpg') }}" class="rounded-circle p-2" style="width: 80px; height: 80px; border-style: dotted; border-color: var(--bs-primary);" alt="{{ $testimonial->parent_name }}" loading="lazy">
+            <div class="row g-4">
+                @forelse($testimonials ?? [] as $testimonial)
+                <div class="col-lg-6">
+                    <div class="testimonial-card p-4 gra-border round10 wow fadeInUp" data-wow-delay=".{{ $loop->iteration }}s">
+                        <div class="d-flex align-items-start gap-4">
+                            <div class="testimonial-avatar">
+                                <img src="{{ $testimonial->image_url ?? asset('img/atestimonial/testimonial-small.png') }}" alt="{{ $testimonial->name }}" class="rounded-circle" width="80" height="80">
+                            </div>
+                            <div class="testimonial-content flex-grow-1">
+                                <div class="rating mb-3">
+                                    @for($i = 1; $i <= 5; $i++)
+                                        @if($i <= ($testimonial->rating ?? 5))
+                                        <i class="fa-solid fa-star text-warning"></i>
+                                        @else
+                                        <i class="fa-regular fa-star text-warning"></i>
+                                        @endif
+                                    @endfor
                                 </div>
-                                <div class="ms-4">
-                                    <h4 class="text-dark">{{ $testimonial->parent_name }}</h4>
-                                    <p class="m-0 pb-3">{{ $testimonial->relation ?? 'Parent' }}</p>
-                                    <div class="d-flex pe-5">
-                                        @for($i = 1; $i <= 5; $i++)
-                                            <i class="fas fa-star {{ $i <= $testimonial->rating ? 'text-primary' : 'text-secondary' }}"></i>
-                                        @endfor
-                                    </div>
+                                <p class="pra mb-4">{{ $testimonial->content }}</p>
+                                <div class="testimonial-author">
+                                    <h5 class="black mb-1">{{ $testimonial->name }}</h5>
+                                    <span class="pra small">{{ $testimonial->role ?? 'Parent' }}</span>
                                 </div>
                             </div>
-                            <div class="border-top border-primary mt-4 pt-3">
-                                <p class="mb-0">{{ $testimonial->message }}</p>
-                            </div>
                         </div>
-                    </div>
-                @empty
-                    <div class="testimonial-item img-border-radius bg-light border border-primary p-4">
-                        <div class="p-4 position-relative text-center">
-                            <p class="mb-0">No testimonials available at the moment.</p>
-                        </div>
-                    </div>
-                @endforelse
-            </div>
-            
-            {{-- Pagination for non-carousel view (optional) --}}
-            @if(isset($testimonials) && method_exists($testimonials, 'hasPages') && $testimonials->hasPages())
-                <div class="row mt-5">
-                    <div class="col-12">
-                        <div class="d-flex justify-content-center">
-                            {{ $testimonials->links() }}
+                        <div class="quote-icon position-absolute">
+                            <i class="fa-solid fa-quote-right p1-clr opacity-25"></i>
                         </div>
                     </div>
                 </div>
+                @empty
+                <div class="col-lg-6">
+                    <div class="testimonial-card p-4 gra-border round10 wow fadeInUp" data-wow-delay=".3s">
+                        <div class="d-flex align-items-start gap-4">
+                            <div class="testimonial-avatar">
+                                <img src="{{ asset('img/atestimonial/testimonial-small.png') }}" alt="Parent" class="rounded-circle" width="80" height="80">
+                            </div>
+                            <div class="testimonial-content flex-grow-1">
+                                <div class="rating mb-3">
+                                    <i class="fa-solid fa-star text-warning"></i>
+                                    <i class="fa-solid fa-star text-warning"></i>
+                                    <i class="fa-solid fa-star text-warning"></i>
+                                    <i class="fa-solid fa-star text-warning"></i>
+                                    <i class="fa-solid fa-star text-warning"></i>
+                                </div>
+                                <p class="pra mb-4">"The care and attention my child receives here is outstanding. The teachers are wonderful and the programs are engaging. I couldn't ask for a better daycare!"</p>
+                                <div class="testimonial-author">
+                                    <h5 class="black mb-1">Jennifer Smith</h5>
+                                    <span class="pra small">Parent</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="testimonial-card p-4 gra-border round10 wow fadeInUp" data-wow-delay=".4s">
+                        <div class="d-flex align-items-start gap-4">
+                            <div class="testimonial-avatar">
+                                <img src="{{ asset('img/atestimonial/testimonial-small.png') }}" alt="Parent" class="rounded-circle" width="80" height="80">
+                            </div>
+                            <div class="testimonial-content flex-grow-1">
+                                <div class="rating mb-3">
+                                    <i class="fa-solid fa-star text-warning"></i>
+                                    <i class="fa-solid fa-star text-warning"></i>
+                                    <i class="fa-solid fa-star text-warning"></i>
+                                    <i class="fa-solid fa-star text-warning"></i>
+                                    <i class="fa-solid fa-star text-warning"></i>
+                                </div>
+                                <p class="pra mb-4">"My son has thrived at this daycare. He's learned so much and has made great friends. The staff truly cares about each child's development."</p>
+                                <div class="testimonial-author">
+                                    <h5 class="black mb-1">Robert Johnson</h5>
+                                    <span class="pra small">Parent</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforelse
+            </div>
+
+            @if(isset($testimonials) && $testimonials->hasPages())
+            <div class="pagination-wrap mt-50 d-flex justify-content-center">
+                {{ $testimonials->links() }}
+            </div>
             @endif
         </div>
-    </div>
-    <!-- Testimonial End -->
+    </section>
 
+    <!-- Stay Section Start -->
+    <section class="stay-section overflow-hidden cmn-bg">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="stay-content py-60">
+                        <span class="sub-title d-block p1-clr mb-15">
+                            Share Your Experience
+                        </span>
+                        <h2 class="black fw-medium mb-4">
+                            We'd Love to Hear From You
+                        </h2>
+                        <p class="pra mb-4">
+                            Your feedback helps us continue to provide the best care and education for every child. Share your experience with us!
+                        </p>
+                        <a href="{{ route('contact') }}" class="theme-btn round100 p2-bg py-3 px-xl-5 px-4">
+                            <span class="white fw-medium">
+                                Contact Us
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="stay-thumb">
+                        <img src="{{ asset('img/ainspair/stay-thumb.png') }}" alt="img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

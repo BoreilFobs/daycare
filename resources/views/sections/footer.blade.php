@@ -1,112 +1,139 @@
-<div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="footer-item">
-                        <h2 class="fw-bold mb-3"><a href="{{ route('home') }}" class="text-decoration-none"><span class="text-primary mb-0">ABC</span><span class="text-secondary"> Children Centre</span></a></h2>
-                        <p class="mb-4">At ABC Children Centre, we believe that every child deserves a joyful beginning — one filled with laughter, love, and learning. Join our growing community dedicated to nurturing little ones for a bright and confident future.</p>
-                        <div class="border border-primary p-3 rounded bg-light">
-                            <h5 class="mb-3">Newsletter</h5>
-                            <p class="small mb-3">Stay connected with updates, tips, and stories from our classrooms.</p>
-                            <div class="position-relative mx-auto border border-primary rounded" style="max-width: 400px;">
-                                <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                                <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2 text-white">SignUp</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="footer-item">
-                        <div class="d-flex flex-column p-4 ps-5 text-dark border border-primary" 
-                        style="border-radius: 50% 20% / 10% 40%;">
-                            <p>Monday: {{ $siteSettings['hours_monday'] ?? '8am to 5pm' }}</p>
-                            <p>Tuesday: {{ $siteSettings['hours_tuesday'] ?? '8am to 5pm' }}</p>
-                            <p>Wednes: {{ $siteSettings['hours_wednesday'] ?? '8am to 5pm' }}</p>
-                            <p>Thursday: {{ $siteSettings['hours_thursday'] ?? '8am to 5pm' }}</p>
-                            <p>Friday: {{ $siteSettings['hours_friday'] ?? '8am to 5pm' }}</p>
-                            <p>Saturday: {{ $siteSettings['hours_saturday'] ?? '8am to 5pm' }}</p>
-                            <p class="mb-0">Sunday: {{ $siteSettings['hours_sunday'] ?? 'Closed' }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="footer-item">
-                        <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">LOCATION</h4>
-                        <div class="d-flex flex-column align-items-start">
-                            <a href="#" class="text-body mb-4"><i class="fa fa-map-marker-alt text-primary me-2"></i> {{ $siteSettings['contact_address'] ?? '104 North tower New York, USA' }}</a>
-                            <a href="tel:{{ str_replace(' ', '', $siteSettings['contact_phone'] ?? '+0123456789') }}" class="text-start rounded-0 text-body mb-4"><i class="fa fa-phone-alt text-primary me-2"></i> {{ $siteSettings['contact_phone'] ?? '(+012) 3456 7890 123' }}</a>
-                            <a href="mailto:{{ $siteSettings['contact_email'] ?? 'example@gmail.com' }}" class="text-start rounded-0 text-body mb-4"><i class="fas fa-envelope text-primary me-2"></i> {{ $siteSettings['contact_email'] ?? 'exampleemail@gmail.com' }}</a>
-                            <a href="#" class="text-start rounded-0 text-body mb-4"><i class="fa fa-clock text-primary me-2"></i> {{ $siteSettings['hours_service'] ?? '26/7 Hours Service' }}</a>
-                            <div class="footer-icon d-flex">
-                                <a class="btn btn-primary btn-sm-square me-3 rounded-circle text-white" href="{{ $siteSettings['social_facebook'] ?? '#' }}"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-primary btn-sm-square me-3 rounded-circle text-white" href="{{ $siteSettings['social_twitter'] ?? '#' }}"><i class="fab fa-twitter"></i></a>
-                                <a href="{{ $siteSettings['social_instagram'] ?? '#' }}" class="btn btn-primary btn-sm-square me-3 rounded-circle text-white"><i class="fab fa-instagram"></i></a>
-                                <a href="{{ $siteSettings['social_linkedin'] ?? '#' }}" class="btn btn-primary btn-sm-square rounded-circle text-white"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="footer-item">
-                        <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">OUR GALLARY</h4>
-                        <div class="row g-3">
-                            <div class="col-4">
-                                <div class="footer-galary-img rounded-circle border border-primary">
-                                    <img src="img/galary-1.jpg" class="img-fluid rounded-circle p-2" alt="">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="footer-galary-img rounded-circle border border-primary">
-                                    <img src="img/galary-2.jpg" class="img-fluid rounded-circle p-2" alt="">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="footer-galary-img rounded-circle border border-primary">
-                                    <img src="img/galary-3.jpg" class="img-fluid rounded-circle p-2" alt="">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="footer-galary-img rounded-circle border border-primary">
-                                    <img src="img/galary-4.jpg" class="img-fluid rounded-circle p-2" alt="">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="footer-galary-img rounded-circle border border-primary">
-                                    <img src="img/galary-5.jpg" class="img-fluid rounded-circle p-2" alt="">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="footer-galary-img rounded-circle border border-primary">
-                                    <img src="img/galary-6.jpg" class="img-fluid rounded-circle p-2" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
-
-
-    <!-- Copyright Start -->
-    <div class="container-fluid copyright bg-dark py-4">
+<!--<< Footer Section Start >>-->
+<footer class="footer-section overflow-hidden position-relative footer-style2 p1-bg">
+    <div class="footer-widgets-wrapper">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <span class="text-light"><a href="{{ route('home') }}"><i class="fas fa-copyright text-light me-2"></i>{{ $siteSettings['site_name'] ?? 'BabyCare' }}</a>, All right reserved.</span>
+            <div class="row g-md-4 g-4 justify-content-between">
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="single-footer-widget">
+                        <div class="widget-heads">
+                            <a href="{{ route('home') }}" class="footer-logo">
+                                <img src="{{ asset('img/logo/logo-light.png') }}" alt="logo-img">
+                            </a>
+                        </div>
+                        <div class="footer-content">
+                            <p class="pre-pragraph">
+                                {{ __('site.footer.description') }}
+                            </p>
+                            <div class="social-wrapper d-flex align-items-center">
+                                <a href="{{ $siteSettings['social_facebook'] ?? '#' }}" class="white"><i class="white fab fa-facebook-f"></i></a>
+                                <a href="{{ $siteSettings['social_twitter'] ?? '#' }}" class="white">
+                                    <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6.55735 5.16157L10.5183 0.65625H9.57971L6.14039 4.56816L3.39341 0.65625H0.225098L4.37906 6.57174L0.225098 11.2963H1.16378L4.79579 7.16516L7.6968 11.2963H10.8651L6.55712 5.16157H6.55735ZM5.2717 6.62386L4.85082 6.03481L1.502 1.34768H2.94375L5.64629 5.13034L6.06717 5.71939L9.58015 10.6363H8.13839L5.2717 6.62409V6.62386Z" fill="white"/>
+                                    </svg>
+                                </a>
+                                <a href="{{ $siteSettings['social_linkedin'] ?? '#' }}" class="white"><i class="white fa-brands fa-linkedin-in"></i></a>
+                                <a href="{{ $siteSettings['social_pinterest'] ?? '#' }}" class="white"><i class="white fa-brands fa-pinterest-p"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6 my-auto text-center text-md-end text-white">
-                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".5s">
+                    <div class="single-footer-widget">
+                        <div class="widget-head">
+                            <h4 class="white">{{ __('site.footer.pages') }}</h4>
+                        </div>
+                        <ul class="list-area">
+                            <li>
+                                <a href="{{ route('about') }}">
+                                    {{ __('site.nav.about') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('services') }}">
+                                    {{ __('site.nav.services') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('blog') }}">
+                                    {{ __('site.nav.blog') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('team') }}">
+                                    {{ __('site.nav.team') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('contact') }}">
+                                    {{ __('site.nav.contact') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".5s">
+                    <div class="single-footer-widget">
+                        <div class="widget-head">
+                            <h4 class="white">{{ __('site.footer.contact_us') }}</h4>
+                        </div>
+                        <ul class="list-area list-contact">
+                            <li>
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span class="lited">
+                                    {{ $siteSettings['contact_address'] ?? __('site.contact.address') }}
+                                </span>
+                            </li>
+                            <li>
+                                <i class="far fa-envelope"></i>
+                                <a href="mailto:{{ $siteSettings['contact_email'] ?? 'abccentre4kids@gmail.com' }}" class="link">{{ $siteSettings['contact_email'] ?? 'abccentre4kids@gmail.com' }}</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-phone"></i>
+                                <a href="tel:{{ $siteSettings['contact_phone'] ?? '+237 678 165 580' }}" class="link">{{ $siteSettings['contact_phone'] ?? '+237 678 165 580' }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".7s">
+                    <div class="single-footer-widget single-footer-form">
+                        <div class="widget-head">
+                            <h4 class="white">{{ __('site.footer.newsletter') }}</h4>
+                        </div>
+                        <p class="white">
+                            {{ __('site.footer.newsletter_text') }}
+                        </p>
+                        <form action="{{ route('contact') }}" method="GET" class="footer-form">
+                            <input type="text" name="email" placeholder="{{ __('site.footer.email_placeholder') }}">
+                            <button type="submit">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Copyright End -->
-
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-wrapper d-md-flex d-grid gap-md-0 gap-2 align-items-center justify-content-md-between justify-content-center text-md-start text-center">
+                <p class="wow fadeInLeft color-2" data-wow-delay=".3s">
+                    &copy; {{ $siteSettings['site_name'] ?? 'ABC Children Centre' }} {{ date('Y') }} | {{ __('site.footer.rights') }}
+                </p>
+                <ul class="footer-menu wow fadeInRight" data-wow-delay=".5s">
+                    <li>
+                        <a href="{{ route('about') }}">
+                            {{ __('site.footer.terms') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('about') }}">
+                            {{ __('site.footer.privacy') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('contact') }}">
+                            {{ __('site.nav.contact') }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <a href="#" id="scrollUp" class="scroll-icon">
+            <i class="far fa-arrow-up"></i>
+        </a>
+    </div>
+    <!-- Element -->
+    <img src="{{ asset('img/footer/f-apple.png') }}" alt="img" class="footer-apple position-absolute">
+    <img src="{{ asset('img/footer/f-cut.png') }}" alt="img" class="footer-cut position-absolute">
+    <!-- Element -->
+</footer>

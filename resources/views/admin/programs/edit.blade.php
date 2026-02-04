@@ -193,6 +193,7 @@
                         <select class="form-select @error('currency') is-invalid @enderror" 
                                 id="currency" 
                                 name="currency">
+                            <option value="FCFA" {{ old('currency', $program->currency) == 'FCFA' ? 'selected' : '' }}>FCFA (XAF)</option>
                             <option value="USD" {{ old('currency', $program->currency) == 'USD' ? 'selected' : '' }}>USD ($)</option>
                             <option value="EUR" {{ old('currency', $program->currency) == 'EUR' ? 'selected' : '' }}>EUR (€)</option>
                             <option value="GBP" {{ old('currency', $program->currency) == 'GBP' ? 'selected' : '' }}>GBP (£)</option>

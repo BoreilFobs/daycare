@@ -1,51 +1,79 @@
 @extends('layouts.auth')
 
+@section('title', 'Login')
+
 @section('content')
-<h1 class="text-primary text-center mb-4">Welcome Back!</h1>
+<h2>Sign In</h2>
+<p class="subtitle">Enter your credentials to access your account</p>
 
 <!-- Session Status -->
-<x-auth-session-status class="mb-4" :status="session('status')" />
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+
+<!-- Errors -->
+@if ($errors->any())
+    <div class="alert alert-danger">
+        @foreach ($errors->all() as $error)
+            <div>{{ $error }}</div>
+        @endforeach
+    </div>
+@endif
 
 <form method="POST" action="{{ route('login') }}">
     @csrf
+    
     <!-- Email Address -->
-    <div class="mb-3">
-        <label for="email" class="form-label">{{ __('Email Address') }}</label>
-        <input id="email" type="email" class="form-control border-primary" name="email" value="{{ old('email') }}" required autofocus>
-        <x-input-error :messages="$errors->get('email')" class="mt-2" />
-    </div>
-
-    <!-- Password -->
-    <div class="mb-3">
-        <label for="password" class="form-label">{{ __('Password') }}</label>
-        <input id="password" type="password" class="form-control border-primary" name="password" required>
-        <x-input-error :messages="$errors->get('password')" class="mt-2" />
-    </div>
-
-    <!-- Remember Me -->
-    <div class="mb-3">
-        <div class="form-check">
-            <input class="form-check-input border-primary" type="checkbox" name="remember" id="remember">
-            <label class="form-check-label" for="remember">
-                {{ __('Remember me') }}
-            </label>
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <div class="input-wrapper">
+            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="you@example.com" required autofocus>
+            <i class="fas fa-envelope"></i>
         </div>
     </div>
 
-    <div class="d-flex justify-content-between align-items-center mb-3">
+    <!-- Password -->
+    <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-wrapper">
+            <input id="password" type="password" class="form-control" name="password" placeholder="••••••••" required>
+            <i class="fas fa-lock"></i>
+        </div>
+    </div>
+
+    <!-- Remember Me & Forgot -->
+    <div class="form-row">
+        <label class="remember-check">
+            <input type="checkbox" name="remember" id="remember">
+            <span>Remember me</span>
+        </label>
+        
         @if (Route::has('password.request'))
-            <a class="text-primary" href="{{ route('password.request') }}">
-                {{ __('Forgot your password?') }}
-            </a>
+            <a href="{{ route('password.request') }}" class="forgot-link">Forgot password?</a>
         @endif
-
-        <button type="submit" class="btn btn-primary rounded-pill px-4">
-            {{ __('Log in') }}
-        </button>
     </div>
 
-    <div class="text-center mt-4">
-        <p class="mb-0">Don't have an account? <a href="{{ route('register') }}" class="text-primary">Register here</a></p>
-    </div>
+    <!-- Submit Button -->
+    <button type="submit" class="btn-login">
+        <span>Sign In</span>
+        <i class="fas fa-arrow-right"></i>
+    </button>
 </form>
+
+<div class="divider">
+    <span>or</span>
+</div>
+
+<p class="register-link">
+    Don't have an account? <a href="{{ route('register') }}">Create one</a>
+</p>
+
+<div class="back-home">
+    <a href="{{ route('home') }}">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+    </a>
+</div>
 @endsection

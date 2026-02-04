@@ -17,4 +17,17 @@ class ServicesController extends Controller
 
         return view('pages.services', compact('services'));
     }
+
+    public function show($id)
+    {
+        $service = Service::where('is_active', true)->findOrFail($id);
+
+        $otherServices = Service::where('is_active', true)
+            ->where('id', '!=', $service->id)
+            ->orderBy('order')
+            ->take(5)
+            ->get();
+
+        return view('pages.service-detail', compact('service', 'otherServices'));
+    }
 }

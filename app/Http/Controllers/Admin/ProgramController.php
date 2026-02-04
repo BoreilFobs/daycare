@@ -73,6 +73,14 @@ class ProgramController extends Controller
     }
 
     /**
+     * Display the specified program
+     */
+    public function show(Program $program): View
+    {
+        return view('admin.programs.show', compact('program'));
+    }
+
+    /**
      * Show the form for editing the specified program
      */
     public function edit(Program $program): View
@@ -142,5 +150,19 @@ class ProgramController extends Controller
         return redirect()
             ->back()
             ->with('success', 'Program featured status updated.');
+    }
+
+    /**
+     * Reorder programs
+     */
+    public function reorder(Request $request): \Illuminate\Http\JsonResponse
+    {
+        $order = $request->input('order', []);
+        
+        foreach ($order as $item) {
+            Program::where('id', $item['id'])->update(['order' => $item['order']]);
+        }
+
+        return response()->json(['success' => true]);
     }
 }

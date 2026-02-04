@@ -1,83 +1,336 @@
+/*-----------------------------------------------------------------
+
+Template Name: Ascent - Kids & Kindergarden School HTML Template<
+Author:  Mugli
+Author URI: https://themeforest.net/user/mugli/portfolio
+Version: 1.0.0
+Description: Ascent -Kids & Kindergarden School HTML Template<
+
+-------------------------------------------------------------------
+CSS TABLE OF CONTENTS
+-------------------------------------------------------------------
+
+01. __Header
+02. __animated text with swiper slider
+03. __magnificPopup
+04. __counter up
+05. __wow animation
+06. __nice select
+07. __swiper slider
+08. __search popup
+09. __preloader 
+
+
+------------------------------------------------------------------*/
+
 (function ($) {
-    "use strict";
+	("use strict");
 
-    // Spinner
-    var spinner = function () {
-        setTimeout(function () {
-            if ($('#spinner').length > 0) {
-                $('#spinner').removeClass('show');
-            }
-        }, 1);
-    };
-    spinner(0);
-    
-    
-    // Initiate the wowjs
-    new WOW().init();
-    
-    
-   // Back to top button - shows on any scroll
-   $(window).scroll(function () {
-    if ($(this).scrollTop() > 100) {
-        $('.back-to-top').addClass('show');
-    } else {
-        $('.back-to-top').removeClass('show');
-    }
-    });
-    $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
-        return false;
-    });
+	$(document).ready(function () {
+		//>> Mobile Menu Js Start <<//
+		$("#mobile-menu").meanmenu({
+			meanMenuContainer: ".mobile-menu",
+			meanScreenWidth: "1199",
+			meanExpand: ['<i class="far fa-plus"></i>'],
+		});
 
+		//>> Sidebar Toggle Js Start <<//
+		$(".offcanvas__close,.offcanvas__overlay").on("click", function () {
+			$(".offcanvas__info").removeClass("info-open");
+			$(".offcanvas__overlay").removeClass("overlay-open");
+		});
+		$(".sidebar__toggle").on("click", function () {
+			$(".offcanvas__info").addClass("info-open");
+			$(".offcanvas__overlay").addClass("overlay-open");
+		});
 
-    // Testimonial carousel
+		//>> Body Overlay Js Start <<//
+		$(".body-overlay").on("click", function () {
+			$(".offcanvas__area").removeClass("offcanvas-opened");
+			$(".df-search-area").removeClass("opened");
+			$(".body-overlay").removeClass("opened");
+		});
 
-    $(".testimonial-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1500,
-        center: true,
-        dots: true,
-        loop: true,
-        margin: 50,
-        responsiveClass: true,
-        responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:2
-            },
-            1200:{
-                items:3
-            }
-        }
-    });
+		//>> Sticky Header Js Start <<//
 
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 250) {
+				$("#header-sticky").addClass("sticky");
+			} else {
+				$("#header-sticky").removeClass("sticky");
+			}
+		});
 
-    // Modal Video
-    $(document).ready(function () {
-        var $videoSrc;
-        $('.btn-play').click(function () {
-            $videoSrc = $(this).data("src");
-        });
-        console.log($videoSrc);
+		//--Global SideBar--
+		$(".toggleMain-controls .bar-toggles, .cmn-overlay").on(
+			"click",
+			function () {
+				$(
+					".toggleMain-controls .sidebar-wrapper, .cmn-overlay"
+				).toggleClass("active");
+			}
+		);
+		//--Global SideBar--
 
-        $('#videoModal').on('shown.bs.modal', function (e) {
-            $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
-        })
+		//>> Video Popup Start <<//
+		$(".img-popup").magnificPopup({
+			type: "image",
+			gallery: {
+				enabled: true,
+			},
+		});
 
-        $('#videoModal').on('hide.bs.modal', function (e) {
-            $("#video").attr('src', $videoSrc);
-        })
-    });
+		$(".video-popup").magnificPopup({
+			type: "iframe",
+			callbacks: {},
+		});
 
+		//>> Counterup Start <<//
+		$(".count").counterUp({
+			delay: 15,
+			time: 4000,
+		});
 
+		//>> Wow Animation Start <<//
+		new WOW().init();
 
-})(jQuery);
+		//>> Nice Select Start <<//
+		$("select").niceSelect();
 
+		//>> Servicves Slider Start <<//
+		const servicewrapslide = new Swiper(".service-wrapslide", {
+			spaceBetween: 0,
+			speed: 1300,
+			loop: true,
+			centeredSlides: true,
+			roundLengths: true,
+			autoplay: {
+				delay: 2000,
+				disableOnInteraction: false,
+			},
+			pagination: {
+				el: ".dot-cmn",
+				clickable: true,
+			},
+			breakpoints: {
+				1299: {
+					slidesPerView: 3,
+				},
+				1199: {
+					slidesPerView: 3,
+				},
+				767: {
+					slidesPerView: 2,
+				},
+				575: {
+					slidesPerView: 2,
+				},
+				0: {
+					slidesPerView: 1,
+				},
+			},
+		});
+		//>> Servicves Slider Start <<//
+
+		//>> Team Slider Start <<//
+		const testimonialslidewrap01 = new Swiper(".testimonial-slidewrap01", {
+			spaceBetween: 2,
+			speed: 1300,
+			loop: true,
+			autoplay: {
+				delay: 2000,
+				disableOnInteraction: false,
+			},
+			pagination: {
+				el: ".dot",
+				clickable: true,
+			},
+			breakpoints: {
+				1299: {
+					slidesPerView: 1,
+				},
+				1199: {
+					slidesPerView: 1,
+				},
+				767: {
+					slidesPerView: 1,
+				},
+				575: {
+					slidesPerView: 1,
+				},
+				0: {
+					slidesPerView: 1,
+				},
+			},
+		});
+
+		const teamSlider2 = new Swiper(".team-slider-2", {
+			spaceBetween: 30,
+			speed: 1500,
+			loop: true,
+			autoplay: {
+				delay: 2000,
+				disableOnInteraction: false,
+			},
+			navigation: {
+				nextEl: ".array-prev",
+				prevEl: ".array-next",
+			},
+			breakpoints: {
+				1199: {
+					slidesPerView: 3,
+				},
+				767: {
+					slidesPerView: 2,
+				},
+				575: {
+					slidesPerView: 1,
+				},
+				0: {
+					slidesPerView: 1,
+				},
+			},
+		});
+
+		//>> Testimonial Slider Start <<//
+		const testimonialSlider = new Swiper(".testimonial-slider", {
+			spaceBetween: 30,
+			speed: 1500,
+			loop: true,
+			autoplay: {
+				delay: 1000,
+				disableOnInteraction: false,
+			},
+			pagination: {
+				el: ".dot",
+				clickable: true,
+			},
+			breakpoints: {
+				1199: {
+					slidesPerView: 3,
+				},
+				767: {
+					slidesPerView: 2,
+				},
+				575: {
+					slidesPerView: 1,
+				},
+				0: {
+					slidesPerView: 1,
+				},
+			},
+		});
+
+		//>> Brand Slider Start <<//
+		const brandSlider = new Swiper(".brand-slider", {
+			spaceBetween: 30,
+			speed: 1300,
+			loop: true,
+			centeredSlides: true,
+			autoplay: {
+				delay: 2000,
+				disableOnInteraction: false,
+			},
+
+			breakpoints: {
+				1199: {
+					slidesPerView: 5,
+				},
+				991: {
+					slidesPerView: 4,
+				},
+				767: {
+					slidesPerView: 3,
+				},
+				575: {
+					slidesPerView: 2,
+				},
+				0: {
+					slidesPerView: 2,
+				},
+			},
+		});
+
+		//>> Search Popup Start <<//
+		const $searchWrap = $(".search-wrap");
+		const $navSearch = $(".nav-search");
+		const $searchClose = $("#search-close");
+
+		$(".search-trigger").on("click", function (e) {
+			e.preventDefault();
+			$searchWrap.animate({ opacity: "toggle" }, 500);
+			$navSearch.add($searchClose).addClass("open");
+		});
+
+		$(".search-close").on("click", function (e) {
+			e.preventDefault();
+			$searchWrap.animate({ opacity: "toggle" }, 500);
+			$navSearch.add($searchClose).removeClass("open");
+		});
+
+		function closeSearch() {
+			$searchWrap.fadeOut(200);
+			$navSearch.add($searchClose).removeClass("open");
+		}
+
+		$(document.body).on("click", function (e) {
+			closeSearch();
+		});
+
+		$(".search-trigger, .main-search-input").on("click", function (e) {
+			e.stopPropagation();
+		});
+	}); // End Document Ready Function
+
+	// Custom Tabs
+	$(".tablinks .nav-links").each(function () {
+		var targetTab = $(this).closest(".singletab");
+		targetTab.find(".tablinks .nav-links").each(function () {
+			var navBtn = targetTab.find(".tablinks .nav-links");
+			navBtn.click(function () {
+				navBtn.removeClass("active");
+				$(this).addClass("active");
+				var indexNum = $(this).closest("li").index();
+				var tabcontent = targetTab.find(".tabcontents .tabitem");
+				$(tabcontent).removeClass("active");
+				$(tabcontent).eq(indexNum).addClass("active");
+			});
+		});
+	});
+
+	// custom Accordion
+	$(".accordion-single .header-area").on("click", function () {
+		if ($(this).closest(".accordion-single").hasClass("active")) {
+			$(this).closest(".accordion-single").removeClass("active");
+			$(this).next(".content-area").slideUp();
+		} else {
+			$(".accordion-single").removeClass("active");
+			$(this).closest(".accordion-single").addClass("active");
+			$(".content-area").not($(this).next(".content-area")).slideUp();
+			$(this).next(".content-area").slideToggle();
+		}
+	});
+
+	function loader() {
+		function hidePreloader() {
+			$(".preloader").addClass("loaded");
+			$(".preloader").delay(1000).fadeOut();
+		}
+
+		// If already loaded, hide immediately
+		if (document.readyState === "complete") {
+			hidePreloader();
+		} else {
+			$(window).on("load", function () {
+				hidePreloader();
+			});
+		}
+
+		// Fallback: hide preloader after 3 seconds regardless
+		setTimeout(function() {
+			hidePreloader();
+		}, 3000);
+	}
+
+	loader();
+})(jQuery); // End jQuery
