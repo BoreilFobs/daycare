@@ -24,9 +24,9 @@
                     </ul>
                 </div>
                 <div class="breadcrumnd-thumb position-relative">
-                    <img src="{{ asset('img/abanner/bread-thumb.png') }}" alt="img" class="mimg">
-                    <img src="{{ asset('img/abanner/bread-child.png') }}" alt="img" class="bread-child">
-                    <img src="{{ asset('img/abanner/bread-cat.png') }}" alt="img" class="bread-cat">
+                    <img src="{{ asset('images/bread-thumb.png') }}" alt="img" class="mimg">
+                    <img src="{{ asset('images/bread-child.png') }}" alt="img" class="bread-child">
+                    <img src="{{ asset('images/bread-cat.png') }}" alt="img" class="bread-cat">
                 </div>
             </div>
         </div>
@@ -220,7 +220,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 me-xl-5 col-sm-5">
                     <div class="stay-thumb w-100">
-                        <img src="{{ asset('img/aservices/stay-thumb.png') }}" alt="img" class="w-100">
+                        <img src="{{ asset('images/stay-thumb.png') }}" alt="img" class="w-100">
                     </div>
                 </div>
             </div>

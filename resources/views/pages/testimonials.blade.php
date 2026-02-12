@@ -24,9 +24,9 @@
                     </ul>
                 </div>
                 <div class="breadcrumnd-thumb position-relative">
-                    <img src="{{ asset('img/abanner/bread-thumb.png') }}" alt="img" class="mimg">
-                    <img src="{{ asset('img/abanner/bread-child.png') }}" alt="img" class="bread-child">
-                    <img src="{{ asset('img/abanner/bread-cat.png') }}" alt="img" class="bread-cat">
+                    <img src="{{ asset('images/bread-thumb.png') }}" alt="img" class="mimg">
+                    <img src="{{ asset('images/bread-child.png') }}" alt="img" class="bread-child">
+                    <img src="{{ asset('images/bread-cat.png') }}" alt="img" class="bread-cat">
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
                     <div class="testimonial-card p-4 gra-border round10 wow fadeInUp" data-wow-delay=".{{ $loop->iteration }}s">
                         <div class="d-flex align-items-start gap-4">
                             <div class="testimonial-avatar">
-                                <img src="{{ $testimonial->image_url ?? asset('img/atestimonial/testimonial-small.png') }}" alt="{{ $testimonial->name }}" class="rounded-circle" width="80" height="80">
+                                <img src="{{ $testimonial->image_url ?? asset('images/imported/WhatsApp Image 2026-02-02 at 06.52.42.jpeg') }}" alt="{{ $testimonial->name }}" class="rounded-circle" width="80" height="80">
                             </div>
                             <div class="testimonial-content flex-grow-1">
                                 <div class="rating mb-3">
@@ -101,7 +101,7 @@
                     <div class="testimonial-card p-4 gra-border round10 wow fadeInUp" data-wow-delay=".4s">
                         <div class="d-flex align-items-start gap-4">
                             <div class="testimonial-avatar">
-                                <img src="{{ asset('img/atestimonial/testimonial-small.png') }}" alt="Parent" class="rounded-circle" width="80" height="80">
+                                <img src="{{ asset('images/imported/WhatsApp Image 2026-02-02 at 06.52.42 (1).jpeg') }}" alt="Parent" class="rounded-circle" width="80" height="80">
                             </div>
                             <div class="testimonial-content flex-grow-1">
                                 <div class="rating mb-3">
@@ -132,33 +132,37 @@
     </section>
 
     <!-- Stay Section Start -->
-    <section class="stay-section overflow-hidden cmn-bg">
+    <section class="stay-section pt-50 pb-50 cmn-bg overflow-hidden position-relative">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="stay-content py-60">
-                        <span class="sub-title d-block p1-clr mb-15">
-                            Share Your Experience
-                        </span>
-                        <h2 class="black fw-medium mb-4">
-                            We'd Love to Hear From You
-                        </h2>
-                        <p class="pra mb-4">
-                            Your feedback helps us continue to provide the best care and education for every child. Share your experience with us!
-                        </p>
-                        <a href="{{ route('contact') }}" class="theme-btn round100 p2-bg py-3 px-xl-5 px-4">
-                            <span class="white fw-medium">
-                                Contact Us
+            <div class="row justify-content-between align-items-center g-4">
+                <div class="col-lg-5 col-md-6 col-sm-7">
+                    <div class="stay-content">
+                        <div class="section-title">
+                            <span class="sub-title wow fadeInUp black">
+                                Share Your Experience
                             </span>
-                        </a>
+                            <h3 class="m-title wow fadeInUp black mb-sm-3 mb-2" data-wow-delay=".3s">
+                                We'd Love to Hear From You
+                            </h3>
+                            <p class="mb-24 pra wow fadeInUp" data-wow-delay=".4s">
+                                Your feedback helps us continue to provide the best care and education for every child. Share your experience with us!
+                            </p>
+                            <a href="{{ route('contact') }}" class="theme-btn round100 p2-bg py-3">
+                                <span class="white fw-medium">
+                                    Contact Us
+                                </span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="stay-thumb">
-                        <img src="{{ asset('img/ainspair/stay-thumb.png') }}" alt="img">
+                <div class="col-lg-3 col-md-4 me-xl-5 col-sm-5">
+                    <div class="stay-thumb w-100">
+                        <img src="{{ asset('images/stay-thumb.png') }}" alt="img" class="w-100">
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Element-->
+        <img src="{{ asset('img/aservices/stay-shape.png') }}" alt="img" class="stay-element">
     </section>
 @endsection

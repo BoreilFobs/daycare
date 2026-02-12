@@ -32,9 +32,9 @@
                     </ul>
                 </div>
                 <div class="breadcrumnd-thumb position-relative">
-                    <img src="{{ asset('img/abanner/bread-thumb.png') }}" alt="img" class="mimg">
-                    <img src="{{ asset('img/abanner/bread-child.png') }}" alt="img" class="bread-child">
-                    <img src="{{ asset('img/abanner/bread-cat.png') }}" alt="img" class="bread-cat">
+                    <img src="{{ asset('images/bread-thumb.png') }}" alt="img" class="mimg">
+                    <img src="{{ asset('images/bread-child.png') }}" alt="img" class="bread-child">
+                    <img src="{{ asset('images/bread-cat.png') }}" alt="img" class="bread-cat">
                 </div>
             </div>
         </div>
@@ -98,7 +98,7 @@
                             <div class="comment-item mb-30 p-4 gra-border round10">
                                 <div class="d-flex gap-3">
                                     <div class="comment-avatar">
-                                        <img src="{{ $comment->avatar ?? asset('img/atestimonial/testimonial-small.png') }}" alt="{{ $comment->name }}" class="rounded-circle" width="60">
+                                        <img src="{{ $comment->avatar ?? asset('images/imported/WhatsApp Image 2026-02-02 at 06.52.42.jpeg') }}" alt="{{ $comment->name }}" class="rounded-circle" width="60">
                                     </div>
                                     <div class="comment-content">
                                         <div class="d-flex justify-content-between align-items-center mb-2">

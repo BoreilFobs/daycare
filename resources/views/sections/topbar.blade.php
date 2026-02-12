@@ -3,7 +3,7 @@
     <span></span>
     <span></span>
     <span class="man-pre">
-        <img src="{{ asset('img/aservices/sertd-shape.png') }}" alt="img">
+        <img src="{{ asset('images/sertd-shape.png') }}" alt="img">
     </span>
 </div>
 
@@ -14,8 +14,9 @@
             <div class="offcanvas__content">
                 <div class="offcanvas__top mb-4 d-flex justify-content-between align-items-center">
                     <div class="offcanvas__logo">
-                        <a href="{{ route('home') }}">
-                            <img src="{{ asset('img/logo/logo.png') }}" alt="logo-img">
+                        <a href="{{ route('home') }}" class="d-flex align-items-center gap-2">
+                            <img src="{{ asset('images/logo.png') }}" alt="logo-img">
+                            <span class="logo-text fw-bold">ABC Center</span>
                         </a>
                     </div>
                     <div class="offcanvas__close">
@@ -123,8 +124,9 @@
             <div class="header-main style-2">
                 <div class="header-left">
                     <div class="logo">
-                        <a href="{{ route('home') }}" class="header-logo">
-                            <img src="{{ asset('img/logo/logo.png') }}" alt="logo-img">
+                        <a href="{{ route('home') }}" class="header-logo d-flex align-items-center gap-2">
+                            <img src="{{ asset('images/logo.png') }}" alt="logo-img">
+                            <span class="logo-text fw-bold">ABC Center</span>
                         </a>
                     </div>
                 </div>
@@ -145,11 +147,11 @@
                                     <li class="{{ request()->routeIs('programs*') ? 'active' : '' }}">
                                         <a href="{{ route('programs') }}">{{ __('site.nav.programs') }}</a>
                                     </li>
+                                    <li class="{{ request()->routeIs('gallery') ? 'active' : '' }}">
+                                        <a href="{{ route('gallery') }}">{{ __('site.nav.gallery') }}</a>
+                                    </li>
                                     <li class="{{ request()->routeIs('blog*') ? 'active' : '' }}">
                                         <a href="{{ route('blog') }}">{{ __('site.nav.blog') }}</a>
-                                    </li>
-                                    <li class="{{ request()->routeIs('events*') ? 'active' : '' }}">
-                                        <a href="{{ route('events') }}">{{ __('site.nav.events') }}</a>
                                     </li>
                                     <li class="{{ request()->routeIs('contact') ? 'active' : '' }}">
                                         <a href="{{ route('contact') }}">{{ __('site.nav.contact') }}</a>

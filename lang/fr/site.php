@@ -13,7 +13,7 @@ return [
         'programs' => 'Programmes',
         'events' => 'Événements',
         'blog' => 'Blog',
-        'contact' => 'Contactez-nous',
+        'contact' => 'Contact',
         'gallery' => 'Galerie',
         'team' => 'Notre Équipe',
         'testimonials' => 'Témoignages',
@@ -232,6 +232,43 @@ return [
         'age_group' => 'Tranche d\'Âge',
     ],
     
+    // Gallery
+    'gallery' => [
+        'title' => 'Notre Galerie',
+        'subtitle' => 'Moments au Centre',
+        'view_image' => 'Voir l\'Image',
+        'all' => 'Tout',
+        'no_images' => 'Pas d\'Images',
+        'check_back' => 'Notre galerie est en cours de mise à jour. Revenez bientôt!',
+        'schedule_visit' => 'Planifier une Visite',
+        'come_see' => 'Venez Voir Nos Installations',
+        'book_tour' => 'Réserver une Visite',
+    ],
+
+    // Knowledge Section
+    'knowledge' => [
+        'subtitle' => 'Groupes d\'\u00c2ge',
+        'title' => 'Programmes pour Chaque Étape de la Petite Enfance',
+        'infants' => 'Nourrissons',
+        'toddlers' => 'Tout-petits',
+        'preschool' => 'Préscolaire',
+        'kindergarten' => 'Maternelle',
+    ],
+
+    // Stay Section
+    'stay' => [
+        'subtitle' => 'Rejoignez Notre Communauté',
+        'title' => 'Inscrivez Votre Enfant Aujourd\'hui',
+        'description' => 'Offrez à votre enfant le meilleur départ dans la vie avec nos programmes éducatifs conçus pour chaque étape du développement de la petite enfance.',
+        'button' => 'Contactez-Nous',
+    ],
+
+    // Newsletter Section
+    'newsletter' => [
+        'subtitle' => 'Restez Connecté',
+        'title' => 'Une Éducation qui Éveille l\'Imagination et Nourrit la Curiosité',
+    ],
+
     // Common
     'read_more' => 'Lire Plus',
     'view_all' => 'Voir Tout',

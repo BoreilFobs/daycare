@@ -11,7 +11,7 @@
                             <h1 class="display-1 fw-bold p1-clr" style="font-size: 150px; line-height: 1;">404</h1>
                         </div>
                         <div class="error-thumb mb-40">
-                            <img src="{{ asset('img/abanner/bread-thumb.png') }}" alt="404" class="img-fluid" style="max-width: 300px;">
+                            <img src="{{ asset('images/bread-thumb.png') }}" alt="404" class="img-fluid" style="max-width: 300px;">
                         </div>
                         <h2 class="black fw-medium mb-4">Oops! Page Not Found</h2>
                         <p class="pra mb-40 px-lg-5">

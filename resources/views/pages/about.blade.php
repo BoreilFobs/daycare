@@ -24,9 +24,9 @@
                     </ul>
                 </div>
                 <div class="breadcrumnd-thumb position-relative">
-                    <img src="{{ asset('img/abanner/bread-thumb.png') }}" alt="img" class="mimg">
-                    <img src="{{ asset('img/abanner/bread-child.png') }}" alt="img" class="bread-child">
-                    <img src="{{ asset('img/abanner/bread-cat.png') }}" alt="img" class="bread-cat">
+                    <img src="{{ asset('images/bread-thumb.png') }}" alt="img" class="mimg">
+                    <img src="{{ asset('images/bread-child.png') }}" alt="img" class="bread-child">
+                    <img src="{{ asset('images/bread-cat.png') }}" alt="img" class="bread-cat">
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="about-one-thumbs">
                         <div class="thumbs position-relative wow fadeInUp" data-wow-delay="1200">
-                            <img src="{{ asset('img/about/about-1.png') }}" alt="img" class="round10 main-img">
+                            <img src="{{ asset('images/imported/about-section.jpeg') }}" alt="img" class="round10 main-img">
                             <div class="customer-satisfaction">
                                 <div class="icon d-center">
                                     <i class="fas fa-heart fa-2x text-white"></i>
@@ -267,195 +267,6 @@
         </div>
     </section>
 
-    <!-- Support Section -->
-    <section class="pricing-sectionv position-relative fix space-bottom">
-        <div class="container">
-            <div class="row justify-content-center mb-60">
-                <div class="col-lg-8">
-                    <div class="section-title text-center">
-                        <span class="sub-title wow fadeInUp p5-clr">
-                            {{ __('site.support.title') }}
-                        </span>
-                        <h3 class="m-title wow fadeInUp black" data-wow-delay=".3s">
-                            {{ __('site.support.description') }}
-                        </h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row g-lg-0 g-4">
-                @forelse($pricingPlans ?? [] as $index => $plan)
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".{{ 3 + ($index * 2) }}s">
-                    <div class="pricing-items {{ $plan->is_featured ? 'cart-active' : '' }}">
-                        <h4 class="pricing-head">
-                            {{ $plan->name }}
-                        </h4>
-                        <div class="pricing-body">
-                            <h1 class="price-title p4-clr mb-30">
-                                ${{ $plan->price }}
-                                <span class="mos black">
-                                    /mo
-                                </span>
-                            </h1>
-                            <ul class="pricing-listing d-grid gap-2 mb-40">
-                                @foreach($plan->features as $feature)
-                                <li class="d-flex align-items-center gap-xxl-4 gap-2 pra">
-                                    @if($feature['included'])
-                                    <i class="fa-solid fa-angles-right p5-clr"></i>
-                                    @else
-                                    <i class="fa-solid fa-circle-xmark cros"></i>
-                                    @endif
-                                    {{ $feature['name'] }}
-                                </li>
-                                @endforeach
-                            </ul>
-                            <div class="text-center">
-                                <a href="{{ route('contact') }}" class="theme-btn">
-                                    <span>
-                                        Buy Now
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @empty
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".3s">
-                    <div class="pricing-items">
-                        <h4 class="pricing-head">
-                            Starter Plan
-                        </h4>
-                        <div class="pricing-body">
-                            <h1 class="price-title p4-clr mb-30">
-                                $19
-                                <span class="mos black">
-                                    /mo
-                                </span>
-                            </h1>
-                            <ul class="pricing-listing d-grid gap-2 mb-40">
-                                <li class="d-flex align-items-center gap-xxl-4 gap-2 pra">
-                                    <i class="fa-solid fa-angles-right p5-clr"></i>
-                                    Basic Learning Materials
-                                </li>
-                                <li class="d-flex align-items-center gap-xxl-4 gap-2 pra">
-                                    <i class="fa-solid fa-angles-right p5-clr"></i>
-                                    Half Day Program
-                                </li>
-                                <li class="d-flex align-items-center gap-xxl-4 gap-2 pra">
-                                    <i class="fa-solid fa-circle-xmark cros"></i>
-                                    Lunch Included
-                                </li>
-                                <li class="d-flex align-items-center gap-xxl-4 gap-2 pra">
-                                    <i class="fa-solid fa-circle-xmark cros"></i>
-                                    Extended Hours
-                                </li>
-                                <li class="d-flex align-items-center gap-xxl-4 gap-2 pra">
-                                    <i class="fa-solid fa-circle-xmark cros"></i>
-                                    Extra Activities
-                                </li>
-                            </ul>
-                            <div class="text-center">
-                                <a href="{{ route('contact') }}" class="theme-btn">
-                                    <span>
-                                        Buy Now
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".5s">
-                    <div class="pricing-items cart-active">
-                        <h4 class="pricing-head">
-                            Golden Plan
-                        </h4>
-                        <div class="pricing-body">
-                            <h1 class="price-title p4-clr mb-30">
-                                $39
-                                <span class="mos black">
-                                    /mo
-                                </span>
-                            </h1>
-                            <ul class="pricing-listing d-grid gap-2 mb-40">
-                                <li class="d-flex align-items-center gap-xxl-4 gap-2 pra">
-                                    <i class="fa-solid fa-angles-right p5-clr"></i>
-                                    Full Learning Materials
-                                </li>
-                                <li class="d-flex align-items-center gap-xxl-4 gap-2 pra">
-                                    <i class="fa-solid fa-angles-right p5-clr"></i>
-                                    Full Day Program
-                                </li>
-                                <li class="d-flex align-items-center gap-xxl-4 gap-2 pra">
-                                    <i class="fa-solid fa-angles-right p5-clr"></i>
-                                    Lunch Included
-                                </li>
-                                <li class="d-flex align-items-center gap-xxl-4 gap-2 pra">
-                                    <i class="fa-solid fa-circle-xmark cros"></i>
-                                    Extended Hours
-                                </li>
-                                <li class="d-flex align-items-center gap-xxl-4 gap-2 pra">
-                                    <i class="fa-solid fa-circle-xmark cros"></i>
-                                    Extra Activities
-                                </li>
-                            </ul>
-                            <div class="text-center">
-                                <a href="{{ route('contact') }}" class="theme-btn">
-                                    <span>
-                                        Buy Now
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".7s">
-                    <div class="pricing-items">
-                        <h4 class="pricing-head">
-                            Premium Plan
-                        </h4>
-                        <div class="pricing-body">
-                            <h1 class="price-title p4-clr mb-30">
-                                $59
-                                <span class="mos black">
-                                    /mo
-                                </span>
-                            </h1>
-                            <ul class="pricing-listing d-grid gap-2 mb-40">
-                                <li class="d-flex align-items-center gap-xxl-4 gap-2 pra">
-                                    <i class="fa-solid fa-angles-right p5-clr"></i>
-                                    Full Learning Materials
-                                </li>
-                                <li class="d-flex align-items-center gap-xxl-4 gap-2 pra">
-                                    <i class="fa-solid fa-angles-right p5-clr"></i>
-                                    Full Day Program
-                                </li>
-                                <li class="d-flex align-items-center gap-xxl-4 gap-2 pra">
-                                    <i class="fa-solid fa-angles-right p5-clr"></i>
-                                    Lunch Included
-                                </li>
-                                <li class="d-flex align-items-center gap-xxl-4 gap-2 pra">
-                                    <i class="fa-solid fa-angles-right p5-clr"></i>
-                                    Extended Hours
-                                </li>
-                                <li class="d-flex align-items-center gap-xxl-4 gap-2 pra">
-                                    <i class="fa-solid fa-angles-right p5-clr"></i>
-                                    Extra Activities
-                                </li>
-                            </ul>
-                            <div class="text-center">
-                                <a href="{{ route('contact') }}" class="theme-btn">
-                                    <span>
-                                        Buy Now
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforelse
-            </div>
-        </div>
-    </section>
-
     <!-- Testimonial V1 Section Start -->
     <section class="testimonial-sectionv1 space-bottom overflow-hidden white-bg">
         <div class="container">
@@ -485,7 +296,7 @@
                                         <div class="d-flex align-items-center justify-content-between gap-1">
                                             <div class="man-info d-flex align-items-center">
                                                 <div class="thumb">
-                                                    <img src="{{ $testimonial->image ?? asset('img/atestimonial/testimonial-small.png') }}" alt="">
+                                                    <img src="{{ $testimonial->image ?? 'https://ui-avatars.com/api/?name=' . urlencode($testimonial->name) . '&background=ff6b9d&color=fff&size=80' }}" alt="">
                                                 </div>
                                                 <div class="cont">
                                                     <h4 class="black mb-1">
@@ -514,32 +325,98 @@
                                 </div>
                                 @empty
                                 <div class="swiper-slide">
-                                    <div class="testimonial-item01">
-                                        <div class="d-flex align-items-center justify-content-between gap-1">
+                                    <div class="testimonial-item01 position-relative">
+                                        <div class="d-flex align-items-center justify-content-between gap-1 flex-wrap">
                                             <div class="man-info d-flex align-items-center">
                                                 <div class="thumb">
-                                                    <img src="{{ asset('img/atestimonial/testimonial-small.png') }}" alt="">
+                                                    <img src="{{ asset('images/imported/avatar-1.jpeg') }}" alt="Sandrine Tchamba">
                                                 </div>
                                                 <div class="cont">
-                                                    <h4 class="black mb-1">
-                                                        Sarah Johnson
-                                                    </h4>
-                                                    <span class="black fw-normal">
-                                                        Parent
-                                                    </span>
+                                                    <h4 class="black mb-1">Sandrine Tchamba</h4>
+                                                    <span class="black fw-normal">Parent</span>
                                                 </div>
                                             </div>
                                             <img src="{{ asset('img/atestimonial/quote.png') }}" alt="img" class="quote-testi">
                                         </div>
-                                        <p class="pra mt-24 mb-40">
-                                            The care and attention my child receives at this center is exceptional. The teachers are dedicated and the environment is nurturing.
-                                        </p>
+                                        <p class="pra mt-24 mb-40">ABC Centre has transformed my daughter's life. She came here shy and withdrawn after we fled our village, but now she's confident, speaks both French and English, and loves learning. The teachers treat every child like their own.</p>
                                         <div class="ratting-area d-flex align-items-center gap-2">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item01 position-relative">
+                                        <div class="d-flex align-items-center justify-content-between gap-1 flex-wrap">
+                                            <div class="man-info d-flex align-items-center">
+                                                <div class="thumb">
+                                                    <img src="{{ asset('images/imported/avatar-2.jpeg') }}" alt="Emmanuel Ndjock">
+                                                </div>
+                                                <div class="cont">
+                                                    <h4 class="black mb-1">Emmanuel Ndjock</h4>
+                                                    <span class="black fw-normal">Parent</span>
+                                                </div>
+                                            </div>
+                                            <img src="{{ asset('img/atestimonial/quote.png') }}" alt="img" class="quote-testi">
+                                        </div>
+                                        <p class="pra mt-24 mb-40">When we arrived in Foumbot with nothing, ABC Centre gave our children hope. The daily meals ensure they're well-fed, and the education program has prepared my son for primary school. We are forever grateful.</p>
+                                        <div class="ratting-area d-flex align-items-center gap-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item01 position-relative">
+                                        <div class="d-flex align-items-center justify-content-between gap-1 flex-wrap">
+                                            <div class="man-info d-flex align-items-center">
+                                                <div class="thumb">
+                                                    <img src="{{ asset('images/imported/avatar-3.jpeg') }}" alt="Yvette Mbianda">
+                                                </div>
+                                                <div class="cont">
+                                                    <h4 class="black mb-1">Yvette Mbianda</h4>
+                                                    <span class="black fw-normal">Parent</span>
+                                                </div>
+                                            </div>
+                                            <img src="{{ asset('img/atestimonial/quote.png') }}" alt="img" class="quote-testi">
+                                        </div>
+                                        <p class="pra mt-24 mb-40">The safe and loving environment at ABC Centre allows me to work and provide for my family. My twins have blossomed here - they can now count, write their names, and sing songs in two languages!</p>
+                                        <div class="ratting-area d-flex align-items-center gap-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item01 position-relative">
+                                        <div class="d-flex align-items-center justify-content-between gap-1 flex-wrap">
+                                            <div class="man-info d-flex align-items-center">
+                                                <div class="thumb">
+                                                    <img src="{{ asset('images/imported/avatar-4.jpeg') }}" alt="Patrice Fotso">
+                                                </div>
+                                                <div class="cont">
+                                                    <h4 class="black mb-1">Patrice Fotso</h4>
+                                                    <span class="black fw-normal">Parent</span>
+                                                </div>
+                                            </div>
+                                            <img src="{{ asset('img/atestimonial/quote.png') }}" alt="img" class="quote-testi">
+                                        </div>
+                                        <p class="pra mt-24 mb-40">ABC Centre is more than a daycare - it's a community. The staff helped my family during our most difficult times. Now my children are thriving and I can see a bright future ahead for them.</p>
+                                        <div class="ratting-area d-flex align-items-center gap-2">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -578,7 +455,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 me-xl-5 col-sm-5">
                     <div class="stay-thumb w-100">
-                        <img src="{{ asset('img/aservices/stay-thumb.png') }}" alt="img" class="w-100">
+                        <img src="{{ asset('images/stay-thumb.png') }}" alt="img" class="w-100">
                     </div>
                 </div>
             </div>

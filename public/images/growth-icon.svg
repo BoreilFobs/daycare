@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <style>
+      .bar { fill: #2ec4b6; }
+      .arrow { fill: #2ec4b6; }
+    </style>
+  </defs>
+  <!-- Bar chart -->
+  <rect class="bar" x="8" y="44" width="10" height="16" rx="2"/>
+  <rect class="bar" x="22" y="34" width="10" height="26" rx="2"/>
+  <rect class="bar" x="36" y="24" width="10" height="36" rx="2"/>
+  <rect class="bar" x="50" y="14" width="10" height="46" rx="2"/>
+  <!-- Arrow -->
+  <path class="arrow" d="M12 42 L52 8 L52 18 L58 8 L48 8 L52 8 L52 14" fill="none" stroke="#2ec4b6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon class="arrow" points="58,4 58,16 52,16 58,4"/>
+</svg>

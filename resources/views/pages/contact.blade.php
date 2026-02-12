@@ -24,9 +24,9 @@
                     </ul>
                 </div>
                 <div class="breadcrumnd-thumb position-relative">
-                    <img src="{{ asset('img/abanner/bread-thumb.png') }}" alt="img" class="mimg">
-                    <img src="{{ asset('img/abanner/bread-child.png') }}" alt="img" class="bread-child">
-                    <img src="{{ asset('img/abanner/bread-cat.png') }}" alt="img" class="bread-cat">
+                    <img src="{{ asset('images/bread-thumb.png') }}" alt="img" class="mimg">
+                    <img src="{{ asset('images/bread-child.png') }}" alt="img" class="bread-child">
+                    <img src="{{ asset('images/bread-cat.png') }}" alt="img" class="bread-cat">
                 </div>
             </div>
         </div>
@@ -101,10 +101,10 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="contact-thumbv02 position-relative">
                         <div class="thumb-smal">
-                            <img src="{{ asset('img/contact/contact-s1.png') }}" alt="img">
+                            <img src="{{ asset('images/imported/contact-section.jpeg') }}" alt="img">
                         </div>
                         <div class="thumbb">
-                            <img src="{{ asset('img/contact/contact-b1.png') }}" alt="img">
+                            <img src="{{ asset('images/imported/front-facing-of-campus.jpeg') }}" alt="img">
                         </div>
                         <div class="badg-count">
                             <img src="{{ asset('img/contact/contact-badge.png') }}" alt="img">
@@ -220,7 +220,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 me-xl-5 col-sm-5">
                     <div class="stay-thumb w-100">
-                        <img src="{{ asset('img/aservices/stay-thumb.png') }}" alt="img" class="w-100">
+                        <img src="{{ asset('images/stay-thumb.png') }}" alt="img" class="w-100">
                     </div>
                 </div>
             </div>

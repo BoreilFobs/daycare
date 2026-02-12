@@ -6,8 +6,9 @@
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".3s">
                     <div class="single-footer-widget">
                         <div class="widget-heads">
-                            <a href="{{ route('home') }}" class="footer-logo">
-                                <img src="{{ asset('img/logo/logo-light.png') }}" alt="logo-img">
+                            <a href="{{ route('home') }}" class="footer-logo d-flex align-items-center gap-2">
+                                <img src="{{ asset('images/logo.png') }}" alt="logo-img">
+                                <span class="logo-text fw-bold white">ABC Center</span>
                             </a>
                         </div>
                         <div class="footer-content">

@@ -232,6 +232,43 @@ return [
         'age_group' => 'Age Group',
     ],
     
+    // Gallery
+    'gallery' => [
+        'title' => 'Our Gallery',
+        'subtitle' => 'Moments at Our Centre',
+        'view_image' => 'View Image',
+        'all' => 'All',
+        'no_images' => 'No Images Yet',
+        'check_back' => 'Our gallery is being updated. Check back soon!',
+        'schedule_visit' => 'Schedule a Visit',
+        'come_see' => 'Come See Our Facilities',
+        'book_tour' => 'Book a Tour',
+    ],
+
+    // Knowledge Section
+    'knowledge' => [
+        'subtitle' => 'Age Groups',
+        'title' => 'Programs for Every Stage of Early Childhood',
+        'infants' => 'Infants',
+        'toddlers' => 'Toddlers',
+        'preschool' => 'Preschool',
+        'kindergarten' => 'Pre-K',
+    ],
+
+    // Stay Section
+    'stay' => [
+        'subtitle' => 'Join Our Community',
+        'title' => 'Enroll Your Child Today',
+        'description' => 'Give your child the best start in life with our nurturing and educational programs designed for every stage of early childhood development.',
+        'button' => 'Contact Us',
+    ],
+
+    // Newsletter Section
+    'newsletter' => [
+        'subtitle' => 'Get Connected',
+        'title' => 'Education That Sparks Imagination & Nurtures Curiosity',
+    ],
+
     // Common
     'read_more' => 'Read More',
     'view_all' => 'View All',

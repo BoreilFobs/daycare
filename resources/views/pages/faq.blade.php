@@ -24,9 +24,9 @@
                     </ul>
                 </div>
                 <div class="breadcrumnd-thumb position-relative">
-                    <img src="{{ asset('img/abanner/bread-thumb.png') }}" alt="img" class="mimg">
-                    <img src="{{ asset('img/abanner/bread-child.png') }}" alt="img" class="bread-child">
-                    <img src="{{ asset('img/abanner/bread-cat.png') }}" alt="img" class="bread-cat">
+                    <img src="{{ asset('images/bread-thumb.png') }}" alt="img" class="mimg">
+                    <img src="{{ asset('images/bread-child.png') }}" alt="img" class="bread-child">
+                    <img src="{{ asset('images/bread-cat.png') }}" alt="img" class="bread-cat">
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
                             Find answers to common questions about our daycare services, programs, and policies. If you don't see your question here, feel free to contact us.
                         </p>
                         <div class="faq-thumb wow fadeInUp" data-wow-delay=".4s">
-                            <img src="{{ asset('img/about/faq-thumb.png') }}" alt="FAQ" class="round10">
+                            <img src="{{ asset('images/imported/faq-section.jpeg') }}" alt="FAQ" class="round10">
                         </div>
                     </div>
                 </div>

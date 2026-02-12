@@ -24,9 +24,9 @@
                     </ul>
                 </div>
                 <div class="breadcrumnd-thumb position-relative">
-                    <img src="{{ asset('img/abanner/bread-thumb.png') }}" alt="img" class="mimg">
-                    <img src="{{ asset('img/abanner/bread-child.png') }}" alt="img" class="bread-child">
-                    <img src="{{ asset('img/abanner/bread-cat.png') }}" alt="img" class="bread-cat">
+                    <img src="{{ asset('images/bread-thumb.png') }}" alt="img" class="mimg">
+                    <img src="{{ asset('images/bread-child.png') }}" alt="img" class="bread-child">
+                    <img src="{{ asset('images/bread-cat.png') }}" alt="img" class="bread-cat">
                 </div>
             </div>
         </div>
@@ -141,33 +141,37 @@
     </section>
 
     <!-- Stay Section Start -->
-    <section class="stay-section overflow-hidden cmn-bg">
+    <section class="stay-section pt-50 pb-50 cmn-bg overflow-hidden position-relative">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="stay-content py-60">
-                        <span class="sub-title d-block p1-clr mb-15">
-                            Join Our Team
-                        </span>
-                        <h2 class="black fw-medium mb-4">
-                            We're Always Looking for Passionate Educators
-                        </h2>
-                        <p class="pra mb-4">
-                            If you share our passion for early childhood education and want to make a difference in children's lives, we'd love to hear from you.
-                        </p>
-                        <a href="{{ route('contact') }}" class="theme-btn round100 p2-bg py-3 px-xl-5 px-4">
-                            <span class="white fw-medium">
-                                Contact Us
+            <div class="row justify-content-between align-items-center g-4">
+                <div class="col-lg-5 col-md-6 col-sm-7">
+                    <div class="stay-content">
+                        <div class="section-title">
+                            <span class="sub-title wow fadeInUp black">
+                                Join Our Team
                             </span>
-                        </a>
+                            <h3 class="m-title wow fadeInUp black mb-sm-3 mb-2" data-wow-delay=".3s">
+                                We're Always Looking for Passionate Educators
+                            </h3>
+                            <p class="mb-24 pra wow fadeInUp" data-wow-delay=".4s">
+                                If you share our passion for early childhood education and want to make a difference in children's lives, we'd love to hear from you.
+                            </p>
+                            <a href="{{ route('contact') }}" class="theme-btn round100 p2-bg py-3">
+                                <span class="white fw-medium">
+                                    Contact Us
+                                </span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="stay-thumb">
-                        <img src="{{ asset('img/ainspair/stay-thumb.png') }}" alt="img">
+                <div class="col-lg-3 col-md-4 me-xl-5 col-sm-5">
+                    <div class="stay-thumb w-100">
+                        <img src="{{ asset('images/stay-thumb.png') }}" alt="img" class="w-100">
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Element-->
+        <img src="{{ asset('img/aservices/stay-shape.png') }}" alt="img" class="stay-element">
     </section>
 @endsection
