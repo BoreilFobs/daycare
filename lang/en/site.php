@@ -23,7 +23,7 @@ return [
     
     // Welcome Page
     'welcome' => [
-        'hero_title' => 'Welcome to ABC Centre Foumbot',
+        'hero_title' => 'Welcome to',
         'hero_subtitle' => 'Providing children with a good start in life while enabling parents to rebuild their lives with confidence.',
         'hero_description' => 'Foumbot is home to a growing number of internally displaced families fleeing insecurity. ABC Children Centre fills this gap by providing a warm and nurturing environment especially for children aged 3 months to 5 years.',
         'learn_more' => 'Learn More',

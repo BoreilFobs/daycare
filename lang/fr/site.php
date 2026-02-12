@@ -23,7 +23,7 @@ return [
     
     // Welcome Page
     'welcome' => [
-        'hero_title' => 'Bienvenue au Centre ABC Foumbot',
+        'hero_title' => 'Bienvenue au',
         'hero_subtitle' => 'Nous offrons aux enfants un bon départ dans la vie tout en soutenant leurs parents à reconstruire leur vie avec confiance.',
         'hero_description' => 'Foumbot accueille un nombre croissant de familles déplacées internes fuyant l\'insécurité. Le Centre ABC comble ce manque en offrant un environnement chaleureux et stimulant, particulièrement adapté aux enfants de 3 mois à 5 ans.',
         'learn_more' => 'En Savoir Plus',
