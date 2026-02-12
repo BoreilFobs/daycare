@@ -33,17 +33,17 @@
         @endif
 
         <div class="table-responsive">
-            <table class="table table-hover align-middle" id="programsTable">
+            <table class="table table-hover align-middle">
                 <thead>
                     <tr>
                         <th width="5%">
                             <i class="fas fa-grip-vertical text-muted"></i>
                         </th>
-                        <th width="40%">Program</th>
+                        <th width="35%">Program</th>
                         <th width="15%">Price</th>
-                        <th width="10%">Students</th>
-                        <th width="15%">Status</th>
-                        <th width="15%" class="text-end">Actions</th>
+                        <th width="10%">Seats</th>
+                        <th width="10%">Status</th>
+                        <th width="25%" class="text-end">Actions</th>
                     </tr>
                 </thead>
                 <tbody id="sortable-programs">
@@ -77,10 +77,10 @@
                                 </div>
                             </td>
                             <td>
-                                <strong>{{ $program->currency }} {{ number_format($program->price, 2) }}</strong>
+                                <strong>{{ $program->formatted_price }}</strong>
                             </td>
                             <td>
-                                <span class="badge bg-light text-dark">{{ $program->total_sits }} sits</span>
+                                <span class="badge bg-light text-dark">{{ $program->total_sits }} seats</span>
                             </td>
                             <td>
                                 @if($program->is_active)
@@ -91,11 +91,26 @@
                             </td>
                             <td class="text-end">
                                 <div class="btn-group btn-group-sm">
+                                    <a href="{{ route('admin.programs.show', $program) }}" 
+                                       class="btn btn-outline-info"
+                                       title="View">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
                                     <a href="{{ route('admin.programs.edit', $program) }}" 
                                        class="btn btn-outline-primary"
                                        title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
+                                    <form action="{{ route('admin.programs.toggle-featured', $program) }}" 
+                                          method="POST" 
+                                          class="d-inline">
+                                        @csrf
+                                        <button type="submit" 
+                                                class="btn {{ $program->is_featured ? 'btn-warning' : 'btn-outline-warning' }}"
+                                                title="{{ $program->is_featured ? 'Remove from Featured' : 'Mark as Featured' }}">
+                                            <i class="fas fa-star"></i>
+                                        </button>
+                                    </form>
                                     <form action="{{ route('admin.programs.destroy', $program) }}" 
                                           method="POST" 
                                           class="d-inline"
@@ -120,22 +135,19 @@
                 </tbody>
             </table>
         </div>
+
+        @if($programs->hasPages())
+            <div class="d-flex justify-content-center mt-3">
+                {{ $programs->links() }}
+            </div>
+        @endif
     </div>
 </div>
 @endsection
 
 @push('scripts')
 <script>
-    // Initialize DataTable
     $(document).ready(function() {
-        $('#programsTable').DataTable({
-            "order": [],
-            "columnDefs": [
-                { "orderable": false, "targets": [0, 5] }
-            ],
-            "pageLength": 25
-        });
-
         // Initialize Sortable for drag-drop reordering
         const sortableList = document.getElementById('sortable-programs');
         if (sortableList) {

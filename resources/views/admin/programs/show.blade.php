@@ -133,7 +133,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
                     <span class="text-muted">Price</span>
-                    <strong class="h5 mb-0">{{ $program->currency ?? '$' }}{{ number_format($program->price, 2) }}</strong>
+                    <strong class="h5 mb-0">{{ $program->formatted_price }}</strong>
                 </div>
                 <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
                     <span class="text-muted">Total Seats</span>

@@ -315,7 +315,11 @@
                                 <div class="swiper-slide">
                                     <div class="program-item gap-3 d-grid justify-content-start">
                                         <div class="icon">
-                                            <img src="{{ $service->icon ?? asset('img/aicon/car-icons1.png') }}" alt="img">
+                                            @if(!empty($service->icon))
+                                                <i class="{{ $service->icon }} fa-2x" aria-hidden="true"></i>
+                                            @else
+                                                <img src="{{ asset('img/aicon/car-icons1.png') }}" alt="img">
+                                            @endif
                                         </div>
                                         <div class="content">
                                             <h4 class="mb-xxl-3 mb-2">

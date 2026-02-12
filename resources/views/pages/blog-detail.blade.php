@@ -46,8 +46,8 @@
             <div class="row g-4">
                 <div class="col-lg-8">
                     <div class="blog-details-wrap">
-                        <div class="blog-details-thumb mb-40">
-                            <img src="{{ $post->featured_image_url ?? asset('img/ablog/blog-details-b1.png') }}" alt="{{ $post->title ?? '' }}" class="w-100 round10">
+                        <div class="blog-details-thumb mb-40" style="max-height: 450px; overflow: hidden; border-radius: 10px;">
+                            <img src="{{ $post->featured_image_url ?? asset('img/ablog/blog-details-b1.png') }}" alt="{{ $post->title ?? '' }}" class="w-100 round10" style="max-height: 450px; object-fit: cover; object-position: top;">
                         </div>
                         <div class="blog-details-meta mb-30 d-flex flex-wrap gap-3">
                             <span><i class="fa-solid fa-calendar-days me-2"></i>{{ isset($post) ? ($post->published_at ? $post->published_at->format('F d, Y') : $post->created_at->format('F d, Y')) : 'January 19, 2024' }}</span>
@@ -57,7 +57,17 @@
                         <h3 class="blog-details-title black mb-30">
                             {{ $post->title ?? 'Education for a brighter future' }}
                         </h3>
-                        <div class="blog-details-content mb-40">
+                        <div class="blog-details-content mb-40" style="overflow: hidden;">
+                            <style>
+                                .blog-details-content img {
+                                    max-width: 100%;
+                                    max-height: 450px;
+                                    height: auto;
+                                    object-fit: cover;
+                                    object-position: top;
+                                    border-radius: 10px;
+                                }
+                            </style>
                             {!! $post->content ?? '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultricies aliquam volutpat ullamcorper laoreet neque, a lacinia curabitur lacinia mollis. Sed dis lorem ipsum dummy text education for kids.</p>' !!}
                         </div>
 
@@ -196,33 +206,14 @@
                             </form>
                         </div>
 
-                        <!-- Categories Widget -->
-                        <div class="blog-right-common blog-category wow fadeInUp" data-wow-delay=".4s">
-                            <h4 class="black mb-20">Categories</h4>
-                            <ul class="category-list">
-                                @forelse($categories ?? [] as $category)
-                                <li>
-                                    <a href="{{ route('blog', ['category' => $category->slug]) }}">
-                                        <span>{{ $category->name }}</span>
-                                        <span class="count">({{ $category->posts_count ?? 0 }})</span>
-                                    </a>
-                                </li>
-                                @empty
-                                <li><a href="#"><span>Education</span><span class="count">(5)</span></a></li>
-                                <li><a href="#"><span>Parenting</span><span class="count">(3)</span></a></li>
-                                <li><a href="#"><span>Activities</span><span class="count">(7)</span></a></li>
-                                @endforelse
-                            </ul>
-                        </div>
-
                         <!-- Recent Posts Widget -->
                         <div class="blog-right-common blog-recent wow fadeInUp" data-wow-delay=".5s">
                             <h4 class="black mb-20">Recent Posts</h4>
                             <div class="recent-posts">
                                 @forelse($recentPosts ?? [] as $recent)
                                 <div class="recent-post-item d-flex gap-3 mb-20">
-                                    <div class="thumb">
-                                        <img src="{{ $recent->featured_image_url ?? asset('img/ablog/blog-small1.png') }}" alt="{{ $recent->title }}">
+                                    <div class="thumb" style="width: 80px; min-width: 80px; height: 80px; overflow: hidden; border-radius: 8px;">
+                                        <img src="{{ $recent->featured_image_url ?? asset('img/ablog/blog-small1.png') }}" alt="{{ $recent->title }}" style="width: 100%; height: 100%; object-fit: cover; object-position: top;">
                                     </div>
                                     <div class="content">
                                         <span class="date"><i class="fa-solid fa-calendar-days"></i> {{ $recent->created_at->format('M d, Y') }}</span>
@@ -231,8 +222,8 @@
                                 </div>
                                 @empty
                                 <div class="recent-post-item d-flex gap-3 mb-20">
-                                    <div class="thumb">
-                                        <img src="{{ asset('img/ablog/blog-small1.png') }}" alt="img">
+                                    <div class="thumb" style="width: 80px; min-width: 80px; height: 80px; overflow: hidden; border-radius: 8px;">
+                                        <img src="{{ asset('img/ablog/blog-small1.png') }}" alt="img" style="width: 100%; height: 100%; object-fit: cover; object-position: top;">
                                     </div>
                                     <div class="content">
                                         <span class="date"><i class="fa-solid fa-calendar-days"></i> Jan 19, 2024</span>

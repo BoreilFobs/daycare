@@ -40,8 +40,8 @@
                     <div class="blog-left-wrap">
                         @forelse($posts ?? [] as $index => $post)
                         <div class="blog-single-items overflow-hidden mb-60 wow fadeInUp" data-wow-delay=".{{ 2 + $index }}s">
-                            <div class="blog-thumbig w-100">
-                                <img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}" class="w-100">
+                            <div class="blog-thumbig w-100" style="max-height: 400px; overflow: hidden; border-radius: 10px;">
+                                <img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}" class="w-100" style="max-height: 400px; object-fit: cover; object-position: top;">
                             </div>
                             <div class="blog-content">
                                 <h4 class="mb-40">
@@ -105,33 +105,14 @@
                             </form>
                         </div>
 
-                        <!-- Categories Widget -->
-                        <div class="blog-right-common blog-category wow fadeInUp" data-wow-delay=".4s">
-                            <h4 class="black mb-20">Categories</h4>
-                            <ul class="category-list">
-                                @forelse($categories ?? [] as $category)
-                                <li>
-                                    <a href="{{ route('blog', ['category' => $category->slug]) }}">
-                                        <span>{{ $category->name }}</span>
-                                        <span class="count">({{ $category->posts_count ?? 0 }})</span>
-                                    </a>
-                                </li>
-                                @empty
-                                <li><a href="#"><span>Education</span><span class="count">(5)</span></a></li>
-                                <li><a href="#"><span>Parenting</span><span class="count">(3)</span></a></li>
-                                <li><a href="#"><span>Activities</span><span class="count">(7)</span></a></li>
-                                @endforelse
-                            </ul>
-                        </div>
-
                         <!-- Recent Posts Widget -->
                         <div class="blog-right-common blog-recent wow fadeInUp" data-wow-delay=".5s">
                             <h4 class="black mb-20">Recent Posts</h4>
                             <div class="recent-posts">
                                 @forelse($recentPosts ?? [] as $recent)
                                 <div class="recent-post-item d-flex gap-3 mb-20">
-                                    <div class="thumb">
-                                        <img src="{{ $recent->featured_image_url }}" alt="{{ $recent->title }}">
+                                    <div class="thumb" style="width: 80px; min-width: 80px; height: 80px; overflow: hidden; border-radius: 8px;">
+                                        <img src="{{ $recent->featured_image_url }}" alt="{{ $recent->title }}" style="width: 100%; height: 100%; object-fit: cover; object-position: top;">
                                     </div>
                                     <div class="content">
                                         <span class="date"><i class="fa-solid fa-calendar-days"></i> {{ $recent->published_at ? $recent->published_at->format('M d, Y') : $recent->created_at->format('M d, Y') }}</span>

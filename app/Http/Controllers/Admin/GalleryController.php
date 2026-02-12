@@ -38,7 +38,7 @@ class GalleryController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'required|image|max:2048',
+            'image' => 'required|image|mimes:jpeg,jpg,png,webp,gif|max:5120',
             'category' => 'required|string|max:255',
             'order' => 'nullable|integer',
         ]);
@@ -68,7 +68,7 @@ class GalleryController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp,gif|max:5120',
             'category' => 'required|string|max:255',
             'order' => 'nullable|integer',
         ]);
@@ -101,7 +101,7 @@ class GalleryController extends Controller
     public function bulkUpload(Request $request): RedirectResponse
     {
         $request->validate([
-            'images.*' => 'required|image|max:2048',
+            'images.*' => 'required|image|mimes:jpeg,jpg,png,webp,gif|max:5120',
             'category' => 'required|string|max:255',
         ]);
 

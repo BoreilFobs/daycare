@@ -46,9 +46,15 @@
             <div class="row g-4">
                 <div class="col-lg-8">
                     <div class="service-details-wrap">
-                        <div class="service-details-thumb mb-40 wow fadeInUp">
-                            <img src="{{ asset('img/aservices/service-details.png') }}" alt="{{ $service->title }}" class="w-100 round10">
-                        </div>
+                        @if($service->icon)
+                            <div class="service-details-thumb mb-40 wow fadeInUp d-flex align-items-center justify-content-center" style="height:120px;">
+                                <i class="{{ $service->icon }} p1-clr" style="font-size: 64px;"></i>
+                            </div>
+                        @else
+                            <div class="service-details-thumb mb-40 wow fadeInUp">
+                                <img src="{{ asset('img/aservices/service-details.png') }}" alt="{{ $service->title }}" class="w-100 round10">
+                            </div>
+                        @endif
                         <h3 class="service-details-title black mb-30 wow fadeInUp" data-wow-delay=".2s">
                             {{ $service->title }}
                         </h3>

@@ -27,7 +27,7 @@ class UpdateTeamMemberRequest extends FormRequest
             'bio' => 'nullable|string',
             'email' => 'nullable|email|max:255',
             'phone' => 'nullable|string|max:50',
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:1024',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp,gif|max:5120',
             'facebook_url' => 'nullable|url|max:255',
             'twitter_url' => 'nullable|url|max:255',
             'instagram_url' => 'nullable|url|max:255',

@@ -155,7 +155,7 @@
                     <div class="mb-3">
                         <label for="price" class="form-label">Price <span class="text-danger">*</span></label>
                         <div class="input-group">
-                            <span class="input-group-text">$</span>
+                            <span class="input-group-text" id="currency-prefix">FCFA</span>
                             <input type="number" 
                                    class="form-control @error('price') is-invalid @enderror" 
                                    id="price" 
@@ -316,6 +316,14 @@
             }
             reader.readAsDataURL(file);
         }
+    });
+
+    // Update currency prefix when currency changes
+    const currencySelect = document.getElementById('currency');
+    const currencyPrefix = document.getElementById('currency-prefix');
+    const symbols = { 'FCFA': 'FCFA', 'USD': '$', 'EUR': '€', 'GBP': '£' };
+    currencySelect.addEventListener('change', function() {
+        currencyPrefix.textContent = symbols[this.value] || this.value;
     });
 </script>
 @endpush

@@ -35,7 +35,7 @@ class UpdateEventRequest extends FormRequest
             'order' => 'nullable|integer|min:0',
             'is_featured' => 'nullable|boolean',
             'is_active' => 'nullable|boolean',
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp,gif|max:5120',
         ];
     }
 

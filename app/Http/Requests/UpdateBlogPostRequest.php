@@ -22,7 +22,8 @@ class UpdateBlogPostRequest extends FormRequest
      */
     public function rules(): array
     {
-        $blogPostId = $this->route('blog');
+        $blogPost = $this->route('blogPost');
+        $blogPostId = $blogPost instanceof \App\Models\BlogPost ? $blogPost->id : $blogPost;
 
         return [
             'title' => 'required|string|max:255',
@@ -35,7 +36,7 @@ class UpdateBlogPostRequest extends FormRequest
             ],
             'excerpt' => 'nullable|string|max:500',
             'content' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp,gif|max:5120',
             'category' => 'nullable|string|max:100',
             'tags' => 'nullable|string|max:255',
             'published_at' => 'nullable|date',
@@ -79,11 +80,16 @@ class UpdateBlogPostRequest extends FormRequest
      */
     protected function prepareForValidation(): void
     {
-        // Auto-generate slug from title if not provided
-        if (empty($this->slug) && !empty($this->title)) {
-            $this->merge([
-                'slug' => \Illuminate\Support\Str::slug($this->title),
-            ]);
+        // Only auto-generate slug if explicitly cleared and title is provided
+        // On update, preserve the existing slug if no new one is provided
+        if ($this->has('slug') && empty($this->slug) && !empty($this->title)) {
+            $blogPost = $this->route('blogPost');
+            if ($blogPost instanceof \App\Models\BlogPost && !empty($blogPost->slug)) {
+                // Keep the existing slug
+                $this->merge(['slug' => $blogPost->slug]);
+            } else {
+                $this->merge(['slug' => \Illuminate\Support\Str::slug($this->title)]);
+            }
         }
     }
 }

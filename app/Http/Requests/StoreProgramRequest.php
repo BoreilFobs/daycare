@@ -29,14 +29,14 @@ class StoreProgramRequest extends FormRequest
             'currency' => 'nullable|string|max:10',
             'teacher_name' => 'nullable|string|max:255',
             'teacher_title' => 'nullable|string|max:255',
-            'teacher_image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:1024',
+            'teacher_image' => 'nullable|image|mimes:jpeg,jpg,png,webp,gif|max:5120',
             'total_sits' => 'required|integer|min:1',
             'total_lessons' => 'nullable|integer|min:0',
             'total_hours' => 'nullable|integer|min:0',
             'order' => 'nullable|integer|min:0',
             'is_featured' => 'nullable|boolean',
             'is_active' => 'nullable|boolean',
-            'image' => 'required|image|mimes:jpeg,jpg,png,webp|max:2048',
+            'image' => 'required|image|mimes:jpeg,jpg,png,webp,gif|max:5120',
         ];
     }
 
