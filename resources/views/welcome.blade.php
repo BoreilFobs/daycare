@@ -705,7 +705,7 @@
                     <div class="news-small-items {{ $index == 0 ? 'mb-24' : '' }} wow fadeInUp" data-wow-delay=".{{ 3 + $index }}s">
                         <div class="news-thumb">
                             <a href="{{ route('blog.show', $post->slug ?? $post->id) }}">
-                                <img src="{{ $post->image_url ?? asset($blogDefaults[$index] ?? $blogDefaults[0]) }}" alt="{{ $post->title }}">
+                                <img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}">
                             </a>
                         </div>
                         <div class="news-content">
@@ -777,7 +777,7 @@
                     <div class="news-big-item wow fadeInUp" data-wow-delay=".5s">
                         <div class="news-big-thumb overflow-hidden rounded-4">
                             <a href="{{ route('blog.show', $featuredPost->slug ?? $featuredPost->id) }}">
-                                <img src="{{ $featuredPost->image_url ?? asset('images/imported/WhatsApp Image 2026-02-02 at 06.40.54.jpeg') }}" alt="{{ $featuredPost->title }}" class="w-100">
+                                <img src="{{ $featuredPost->featured_image_url }}" alt="{{ $featuredPost->title }}" class="w-100">
                             </a>
                         </div>
                         <div class="news-big-content pt-4">
