@@ -1,47 +1,78 @@
 @extends('layouts.auth')
 
+@section('title', 'Register')
+
 @section('content')
-<h1 class="text-primary text-center mb-4">Create Account</h1>
+<h2>Create Account</h2>
+<p class="subtitle">Join ABC Centre and get started today</p>
+
+<!-- Errors -->
+@if ($errors->any())
+    <div class="alert alert-danger">
+        @foreach ($errors->all() as $error)
+            <div>{{ $error }}</div>
+        @endforeach
+    </div>
+@endif
 
 <form method="POST" action="{{ route('register') }}">
     @csrf
 
-    <!-- Name -->
-    <div class="mb-3">
-        <label for="name" class="form-label">{{ __('Full Name') }}</label>
-        <input id="name" type="text" class="form-control border-primary" name="name" value="{{ old('name') }}" required autofocus>
-        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+    <!-- Full Name -->
+    <div class="form-group">
+        <label for="name">Full Name</label>
+        <div class="input-wrapper">
+            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="John Doe" required autofocus>
+            <i class="fas fa-user"></i>
+        </div>
     </div>
 
     <!-- Email Address -->
-    <div class="mb-3">
-        <label for="email" class="form-label">{{ __('Email Address') }}</label>
-        <input id="email" type="email" class="form-control border-primary" name="email" value="{{ old('email') }}" required>
-        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <div class="input-wrapper">
+            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="you@example.com" required>
+            <i class="fas fa-envelope"></i>
+        </div>
     </div>
 
     <!-- Password -->
-    <div class="mb-3">
-        <label for="password" class="form-label">{{ __('Password') }}</label>
-        <input id="password" type="password" class="form-control border-primary" name="password" required>
-        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+    <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-wrapper">
+            <input id="password" type="password" class="form-control" name="password" placeholder="••••••••" required>
+            <i class="fas fa-lock"></i>
+        </div>
     </div>
 
     <!-- Confirm Password -->
-    <div class="mb-3">
-        <label for="password_confirmation" class="form-label">{{ __('Confirm Password') }}</label>
-        <input id="password_confirmation" type="password" class="form-control border-primary" name="password_confirmation" required>
-        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+    <div class="form-group">
+        <label for="password_confirmation">Confirm Password</label>
+        <div class="input-wrapper">
+            <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" placeholder="••••••••" required>
+            <i class="fas fa-lock"></i>
+        </div>
     </div>
 
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <a class="text-primary" href="{{ route('login') }}">
-            {{ __('Already registered?') }}
-        </a>
-
-        <button type="submit" class="btn btn-primary rounded-pill px-4">
-            {{ __('Register') }}
-        </button>
-    </div>
+    <!-- Submit Button -->
+    <button type="submit" class="btn-login">
+        <span>Create Account</span>
+        <i class="fas fa-arrow-right"></i>
+    </button>
 </form>
+
+<div class="divider">
+    <span>or</span>
+</div>
+
+<p class="register-link">
+    Already have an account? <a href="{{ route('login') }}">Sign In</a>
+</p>
+
+<div class="back-home">
+    <a href="{{ route('home') }}">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+    </a>
+</div>
 @endsection

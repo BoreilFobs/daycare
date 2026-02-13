@@ -55,7 +55,7 @@
 
             .auth-left {
                 flex: 1;
-                background: linear-gradient(135deg, var(--primary) 0%, #FF8E53 100%);
+                background: url('/images/imported/front-facing-of-campus.jpeg') center center / cover no-repeat;
                 padding: 60px 40px;
                 display: flex;
                 flex-direction: column;
@@ -69,17 +69,8 @@
             .auth-left::before {
                 content: '';
                 position: absolute;
-                top: -50%;
-                left: -50%;
-                width: 200%;
-                height: 200%;
-                background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
-                animation: pulse 4s ease-in-out infinite;
-            }
-
-            @keyframes pulse {
-                0%, 100% { transform: scale(1); opacity: 0.5; }
-                50% { transform: scale(1.1); opacity: 0.8; }
+                inset: 0;
+                background: linear-gradient(135deg, rgba(255, 107, 157, 0.75) 0%, rgba(255, 142, 83, 0.7) 100%);
             }
 
             .auth-left .welcome-content {

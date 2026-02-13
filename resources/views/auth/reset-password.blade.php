@@ -1,39 +1,64 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
-        @csrf
+@extends('layouts.auth')
 
-        <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+@section('title', 'Reset Password')
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+@section('content')
+<h2>Reset Password</h2>
+<p class="subtitle">Enter your new password below</p>
+
+<!-- Errors -->
+@if ($errors->any())
+    <div class="alert alert-danger">
+        @foreach ($errors->all() as $error)
+            <div>{{ $error }}</div>
+        @endforeach
+    </div>
+@endif
+
+<form method="POST" action="{{ route('password.store') }}">
+    @csrf
+
+    <!-- Password Reset Token -->
+    <input type="hidden" name="token" value="{{ $request->route('token') }}">
+
+    <!-- Email Address -->
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <div class="input-wrapper">
+            <input id="email" type="email" class="form-control" name="email" value="{{ old('email', $request->email) }}" placeholder="you@example.com" required autofocus>
+            <i class="fas fa-envelope"></i>
         </div>
+    </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+    <!-- Password -->
+    <div class="form-group">
+        <label for="password">New Password</label>
+        <div class="input-wrapper">
+            <input id="password" type="password" class="form-control" name="password" placeholder="••••••••" required>
+            <i class="fas fa-lock"></i>
         </div>
+    </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+    <!-- Confirm Password -->
+    <div class="form-group">
+        <label for="password_confirmation">Confirm New Password</label>
+        <div class="input-wrapper">
+            <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" placeholder="••••••••" required>
+            <i class="fas fa-lock"></i>
         </div>
+    </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    <!-- Submit Button -->
+    <button type="submit" class="btn-login">
+        <span>Reset Password</span>
+        <i class="fas fa-arrow-right"></i>
+    </button>
+</form>
+
+<div class="back-home">
+    <a href="{{ route('login') }}">
+        <i class="fas fa-arrow-left"></i>
+        Back to Login
+    </a>
+</div>
+@endsection

@@ -26,12 +26,7 @@ class SetLocale
             $locale = $request->get('lang');
             Session::put('locale', $locale);
         }
-        // Check browser language
-        elseif ($request->hasHeader('Accept-Language')) {
-            $browserLocale = substr($request->header('Accept-Language'), 0, 2);
-            $locale = in_array($browserLocale, ['en', 'fr']) ? $browserLocale : 'en';
-        }
-        // Default to English
+        // Default to English on first visit
         else {
             $locale = 'en';
         }
